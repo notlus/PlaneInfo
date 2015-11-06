@@ -12,7 +12,6 @@
 		3727C7D01BE7D4E6006E451B /* LookupAircraftOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3727C7CF1BE7D4E6006E451B /* LookupAircraftOp.swift */; };
 		3727C7D21BE7D505006E451B /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3727C7D11BE7D505006E451B /* Operation.swift */; };
 		37449E2F1BEC9ED800ABC6D0 /* PlaneInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */; };
-		37449E301BEC9EE300ABC6D0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB051BEC9B7F003D1A14 /* Info.plist */; };
 		37449E321BEC9F7D00ABC6D0 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37449E311BEC9F7D00ABC6D0 /* Categories.plist */; };
 		379B299F1BBE530000508701 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B299E1BBE530000508701 /* main.swift */; };
 		379B29A41BBE53DE00508701 /* DBDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B29A31BBE53DE00508701 /* DBDownloader.swift */; };
@@ -37,7 +36,6 @@
 		37CBEAFC1BEC9AE9003D1A14 /* star_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAF91BEC9AE9003D1A14 /* star_48.png */; };
 		37CBEAFD1BEC9AE9003D1A14 /* star_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFA1BEC9AE9003D1A14 /* star_64.png */; };
 		37CBEB001BEC9B4B003D1A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFF1BEC9B4B003D1A14 /* Assets.xcassets */; };
-		37CBEB0A1BEC9BB0003D1A14 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB091BEC9BB0003D1A14 /* Info.plist */; };
 		37CBEB0B1BEC9C7F003D1A14 /* PlaneInfo.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFE1BEC9B06003D1A14 /* PlaneInfo.sqlite */; };
 		37CBEB0E1BEC9C9E003D1A14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB0C1BEC9C9E003D1A14 /* Main.storyboard */; };
 		37CBEB111BEC9CA7003D1A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB0F1BEC9CA7003D1A14 /* LaunchScreen.storyboard */; };
@@ -80,6 +78,7 @@
 		379B299C1BBE530000508701 /* DBDownloader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DBDownloader; sourceTree = BUILT_PRODUCTS_DIR; };
 		379B299E1BBE530000508701 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		379B29A31BBE53DE00508701 /* DBDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBDownloader.swift; sourceTree = "<group>"; };
+		37C0624A1BED5E1A009334B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlaneInfo/Info.plist; sourceTree = SOURCE_ROOT; };
 		37CBEAD01BEC992D003D1A14 /* AircraftContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftContainerViewController.swift; sourceTree = "<group>"; };
 		37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftDetailsTableViewController.swift; sourceTree = "<group>"; };
 		37CBEAD21BEC992D003D1A14 /* AircraftInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftInfoViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +105,6 @@
 		37CBEB021BEC9B63003D1A14 /* PlaneInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaneInfoTests.swift; path = PlaneInfoTests/PlaneInfoTests.swift; sourceTree = SOURCE_ROOT; };
 		37CBEB051BEC9B7F003D1A14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlaneInfoUITests/Info.plist; sourceTree = SOURCE_ROOT; };
 		37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaneInfoUITests.swift; path = PlaneInfoUITests/PlaneInfoUITests.swift; sourceTree = SOURCE_ROOT; };
-		37CBEB091BEC9BB0003D1A14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37CBEB0D1BEC9C9E003D1A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PlaneInfo/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		37CBEB101BEC9CA7003D1A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PlaneInfo/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -175,6 +173,7 @@
 				37CBEAE31BEC9A14003D1A14 /* Model */,
 				37CBEADE1BEC998A003D1A14 /* Views */,
 				37CBEACF1BEC992D003D1A14 /* Controllers */,
+				37C0624A1BED5E1A009334B5 /* Info.plist */,
 				37CBEAF51BEC9AC9003D1A14 /* AppDelegate.swift */,
 				37CBEB0C1BEC9C9E003D1A14 /* Main.storyboard */,
 				37CBEB0F1BEC9CA7003D1A14 /* LaunchScreen.storyboard */,
@@ -258,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				37449E311BEC9F7D00ABC6D0 /* Categories.plist */,
-				37CBEB091BEC9BB0003D1A14 /* Info.plist */,
 				37CBEAFE1BEC9B06003D1A14 /* PlaneInfo.sqlite */,
 				37CBEAF81BEC9AE9003D1A14 /* star_24.png */,
 				37CBEAF91BEC9AE9003D1A14 /* star_48.png */,
@@ -329,7 +327,7 @@
 		379B295C1BBE528000508701 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = notluS;
 				TargetAttributes = {
 					379B29631BBE528000508701 = {
@@ -375,7 +373,6 @@
 				37CBEAFB1BEC9AE9003D1A14 /* star_24.png in Resources */,
 				37449E321BEC9F7D00ABC6D0 /* Categories.plist in Resources */,
 				37CBEB001BEC9B4B003D1A14 /* Assets.xcassets in Resources */,
-				37CBEB0A1BEC9BB0003D1A14 /* Info.plist in Resources */,
 				37CBEB111BEC9CA7003D1A14 /* LaunchScreen.storyboard in Resources */,
 				37CBEAFD1BEC9AE9003D1A14 /* star_64.png in Resources */,
 			);
@@ -385,7 +382,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37449E301BEC9EE300ABC6D0 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,7 +506,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos9.1;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -547,7 +543,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos9.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -556,7 +552,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/PlaneInfo/Resources/Info.plist";
+				INFOPLIST_FILE = PlaneInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.notlus.PlaneInfo;
@@ -568,7 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/PlaneInfo/Resources/Info.plist";
+				INFOPLIST_FILE = PlaneInfo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.notlus.PlaneInfo;
