@@ -62,7 +62,7 @@ class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDel
         }
     }
     
-    // MARK: LOPTableViewCellDelegate
+    // MARK: AllAircraftTableViewCellDelegate
     
     func updateFavorite(favorite: Bool, indexPath: NSIndexPath) {
         if let aircraft = fetchedResultsController.objectAtIndexPath(indexPath) as? Aircraft {
@@ -83,11 +83,18 @@ class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDel
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject,
         atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-            
+            switch type {
+            case .Insert:
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .Delete:
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            default:
+                fatalError("Unexpected change")
+            }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        
+        print("AllAircraftViewController: controllerDidChangeContent")
     }
 }
 
