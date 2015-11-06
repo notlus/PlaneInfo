@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfH-Mg-G3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3748" y="774"/>
+            <point key="canvasLocation" x="-4186" y="691"/>
         </scene>
         <!--Start Quiz-->
         <scene sceneID="BVk-wa-PSP">
@@ -99,11 +99,11 @@
                             <constraint firstItem="rTX-jh-3N3" firstAttribute="centerX" secondItem="Y3q-sy-5jH" secondAttribute="centerX" id="cte-li-Emi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3qQ-4e-SKn"/>
+                    <navigationItem key="navigationItem" title="Quiz" id="3qQ-4e-SKn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewj-Fh-HgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3748" y="1476"/>
+            <point key="canvasLocation" x="-3791" y="2498"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CiC-PB-Wtm">
@@ -117,9 +117,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="u8b-bV-hpl" kind="relationship" relationship="viewControllers" id="MKH-N1-bgE"/>
+                        <segue destination="p5r-C2-ghQ" kind="relationship" relationship="viewControllers" id="EmS-2L-oJg"/>
                         <segue destination="yGC-55-yIY" kind="relationship" relationship="viewControllers" id="Ex3-OP-Qkm"/>
                         <segue destination="ZDp-QL-eUz" kind="relationship" relationship="viewControllers" id="1qW-pD-pqG"/>
-                        <segue destination="p5r-C2-ghQ" kind="relationship" relationship="viewControllers" id="EmS-2L-oJg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCu-t3-gVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -193,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQ2-c1-PVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3039" y="1590"/>
+            <point key="canvasLocation" x="-2233" y="2018"/>
         </scene>
         <!--Aircraft Details-->
         <scene sceneID="EoQ-d7-h6Q">
@@ -362,7 +362,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Utf-LK-XWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2390" y="1590"/>
+            <point key="canvasLocation" x="-2233" y="1474"/>
         </scene>
         <!--Aircraft Container View Controller-->
         <scene sceneID="Kef-DW-AgZ">
@@ -441,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uK6-mI-pw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1578" y="774"/>
+            <point key="canvasLocation" x="-3043" y="1474"/>
         </scene>
         <!--All Aircraft-->
         <scene sceneID="tne-QT-ifu">
@@ -553,7 +553,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="xgX-ah-kXS"/>
+                    <navigationItem key="navigationItem" title="All Aircraft" id="xgX-ah-kXS"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="lFB-7r-sIc" id="GiD-0l-CHe"/>
@@ -562,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2258" y="774"/>
+            <point key="canvasLocation" x="-3754" y="1476"/>
         </scene>
         <!--Favorites Table View Controller-->
         <scene sceneID="lOB-MW-ERN">
@@ -660,7 +660,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5IT-CW-be0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3748" y="2226"/>
+            <point key="canvasLocation" x="-4544" y="3287"/>
         </scene>
         <!--Gallery Collection View-->
         <scene sceneID="Svt-yN-htm">
@@ -712,12 +712,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Gd-fm-RSA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1747" y="1590"/>
+            <point key="canvasLocation" x="-2233" y="921"/>
         </scene>
-        <!--Categories-->
+        <!--Categories Navigation Controller-->
         <scene sceneID="YjN-h1-sVY">
             <objects>
-                <navigationController title="Categories" automaticallyAdjustsScrollViewInsets="NO" id="u8b-bV-hpl" sceneMemberID="viewController">
+                <navigationController title="Categories" automaticallyAdjustsScrollViewInsets="NO" id="u8b-bV-hpl" userLabel="Categories Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Categories" image="Categories" id="Wgy-xf-7GH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nki-vZ-rZc">
@@ -732,12 +732,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXa-CT-9of" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4438" y="774"/>
+            <point key="canvasLocation" x="-5224" y="691"/>
         </scene>
-        <!--Quiz-->
+        <!--Quiz Navigation Controller-->
         <scene sceneID="hKz-mW-u9v">
             <objects>
-                <navigationController title="Quiz" automaticallyAdjustsScrollViewInsets="NO" id="yGC-55-yIY" sceneMemberID="viewController">
+                <navigationController title="Quiz" automaticallyAdjustsScrollViewInsets="NO" id="yGC-55-yIY" userLabel="Quiz Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Quiz" image="Quiz" id="Bhs-jf-QhD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JoX-th-aSp">
@@ -752,12 +752,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFP-XS-Fdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4438" y="1476"/>
+            <point key="canvasLocation" x="-4544" y="2498"/>
         </scene>
-        <!--Favorites-->
+        <!--Favorites Navigation Controller-->
         <scene sceneID="NpH-q2-QW2">
             <objects>
-                <navigationController title="Favorites" automaticallyAdjustsScrollViewInsets="NO" id="ZDp-QL-eUz" sceneMemberID="viewController">
+                <navigationController title="Favorites" automaticallyAdjustsScrollViewInsets="NO" id="ZDp-QL-eUz" userLabel="Favorites Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="Star" id="CvB-BS-gge"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fZw-Xg-R8A">
@@ -772,12 +772,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTz-vL-TI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4438" y="2226"/>
+            <point key="canvasLocation" x="-5224" y="2498"/>
         </scene>
-        <!--All Aircraft-->
+        <!--All Aircraft Navigation Controller-->
         <scene sceneID="iU8-Mj-Up0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p5r-C2-ghQ" sceneMemberID="viewController">
+                <navigationController title="All Aircraft" automaticallyAdjustsScrollViewInsets="NO" id="p5r-C2-ghQ" userLabel="All Aircraft Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="All Aircraft" image="Categories" id="cse-85-xGb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5sN-Xz-uux">
@@ -792,7 +792,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvL-yn-LjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3070" y="774"/>
+            <point key="canvasLocation" x="-4480" y="1476"/>
         </scene>
     </scenes>
     <resources>
