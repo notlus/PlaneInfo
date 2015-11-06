@@ -1,0 +1,680 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		370347331BE9195300167449 /* DownloadAircraftDataOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370347321BE9195300167449 /* DownloadAircraftDataOp.swift */; };
+		370347351BE919B600167449 /* ImportLookupDataOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370347341BE919B600167449 /* ImportLookupDataOp.swift */; };
+		3727C7D01BE7D4E6006E451B /* LookupAircraftOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3727C7CF1BE7D4E6006E451B /* LookupAircraftOp.swift */; };
+		3727C7D21BE7D505006E451B /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3727C7D11BE7D505006E451B /* Operation.swift */; };
+		37449E2F1BEC9ED800ABC6D0 /* PlaneInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */; };
+		37449E301BEC9EE300ABC6D0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB051BEC9B7F003D1A14 /* Info.plist */; };
+		37449E321BEC9F7D00ABC6D0 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37449E311BEC9F7D00ABC6D0 /* Categories.plist */; };
+		379B299F1BBE530000508701 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B299E1BBE530000508701 /* main.swift */; };
+		379B29A41BBE53DE00508701 /* DBDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B29A31BBE53DE00508701 /* DBDownloader.swift */; };
+		37CBEAD61BEC992D003D1A14 /* AircraftContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD01BEC992D003D1A14 /* AircraftContainerViewController.swift */; };
+		37CBEAD71BEC992D003D1A14 /* AircraftDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */; };
+		37CBEAD81BEC992D003D1A14 /* AircraftInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD21BEC992D003D1A14 /* AircraftInfoViewController.swift */; };
+		37CBEAD91BEC992D003D1A14 /* AircraftQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD31BEC992D003D1A14 /* AircraftQuizViewController.swift */; };
+		37CBEADA1BEC992D003D1A14 /* AllAircraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD41BEC992D003D1A14 /* AllAircraftViewController.swift */; };
+		37CBEADB1BEC992D003D1A14 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD51BEC992D003D1A14 /* CategoriesViewController.swift */; };
+		37CBEADD1BEC9952003D1A14 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEADC1BEC9952003D1A14 /* GalleryCollectionViewController.swift */; };
+		37CBEAE01BEC998A003D1A14 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEADF1BEC998A003D1A14 /* GalleryCollectionViewCell.swift */; };
+		37CBEAE21BEC99E6003D1A14 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE11BEC99E6003D1A14 /* FavoritesTableViewController.swift */; };
+		37CBEAEA1BEC9A14003D1A14 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE41BEC9A14003D1A14 /* Aircraft.swift */; };
+		37CBEAEC1BEC9A14003D1A14 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE61BEC9A14003D1A14 /* Category.swift */; };
+		37CBEAED1BEC9A14003D1A14 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE71BEC9A14003D1A14 /* CoreDataManager.swift */; };
+		37CBEAEE1BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */; };
+		37CBEAF01BEC9A31003D1A14 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAEF1BEC9A31003D1A14 /* FlickrClient.swift */; };
+		37CBEAF21BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF11BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift */; };
+		37CBEAF41BEC9A85003D1A14 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF31BEC9A85003D1A14 /* Photo.swift */; };
+		37CBEAF61BEC9AC9003D1A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF51BEC9AC9003D1A14 /* AppDelegate.swift */; };
+		37CBEAFB1BEC9AE9003D1A14 /* star_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAF81BEC9AE9003D1A14 /* star_24.png */; };
+		37CBEAFC1BEC9AE9003D1A14 /* star_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAF91BEC9AE9003D1A14 /* star_48.png */; };
+		37CBEAFD1BEC9AE9003D1A14 /* star_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFA1BEC9AE9003D1A14 /* star_64.png */; };
+		37CBEB001BEC9B4B003D1A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFF1BEC9B4B003D1A14 /* Assets.xcassets */; };
+		37CBEB0A1BEC9BB0003D1A14 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB091BEC9BB0003D1A14 /* Info.plist */; };
+		37CBEB0B1BEC9C7F003D1A14 /* PlaneInfo.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFE1BEC9B06003D1A14 /* PlaneInfo.sqlite */; };
+		37CBEB0E1BEC9C9E003D1A14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB0C1BEC9C9E003D1A14 /* Main.storyboard */; };
+		37CBEB111BEC9CA7003D1A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB0F1BEC9CA7003D1A14 /* LaunchScreen.storyboard */; };
+		37CBEB121BEC9CFA003D1A14 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE71BEC9A14003D1A14 /* CoreDataManager.swift */; };
+		37CBEB131BEC9D05003D1A14 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE41BEC9A14003D1A14 /* Aircraft.swift */; };
+		37CBEB141BEC9D11003D1A14 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE61BEC9A14003D1A14 /* Category.swift */; };
+		37CBEB151BEC9D19003D1A14 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF31BEC9A85003D1A14 /* Photo.swift */; };
+		37CBEB171BEC9E26003D1A14 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB161BEC9E26003D1A14 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		379B29871BBE528000508701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 379B295C1BBE528000508701 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 379B29631BBE528000508701;
+			remoteInfo = LotsOPlanes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		379B299A1BBE530000508701 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		370347321BE9195300167449 /* DownloadAircraftDataOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadAircraftDataOp.swift; sourceTree = "<group>"; };
+		370347341BE919B600167449 /* ImportLookupDataOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportLookupDataOp.swift; sourceTree = "<group>"; };
+		3727C7CF1BE7D4E6006E451B /* LookupAircraftOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupAircraftOp.swift; sourceTree = "<group>"; };
+		3727C7D11BE7D505006E451B /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		37449E311BEC9F7D00ABC6D0 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
+		379B29641BBE528000508701 /* PlaneInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaneInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		379B29861BBE528000508701 /* PlaneInfo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaneInfo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		379B299C1BBE530000508701 /* DBDownloader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DBDownloader; sourceTree = BUILT_PRODUCTS_DIR; };
+		379B299E1BBE530000508701 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		379B29A31BBE53DE00508701 /* DBDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBDownloader.swift; sourceTree = "<group>"; };
+		37CBEAD01BEC992D003D1A14 /* AircraftContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftContainerViewController.swift; sourceTree = "<group>"; };
+		37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftDetailsTableViewController.swift; sourceTree = "<group>"; };
+		37CBEAD21BEC992D003D1A14 /* AircraftInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftInfoViewController.swift; sourceTree = "<group>"; };
+		37CBEAD31BEC992D003D1A14 /* AircraftQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftQuizViewController.swift; sourceTree = "<group>"; };
+		37CBEAD41BEC992D003D1A14 /* AllAircraftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllAircraftViewController.swift; sourceTree = "<group>"; };
+		37CBEAD51BEC992D003D1A14 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		37CBEADC1BEC9952003D1A14 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
+		37CBEADF1BEC998A003D1A14 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		37CBEAE11BEC99E6003D1A14 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		37CBEAE41BEC9A14003D1A14 /* Aircraft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aircraft.swift; sourceTree = "<group>"; };
+		37CBEAE61BEC9A14003D1A14 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		37CBEAE71BEC9A14003D1A14 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		37CBEAE91BEC9A14003D1A14 /* PlaneInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlaneInfo.xcdatamodel; sourceTree = "<group>"; };
+		37CBEAEF1BEC9A31003D1A14 /* FlickrClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
+		37CBEAF11BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllAircraftTableViewCell.swift; sourceTree = "<group>"; };
+		37CBEAF31BEC9A85003D1A14 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		37CBEAF51BEC9AC9003D1A14 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PlaneInfo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		37CBEAF81BEC9AE9003D1A14 /* star_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_24.png; sourceTree = "<group>"; };
+		37CBEAF91BEC9AE9003D1A14 /* star_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_48.png; sourceTree = "<group>"; };
+		37CBEAFA1BEC9AE9003D1A14 /* star_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_64.png; sourceTree = "<group>"; };
+		37CBEAFE1BEC9B06003D1A14 /* PlaneInfo.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlaneInfo.sqlite; sourceTree = "<group>"; };
+		37CBEAFF1BEC9B4B003D1A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PlaneInfo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		37CBEB011BEC9B63003D1A14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlaneInfoTests/Info.plist; sourceTree = SOURCE_ROOT; };
+		37CBEB021BEC9B63003D1A14 /* PlaneInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaneInfoTests.swift; path = PlaneInfoTests/PlaneInfoTests.swift; sourceTree = SOURCE_ROOT; };
+		37CBEB051BEC9B7F003D1A14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlaneInfoUITests/Info.plist; sourceTree = SOURCE_ROOT; };
+		37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaneInfoUITests.swift; path = PlaneInfoUITests/PlaneInfoUITests.swift; sourceTree = SOURCE_ROOT; };
+		37CBEB091BEC9BB0003D1A14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37CBEB0D1BEC9C9E003D1A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PlaneInfo/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		37CBEB101BEC9CA7003D1A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PlaneInfo/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		37CBEB161BEC9E26003D1A14 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		379B29611BBE528000508701 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		379B29831BBE528000508701 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		379B29991BBE530000508701 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3727C7CE1BE7D4BC006E451B /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				3727C7CF1BE7D4E6006E451B /* LookupAircraftOp.swift */,
+				3727C7D11BE7D505006E451B /* Operation.swift */,
+				370347321BE9195300167449 /* DownloadAircraftDataOp.swift */,
+				370347341BE919B600167449 /* ImportLookupDataOp.swift */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		379B295B1BBE528000508701 = {
+			isa = PBXGroup;
+			children = (
+				37CBEB161BEC9E26003D1A14 /* Default-568h@2x.png */,
+				379B29661BBE528000508701 /* PlaneInfo */,
+				379B297E1BBE528000508701 /* PlaneInfoTests */,
+				379B29891BBE528000508701 /* PlaneInfoUITests */,
+				379B299D1BBE530000508701 /* DBDownloader */,
+				379B29651BBE528000508701 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		379B29651BBE528000508701 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				379B29641BBE528000508701 /* PlaneInfo.app */,
+				379B29861BBE528000508701 /* PlaneInfo.xctest */,
+				379B299C1BBE530000508701 /* DBDownloader */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		379B29661BBE528000508701 /* PlaneInfo */ = {
+			isa = PBXGroup;
+			children = (
+				37CBEAF71BEC9AE9003D1A14 /* Resources */,
+				37CBEAE31BEC9A14003D1A14 /* Model */,
+				37CBEADE1BEC998A003D1A14 /* Views */,
+				37CBEACF1BEC992D003D1A14 /* Controllers */,
+				37CBEAF51BEC9AC9003D1A14 /* AppDelegate.swift */,
+				37CBEB0C1BEC9C9E003D1A14 /* Main.storyboard */,
+				37CBEB0F1BEC9CA7003D1A14 /* LaunchScreen.storyboard */,
+				37CBEAFF1BEC9B4B003D1A14 /* Assets.xcassets */,
+			);
+			name = PlaneInfo;
+			path = LotsOPlanes;
+			sourceTree = "<group>";
+		};
+		379B297E1BBE528000508701 /* PlaneInfoTests */ = {
+			isa = PBXGroup;
+			children = (
+				37CBEB011BEC9B63003D1A14 /* Info.plist */,
+				37CBEB021BEC9B63003D1A14 /* PlaneInfoTests.swift */,
+			);
+			name = PlaneInfoTests;
+			path = LotsOPlanesTests;
+			sourceTree = "<group>";
+		};
+		379B29891BBE528000508701 /* PlaneInfoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				37CBEB051BEC9B7F003D1A14 /* Info.plist */,
+				37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */,
+			);
+			name = PlaneInfoUITests;
+			path = LotsOPlanesUITests;
+			sourceTree = "<group>";
+		};
+		379B299D1BBE530000508701 /* DBDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				3727C7CE1BE7D4BC006E451B /* Operations */,
+				379B299E1BBE530000508701 /* main.swift */,
+				379B29A31BBE53DE00508701 /* DBDownloader.swift */,
+			);
+			path = DBDownloader;
+			sourceTree = "<group>";
+		};
+		37CBEACF1BEC992D003D1A14 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				37CBEAE11BEC99E6003D1A14 /* FavoritesTableViewController.swift */,
+				37CBEADC1BEC9952003D1A14 /* GalleryCollectionViewController.swift */,
+				37CBEAD01BEC992D003D1A14 /* AircraftContainerViewController.swift */,
+				37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */,
+				37CBEAD21BEC992D003D1A14 /* AircraftInfoViewController.swift */,
+				37CBEAD31BEC992D003D1A14 /* AircraftQuizViewController.swift */,
+				37CBEAD41BEC992D003D1A14 /* AllAircraftViewController.swift */,
+				37CBEAD51BEC992D003D1A14 /* CategoriesViewController.swift */,
+			);
+			name = Controllers;
+			path = PlaneInfo/Controllers;
+			sourceTree = SOURCE_ROOT;
+		};
+		37CBEADE1BEC998A003D1A14 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				37CBEAF11BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift */,
+				37CBEADF1BEC998A003D1A14 /* GalleryCollectionViewCell.swift */,
+			);
+			name = Views;
+			path = PlaneInfo/Views;
+			sourceTree = SOURCE_ROOT;
+		};
+		37CBEAE31BEC9A14003D1A14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				37CBEAF31BEC9A85003D1A14 /* Photo.swift */,
+				37CBEAEF1BEC9A31003D1A14 /* FlickrClient.swift */,
+				37CBEAE41BEC9A14003D1A14 /* Aircraft.swift */,
+				37CBEAE61BEC9A14003D1A14 /* Category.swift */,
+				37CBEAE71BEC9A14003D1A14 /* CoreDataManager.swift */,
+				37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */,
+			);
+			name = Model;
+			path = PlaneInfo/Model;
+			sourceTree = SOURCE_ROOT;
+		};
+		37CBEAF71BEC9AE9003D1A14 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				37449E311BEC9F7D00ABC6D0 /* Categories.plist */,
+				37CBEB091BEC9BB0003D1A14 /* Info.plist */,
+				37CBEAFE1BEC9B06003D1A14 /* PlaneInfo.sqlite */,
+				37CBEAF81BEC9AE9003D1A14 /* star_24.png */,
+				37CBEAF91BEC9AE9003D1A14 /* star_48.png */,
+				37CBEAFA1BEC9AE9003D1A14 /* star_64.png */,
+			);
+			name = Resources;
+			path = PlaneInfo/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		379B29631BBE528000508701 /* PlaneInfo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 379B298F1BBE528000508701 /* Build configuration list for PBXNativeTarget "PlaneInfo" */;
+			buildPhases = (
+				379B29601BBE528000508701 /* Sources */,
+				379B29611BBE528000508701 /* Frameworks */,
+				379B29621BBE528000508701 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlaneInfo;
+			productName = LotsOPlanes;
+			productReference = 379B29641BBE528000508701 /* PlaneInfo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		379B29851BBE528000508701 /* PlaneInfoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 379B29951BBE528000508701 /* Build configuration list for PBXNativeTarget "PlaneInfoUITests" */;
+			buildPhases = (
+				379B29821BBE528000508701 /* Sources */,
+				379B29831BBE528000508701 /* Frameworks */,
+				379B29841BBE528000508701 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				379B29881BBE528000508701 /* PBXTargetDependency */,
+			);
+			name = PlaneInfoUITests;
+			productName = LotsOPlanesUITests;
+			productReference = 379B29861BBE528000508701 /* PlaneInfo.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		379B299B1BBE530000508701 /* DBDownloader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 379B29A01BBE530000508701 /* Build configuration list for PBXNativeTarget "DBDownloader" */;
+			buildPhases = (
+				379B29981BBE530000508701 /* Sources */,
+				379B29991BBE530000508701 /* Frameworks */,
+				379B299A1BBE530000508701 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DBDownloader;
+			productName = DBDownloader;
+			productReference = 379B299C1BBE530000508701 /* DBDownloader */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		379B295C1BBE528000508701 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = notluS;
+				TargetAttributes = {
+					379B29631BBE528000508701 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					379B29851BBE528000508701 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 379B29631BBE528000508701;
+					};
+					379B299B1BBE530000508701 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 379B295F1BBE528000508701 /* Build configuration list for PBXProject "PlaneInfo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 379B295B1BBE528000508701;
+			productRefGroup = 379B29651BBE528000508701 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				379B29631BBE528000508701 /* PlaneInfo */,
+				379B29851BBE528000508701 /* PlaneInfoUITests */,
+				379B299B1BBE530000508701 /* DBDownloader */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		379B29621BBE528000508701 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37CBEB0B1BEC9C7F003D1A14 /* PlaneInfo.sqlite in Resources */,
+				37CBEB0E1BEC9C9E003D1A14 /* Main.storyboard in Resources */,
+				37CBEAFC1BEC9AE9003D1A14 /* star_48.png in Resources */,
+				37CBEB171BEC9E26003D1A14 /* Default-568h@2x.png in Resources */,
+				37CBEAFB1BEC9AE9003D1A14 /* star_24.png in Resources */,
+				37449E321BEC9F7D00ABC6D0 /* Categories.plist in Resources */,
+				37CBEB001BEC9B4B003D1A14 /* Assets.xcassets in Resources */,
+				37CBEB0A1BEC9BB0003D1A14 /* Info.plist in Resources */,
+				37CBEB111BEC9CA7003D1A14 /* LaunchScreen.storyboard in Resources */,
+				37CBEAFD1BEC9AE9003D1A14 /* star_64.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		379B29841BBE528000508701 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37449E301BEC9EE300ABC6D0 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		379B29601BBE528000508701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37CBEAF41BEC9A85003D1A14 /* Photo.swift in Sources */,
+				37CBEAD91BEC992D003D1A14 /* AircraftQuizViewController.swift in Sources */,
+				37CBEAEC1BEC9A14003D1A14 /* Category.swift in Sources */,
+				37CBEAF21BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift in Sources */,
+				37CBEAD71BEC992D003D1A14 /* AircraftDetailsTableViewController.swift in Sources */,
+				37CBEAE21BEC99E6003D1A14 /* FavoritesTableViewController.swift in Sources */,
+				37CBEAEA1BEC9A14003D1A14 /* Aircraft.swift in Sources */,
+				37CBEAE01BEC998A003D1A14 /* GalleryCollectionViewCell.swift in Sources */,
+				37CBEADA1BEC992D003D1A14 /* AllAircraftViewController.swift in Sources */,
+				37CBEAD61BEC992D003D1A14 /* AircraftContainerViewController.swift in Sources */,
+				37CBEAEE1BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld in Sources */,
+				37CBEAF61BEC9AC9003D1A14 /* AppDelegate.swift in Sources */,
+				37CBEAD81BEC992D003D1A14 /* AircraftInfoViewController.swift in Sources */,
+				37CBEADD1BEC9952003D1A14 /* GalleryCollectionViewController.swift in Sources */,
+				37CBEAF01BEC9A31003D1A14 /* FlickrClient.swift in Sources */,
+				37CBEAED1BEC9A14003D1A14 /* CoreDataManager.swift in Sources */,
+				37CBEADB1BEC992D003D1A14 /* CategoriesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		379B29821BBE528000508701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37449E2F1BEC9ED800ABC6D0 /* PlaneInfoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		379B29981BBE530000508701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				370347351BE919B600167449 /* ImportLookupDataOp.swift in Sources */,
+				370347331BE9195300167449 /* DownloadAircraftDataOp.swift in Sources */,
+				379B29A41BBE53DE00508701 /* DBDownloader.swift in Sources */,
+				379B299F1BBE530000508701 /* main.swift in Sources */,
+				37CBEB151BEC9D19003D1A14 /* Photo.swift in Sources */,
+				3727C7D21BE7D505006E451B /* Operation.swift in Sources */,
+				37CBEB141BEC9D11003D1A14 /* Category.swift in Sources */,
+				37CBEB131BEC9D05003D1A14 /* Aircraft.swift in Sources */,
+				37CBEB121BEC9CFA003D1A14 /* CoreDataManager.swift in Sources */,
+				3727C7D01BE7D4E6006E451B /* LookupAircraftOp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		379B29881BBE528000508701 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 379B29631BBE528000508701 /* PlaneInfo */;
+			targetProxy = 379B29871BBE528000508701 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		37CBEB0C1BEC9C9E003D1A14 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37CBEB0D1BEC9C9E003D1A14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		37CBEB0F1BEC9CA7003D1A14 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37CBEB101BEC9CA7003D1A14 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		379B298D1BBE528000508701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		379B298E1BBE528000508701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		379B29901BBE528000508701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "$(SRCROOT)/PlaneInfo/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.notlus.PlaneInfo;
+				PRODUCT_NAME = PlaneInfo;
+			};
+			name = Debug;
+		};
+		379B29911BBE528000508701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "$(SRCROOT)/PlaneInfo/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.notlus.PlaneInfo;
+				PRODUCT_NAME = PlaneInfo;
+			};
+			name = Release;
+		};
+		379B29961BBE528000508701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PlaneInfoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.notlus.PlaneInfoUITests;
+				PRODUCT_NAME = PlaneInfo;
+				TEST_TARGET_NAME = PlaneInfo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		379B29971BBE528000508701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PlaneInfoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.notlus.PlaneInfoUITests;
+				PRODUCT_NAME = PlaneInfo;
+				TEST_TARGET_NAME = PlaneInfo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		379B29A11BBE530000508701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		379B29A21BBE530000508701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		379B295F1BBE528000508701 /* Build configuration list for PBXProject "PlaneInfo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379B298D1BBE528000508701 /* Debug */,
+				379B298E1BBE528000508701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		379B298F1BBE528000508701 /* Build configuration list for PBXNativeTarget "PlaneInfo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379B29901BBE528000508701 /* Debug */,
+				379B29911BBE528000508701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		379B29951BBE528000508701 /* Build configuration list for PBXNativeTarget "PlaneInfoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379B29961BBE528000508701 /* Debug */,
+				379B29971BBE528000508701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		379B29A01BBE530000508701 /* Build configuration list for PBXNativeTarget "DBDownloader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379B29A11BBE530000508701 /* Debug */,
+				379B29A21BBE530000508701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				37CBEAE91BEC9A14003D1A14 /* PlaneInfo.xcdatamodel */,
+			);
+			currentVersion = 37CBEAE91BEC9A14003D1A14 /* PlaneInfo.xcdatamodel */;
+			path = PlaneInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 379B295C1BBE528000508701 /* Project object */;
+}
