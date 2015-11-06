@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class FavoritesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class FavoritesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, AllAircraftTableViewCellDelegate {
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
     }
@@ -58,6 +58,17 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         print("Content changed")
     }
 
+    func updateFavorite(favorite: Bool, indexPath: NSIndexPath) -> Void {
+        print("Updating favorite at indexPath \(indexPath)")
+        if let aircraft = fetchedResultsController.objectAtIndexPath(indexPath) as? Aircraft {
+            aircraft.favorite = favorite
+            do {
+                try sharedContext.save()
+            } catch {
+                fatalError("Error saving context: \(error)")
+            }
+        }
+    }
 }
 
 // MARK: UITableViewDelegate
@@ -86,7 +97,7 @@ extension FavoritesTableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AircraftCell") as! AllAircraftTableViewCell
-//        cell.delegate = self
+        cell.delegate = self
         cell.indexPath = indexPath
         if let aircraft = fetchedResultsController.objectAtIndexPath(indexPath) as? Aircraft {
             cell.nameLabel.text = aircraft.name
