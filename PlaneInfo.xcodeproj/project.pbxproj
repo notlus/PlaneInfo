@@ -45,7 +45,6 @@
 		37CBEB131BEC9D05003D1A14 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE41BEC9A14003D1A14 /* Aircraft.swift */; };
 		37CBEB141BEC9D11003D1A14 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE61BEC9A14003D1A14 /* Category.swift */; };
 		37CBEB151BEC9D19003D1A14 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF31BEC9A85003D1A14 /* Photo.swift */; };
-		37CBEB171BEC9E26003D1A14 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB161BEC9E26003D1A14 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +109,6 @@
 		37CBEB091BEC9BB0003D1A14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37CBEB0D1BEC9C9E003D1A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PlaneInfo/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		37CBEB101BEC9CA7003D1A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PlaneInfo/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		37CBEB161BEC9E26003D1A14 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +150,6 @@
 		379B295B1BBE528000508701 = {
 			isa = PBXGroup;
 			children = (
-				37CBEB161BEC9E26003D1A14 /* Default-568h@2x.png */,
 				379B29661BBE528000508701 /* PlaneInfo */,
 				379B297E1BBE528000508701 /* PlaneInfoTests */,
 				379B29891BBE528000508701 /* PlaneInfoUITests */,
@@ -375,7 +372,6 @@
 				37CBEB0B1BEC9C7F003D1A14 /* PlaneInfo.sqlite in Resources */,
 				37CBEB0E1BEC9C9E003D1A14 /* Main.storyboard in Resources */,
 				37CBEAFC1BEC9AE9003D1A14 /* star_48.png in Resources */,
-				37CBEB171BEC9E26003D1A14 /* Default-568h@2x.png in Resources */,
 				37CBEAFB1BEC9AE9003D1A14 /* star_24.png in Resources */,
 				37449E321BEC9F7D00ABC6D0 /* Categories.plist in Resources */,
 				37CBEB001BEC9B4B003D1A14 /* Assets.xcassets in Resources */,
