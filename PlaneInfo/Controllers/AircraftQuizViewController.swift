@@ -12,8 +12,6 @@ class AircraftQuizViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Aircraft Quiz"
     }
 
     override func didReceiveMemoryWarning() {
