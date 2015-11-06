@@ -62,7 +62,7 @@
                     <navigationItem key="navigationItem" id="DR9-KX-2rn"/>
                     <connections>
                         <outlet property="tableView" destination="gKv-Gr-foz" id="A7h-O5-0R3"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowCategorySegue" id="pr3-jN-OFe"/>
+                        <segue destination="p5r-C2-ghQ" kind="show" identifier="ShowCategorySegue" id="pr3-jN-OFe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfH-Mg-G3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,6 +119,7 @@
                         <segue destination="u8b-bV-hpl" kind="relationship" relationship="viewControllers" id="MKH-N1-bgE"/>
                         <segue destination="yGC-55-yIY" kind="relationship" relationship="viewControllers" id="Ex3-OP-Qkm"/>
                         <segue destination="ZDp-QL-eUz" kind="relationship" relationship="viewControllers" id="1qW-pD-pqG"/>
+                        <segue destination="p5r-C2-ghQ" kind="relationship" relationship="viewControllers" id="EmS-2L-oJg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCu-t3-gVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -440,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uK6-mI-pw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2390" y="774"/>
+            <point key="canvasLocation" x="-1578" y="774"/>
         </scene>
         <!--All Aircraft-->
         <scene sceneID="tne-QT-ifu">
@@ -491,7 +492,7 @@
                                                     <state key="normal" backgroundImage="Star">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="Heart">
+                                                    <state key="selected" image="Star">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -552,6 +553,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="xgX-ah-kXS"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="lFB-7r-sIc" id="GiD-0l-CHe"/>
@@ -560,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3070" y="774"/>
+            <point key="canvasLocation" x="-2258" y="774"/>
         </scene>
         <!--Favorites Table View Controller-->
         <scene sceneID="lOB-MW-ERN">
@@ -618,7 +620,7 @@
                                             <state key="normal" backgroundImage="Star">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
-                                            <state key="selected" image="Heart">
+                                            <state key="selected" image="Star">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -772,13 +774,35 @@
             </objects>
             <point key="canvasLocation" x="-4438" y="2226"/>
         </scene>
+        <!--All Aircraft-->
+        <scene sceneID="iU8-Mj-Up0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p5r-C2-ghQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="All Aircraft" image="Categories" id="cse-85-xGb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5sN-Xz-uux">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Nfz-Az-sfQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rvL-yn-LjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3070" y="774"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Categories" width="24" height="24"/>
-        <image name="Heart" width="32" height="32"/>
         <image name="IMG_0857" width="960" height="1280"/>
         <image name="Quiz" width="24" height="24"/>
         <image name="Star" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="EmS-2L-oJg"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94901960780000005" green="0.33725490200000002" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
