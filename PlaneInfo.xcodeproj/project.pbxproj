@@ -12,7 +12,6 @@
 		3727C7D01BE7D4E6006E451B /* LookupAircraftOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3727C7CF1BE7D4E6006E451B /* LookupAircraftOp.swift */; };
 		3727C7D21BE7D505006E451B /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3727C7D11BE7D505006E451B /* Operation.swift */; };
 		37449E2F1BEC9ED800ABC6D0 /* PlaneInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */; };
-		37449E321BEC9F7D00ABC6D0 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37449E311BEC9F7D00ABC6D0 /* Categories.plist */; };
 		379B299F1BBE530000508701 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B299E1BBE530000508701 /* main.swift */; };
 		379B29A41BBE53DE00508701 /* DBDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B29A31BBE53DE00508701 /* DBDownloader.swift */; };
 		37C0624C1BED7F0F009334B5 /* PlaneInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */; };
@@ -372,7 +371,6 @@
 				37CBEB0E1BEC9C9E003D1A14 /* Main.storyboard in Resources */,
 				37CBEAFC1BEC9AE9003D1A14 /* star_48.png in Resources */,
 				37CBEAFB1BEC9AE9003D1A14 /* star_24.png in Resources */,
-				37449E321BEC9F7D00ABC6D0 /* Categories.plist in Resources */,
 				37CBEB001BEC9B4B003D1A14 /* Assets.xcassets in Resources */,
 				37CBEB111BEC9CA7003D1A14 /* LaunchScreen.storyboard in Resources */,
 				37CBEAFD1BEC9AE9003D1A14 /* star_64.png in Resources */,
