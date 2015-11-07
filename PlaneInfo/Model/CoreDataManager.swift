@@ -8,8 +8,8 @@
 
 import CoreData
 
-private let SQLITE_FILE_NAME = "LoP.sqlite"
-private let kCoreDataErrorDomain = "CoreData"
+private let SQLITE_FILE_NAME        = "PlaneInfo.sqlite"
+private let kCoreDataErrorDomain    = "com.notlus.planeinfo.coredata"
 
 class CoreDataManager {
     // MARK: - Core Data stack
