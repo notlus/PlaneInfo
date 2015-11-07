@@ -22,37 +22,57 @@ class ImportLookupDataOp: Operation {
             return
         }
         
-        print("ImportLookupDataOp")
-        
         sharedContext.performBlock { () -> Void in
-//            if let lookupResults = self.lookupResults {
-                for lookupResult in self.lookupResults {
-                    if self.cancelled {
-                        self.finish()
-                        break
-                    }
-                    
-                    let _ = self.createAircraft(lookupResult)
+            for lookupResult in self.lookupResults {
+                if self.cancelled {
+                    self.finish()
+                    break
                 }
                 
-                do {
-                    try self.sharedContext.save()
-                } catch {
-                }
-                
-//            } else {
-//                print("Failed to unwrap lookupResults")
-//            }
+                self.createAircraft(lookupResult)
+            }
+            
+            do {
+                try self.sharedContext.save()
+            } catch {
+                fatalError("Error saving context: \(error)")
+            }
             
             self.finish()
         }
     }
     
-    private func createAircraft(lookupResult: DBPediaLookupResult) -> Aircraft {
+    private func createAircraft(lookupResult: DBPediaLookupResult) { //-> Aircraft {
+        let fetchRequest = NSFetchRequest(entityName: "Aircraft")
+        fetchRequest.predicate = NSPredicate(format: "uri == %@", lookupResult.resourceURI)
+        var fetchResults: [Aircraft]?
+        
+        do {
+            fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft]
+            if  fetchResults?.count > 0 {
+                print("lookupResult \(lookupResult.resourceURI) already exists")
+                return
+            }
+        } catch {
+            fatalError("Error executing fetch request: \(error)")
+        }
+        
+        
         let ac = Aircraft(context: sharedContext)
         ac.abstract = lookupResult.abstract
         ac.uri = lookupResult.resourceURI
         ac.name = lookupResult.label
-        return ac
+        
+        let categoryRequest = NSFetchRequest(entityName: "Category")
+        let categoryName = "Military"
+        categoryRequest.predicate = NSPredicate(format: "name == %@", categoryName)
+        var categoryResult: [Category]?
+        do {
+            categoryResult = try sharedContext.executeFetchRequest(categoryRequest) as? [Category]
+        } catch {
+            fatalError("Error executing fetch request: \(error)")
+        }
+
+        ac.categories = Set<Category>(categoryResult!)
     }
 }

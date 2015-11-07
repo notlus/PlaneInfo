@@ -15,8 +15,7 @@
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="aircraft" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES">
-        <attribute name="cid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="aircraft" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Aircraft" inverseName="categories" inverseEntity="Aircraft" syncable="YES"/>
     </entity>
     <entity name="Photo" representedClassName="Photo" syncable="YES">
@@ -27,7 +26,7 @@
     </entity>
     <elements>
         <element name="Aircraft" positionX="-63" positionY="-18" width="128" height="225"/>
-        <element name="Category" positionX="-54" positionY="36" width="128" height="90"/>
+        <element name="Category" positionX="-54" positionY="36" width="128" height="75"/>
         <element name="Photo" positionX="-54" positionY="18" width="128" height="105"/>
     </elements>
 </model>

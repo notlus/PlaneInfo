@@ -10,14 +10,14 @@ import CoreData
 
 @objc(Category)
 class Category: NSManagedObject {
-    @NSManaged var cid: NSNumber
     @NSManaged var name: String
+    @NSManaged var aircraft: Set<Aircraft>
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: CoreDataManager.sharedInstance.managedObjectContext)
     }
     
-    init(id: Int16, name: String, context: NSManagedObjectContext) {
+    init(name: String, context: NSManagedObjectContext) {
         guard let entity = NSEntityDescription.entityForName("Category", inManagedObjectContext: context) else {
             print("Failed to get `Category` entity")
             fatalError()
@@ -25,7 +25,6 @@ class Category: NSManagedObject {
         
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         
-        self.cid = NSNumber(short: id)
         self.name = name
     }
 }

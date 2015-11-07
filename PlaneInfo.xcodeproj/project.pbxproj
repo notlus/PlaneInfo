@@ -15,6 +15,7 @@
 		37449E321BEC9F7D00ABC6D0 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37449E311BEC9F7D00ABC6D0 /* Categories.plist */; };
 		379B299F1BBE530000508701 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B299E1BBE530000508701 /* main.swift */; };
 		379B29A41BBE53DE00508701 /* DBDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B29A31BBE53DE00508701 /* DBDownloader.swift */; };
+		37C0624C1BED7F0F009334B5 /* PlaneInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */; };
 		37CBEAD61BEC992D003D1A14 /* AircraftContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD01BEC992D003D1A14 /* AircraftContainerViewController.swift */; };
 		37CBEAD71BEC992D003D1A14 /* AircraftDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */; };
 		37CBEAD81BEC992D003D1A14 /* AircraftInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD21BEC992D003D1A14 /* AircraftInfoViewController.swift */; };
@@ -431,6 +432,7 @@
 				37CBEB151BEC9D19003D1A14 /* Photo.swift in Sources */,
 				3727C7D21BE7D505006E451B /* Operation.swift in Sources */,
 				37CBEB141BEC9D11003D1A14 /* Category.swift in Sources */,
+				37C0624C1BED7F0F009334B5 /* PlaneInfo.xcdatamodeld in Sources */,
 				37CBEB131BEC9D05003D1A14 /* Aircraft.swift in Sources */,
 				37CBEB121BEC9CFA003D1A14 /* CoreDataManager.swift in Sources */,
 				3727C7D01BE7D4E6006E451B /* LookupAircraftOp.swift in Sources */,

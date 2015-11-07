@@ -13,7 +13,7 @@ private var sharedContext: NSManagedObjectContext {
     return CoreDataManager.sharedInstance.managedObjectContext
 }
 
-/// Parent operation that waits for the download and import operations
+/// Parent operation that waits for the download and import operations to complete
 class GatherAircraftOp: Operation {
 
     override func execute() {
@@ -78,6 +78,18 @@ func gatherAircraft() {
     // Start operations
     operationQueue.suspended = false
 }
+
+let categoriesPath = "/Users/jeffrey_sulton/development/Udacity/Projects/PlaneInfo/PlaneInfo/Resources/Categories.plist"
+guard let categories = NSDictionary(contentsOfFile: categoriesPath) as? [String: String] else {
+    print("Failed to create dictionary from plist")
+    throw NSError(domain: "com.notlus.lop", code: 901, userInfo: nil)
+}
+
+for (key, value) in categories {
+    let _ = Category(name: value, context: sharedContext)
+}
+
+try sharedContext.save()
 
 gatherAircraft()
 
