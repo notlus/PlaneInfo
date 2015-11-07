@@ -10,6 +10,8 @@
 	<string>Vietnam</string>
 	<key>5</key>
 	<string>Military</string>
+	<key>6</key>
+	<string>Experimental</string>
 	<key>4</key>
 	<string>Civilian</string>
 </dict>
