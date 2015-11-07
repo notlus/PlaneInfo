@@ -9,6 +9,8 @@
 import CoreData
 import Foundation
 
+private let acErrorDomain = "com.notlus.acdownloader"
+
 private var sharedContext: NSManagedObjectContext {
     return CoreDataManager.sharedInstance.managedObjectContext
 }
@@ -31,7 +33,9 @@ class GatherAircraftOp: Operation {
 func gatherAircraft() {
     print("Starting download")
 
-    let searches = ["Airbus", "Boeing", "Lockheed", "Northrop_Grumman", "McDonnell_Douglas", "General_Dynamics", "Curtiss_Wright"]
+    let searches = ["Airbus", "Boeing", "Lockheed", "Northrop_Grumman", "McDonnell_Douglas",
+        "General_Dynamics", "Curtiss_Wright", "Fokker", "Messerschmitt", "Focke-Wulf",
+        "North_American", "Supermarine"] //, "Rockwell International"]
 
     let operationQueue = NSOperationQueue()
     operationQueue.suspended = true
@@ -49,6 +53,7 @@ func gatherAircraft() {
     importOp.completionBlock = {
         print("Import operation completed")
     }
+    
     operationQueue.addOperation(importOp)
 
     // Perform a search for all search items
@@ -79,17 +84,23 @@ func gatherAircraft() {
     operationQueue.suspended = false
 }
 
-let categoriesPath = "/Users/jeffrey_sulton/development/Udacity/Projects/PlaneInfo/PlaneInfo/Resources/Categories.plist"
-guard let categories = NSDictionary(contentsOfFile: categoriesPath) as? [String: String] else {
-    print("Failed to create dictionary from plist")
-    throw NSError(domain: "com.notlus.lop", code: 901, userInfo: nil)
-}
+let fetchRequest = NSFetchRequest(entityName: "Category")
 
-for (key, value) in categories {
-    let _ = Category(name: value, context: sharedContext)
-}
+let fetchResults = try sharedContext.executeFetchRequest(fetchRequest)
+if fetchResults.count == 0 {
+    // Load categories
+    let categoriesPath = "/Users/jeffrey_sulton/development/Udacity/Projects/PlaneInfo/PlaneInfo/Resources/Categories.plist"
+    guard let categories = NSDictionary(contentsOfFile: categoriesPath) as? [String: String] else {
+        print("Failed to create dictionary from plist")
+        throw NSError(domain: acErrorDomain, code: 901, userInfo: nil)
+    }
 
-try sharedContext.save()
+    for (key, value) in categories {
+        let _ = Category(name: value, context: sharedContext)
+    }
+
+    try sharedContext.save()
+}
 
 gatherAircraft()
 
