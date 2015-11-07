@@ -23,10 +23,8 @@ class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Categories"
-        
         let fetchRequest = NSFetchRequest(entityName: "Category")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "cid", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         do {
             categories = try sharedContext.executeFetchRequest(fetchRequest) as! [Category]
         } catch {
@@ -40,11 +38,12 @@ class CategoriesViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("prepareForSegue")
-        
-        if let destination = segue.destinationViewController as? AllAircraftViewController {
-            destination.category = categories[selectedCategoryIndex]
+        guard let navigationVC = segue.destinationViewController as? UINavigationController,
+            let aircraftVC = navigationVC.viewControllers.first as? AllAircraftViewController else {
+            return
         }
+        
+        aircraftVC.category = categories[selectedCategoryIndex]
     }
 }
 
@@ -52,7 +51,6 @@ class CategoriesViewController: UIViewController {
 
 extension CategoriesViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Selected row \(indexPath.row)")
         selectedCategoryIndex = indexPath.row
         performSegueWithIdentifier("ShowCategorySegue", sender: self)
     }

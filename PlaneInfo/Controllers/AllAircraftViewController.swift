@@ -23,8 +23,14 @@ class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDel
         let fetchRequest = NSFetchRequest(entityName: "Aircraft")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
 
-        // Filter out any `Aircraft` that don't have a thumbnail image
-        fetchRequest.predicate = NSPredicate(format: "thumbnail != nil")
+        if let category = self.category {
+            // Create a predicate that matches the category
+            fetchRequest.predicate = NSPredicate(format: "categories.name CONTAINS %@ AND thumbnail != nil", category.name)
+        } else {
+            // Temporarily filter out any `Aircraft` that don't have a thumbnail image
+            fetchRequest.predicate = NSPredicate(format: "thumbnail != nil")
+        }
+        
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
             managedObjectContext: self.sharedContext,
             sectionNameKeyPath: nil,
@@ -36,7 +42,7 @@ class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         if let category = category {
-            navigationItem.title = category.name
+            navigationItem.title = "\(category.name) Aircraft"
         }
         
         do {
@@ -47,7 +53,6 @@ class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDel
         }
         
         print("fetched \(fetchedResultsController.fetchedObjects!.count) aircraft")
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,14 +88,6 @@ class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDel
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject,
         atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-            switch type {
-            case .Insert:
-                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            case .Delete:
-                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            default:
-                fatalError("Unexpected change")
-            }
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {

@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Failed to copy store to documents directory, error=\(error)")
         }
         
+/*
         // Create the default categories
         guard let categoriesPath = NSBundle.mainBundle().pathForResource("Categories", ofType: "plist") else {
             print("Categories.plist not found!")
@@ -52,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         try sharedContext.save()
-        
+*/
 //                categories.map({ (element) -> Category in
 //                    let id = element["id"] as String
 //                    return Category(id: 1, name: "test", context: self.sharedContext)
