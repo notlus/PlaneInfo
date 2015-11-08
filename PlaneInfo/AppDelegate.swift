@@ -34,31 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Failed to copy store to documents directory, error=\(error)")
         }
         
-/*
-        // Create the default categories
-        guard let categoriesPath = NSBundle.mainBundle().pathForResource("Categories", ofType: "plist") else {
-            print("Categories.plist not found!")
-            throw NSError(domain: "com.notlus.planeinfo", code: 900, userInfo: nil)
-        }
-        
-        guard let categories = NSDictionary(contentsOfFile: categoriesPath) as? [String: String] else {
-            print("Failed to create dictionary from plist")
-            throw NSError(domain: "com.notlus.lop", code: 901, userInfo: nil)
-        }
-        
-        for (key, value) in categories {
-            
-            let id = Int16(key)!
-            let _ = Category(id: id, name: value, context: self.sharedContext)
-        }
-        
-        try sharedContext.save()
-*/
-//                categories.map({ (element) -> Category in
-//                    let id = element["id"] as String
-//                    return Category(id: 1, name: "test", context: self.sharedContext)
-//                })
-        
         // Create the directory for the gallery photos
         let fileManager = NSFileManager.defaultManager()
         if fileManager.fileExistsAtPath(galleryPath.absoluteString) == false {
@@ -82,8 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return false
             }
         }
-        
-        UIView.appearance().tintColor = UIColor.redColor()
         
         return true
     }

@@ -23,9 +23,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="n3r-xA-mNe"/>
                                 </constraints>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
                                 <items>
                                     <navigationItem title="Categories" id="nXz-iD-HBX"/>
                                 </items>
@@ -38,17 +35,13 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="PW2-Qo-8ds"/>
-                                    <barButtonItem image="Categories" id="uaz-xp-mEH">
-                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </barButtonItem>
+                                    <barButtonItem image="Categories" id="uaz-xp-mEH"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lRK-LC-aPp"/>
+                                    <barButtonItem image="Categories" id="lZj-gK-lTn"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SL7-Mo-zHc"/>
-                                    <barButtonItem image="Quiz" id="uKN-DA-qME">
-                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </barButtonItem>
+                                    <barButtonItem image="Quiz" id="uKN-DA-qME"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dt0-lG-YWB"/>
-                                    <barButtonItem image="Star" id="l9X-kJ-3JL">
-                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </barButtonItem>
+                                    <barButtonItem image="Star" id="l9X-kJ-3JL"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Kxu-2r-8XT"/>
                                 </items>
                             </toolbar>
