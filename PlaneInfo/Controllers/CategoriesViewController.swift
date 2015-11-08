@@ -38,12 +38,13 @@ class CategoriesViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let navigationVC = segue.destinationViewController as? UINavigationController,
-            let aircraftVC = navigationVC.viewControllers.first as? AllAircraftViewController else {
-            return
+        if segue.identifier == "ShowAircraftSegue" {
+            guard let aircraftVC = segue.destinationViewController as? AllAircraftViewController else {
+                return
+            }
+            
+            aircraftVC.category = categories[selectedCategoryIndex]
         }
-        
-        aircraftVC.category = categories[selectedCategoryIndex]
     }
 }
 
@@ -52,7 +53,7 @@ class CategoriesViewController: UIViewController {
 extension CategoriesViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedCategoryIndex = indexPath.row
-        performSegueWithIdentifier("ShowCategorySegue", sender: self)
+        performSegueWithIdentifier("ShowAircraftSegue", sender: self)
     }
 }
 

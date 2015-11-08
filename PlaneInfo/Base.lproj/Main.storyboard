@@ -62,7 +62,7 @@
                     <navigationItem key="navigationItem" id="DR9-KX-2rn"/>
                     <connections>
                         <outlet property="tableView" destination="gKv-Gr-foz" id="A7h-O5-0R3"/>
-                        <segue destination="p5r-C2-ghQ" kind="show" identifier="ShowCategorySegue" id="pr3-jN-OFe"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowAircraftSegue" id="y1K-Zs-KaH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfH-Mg-G3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3754" y="1476"/>
+            <point key="canvasLocation" x="-3756" y="715"/>
         </scene>
         <!--Favorites Table View Controller-->
         <scene sceneID="lOB-MW-ERN">
@@ -777,7 +777,7 @@
         <!--All Aircraft Navigation Controller-->
         <scene sceneID="iU8-Mj-Up0">
             <objects>
-                <navigationController title="All Aircraft" automaticallyAdjustsScrollViewInsets="NO" id="p5r-C2-ghQ" userLabel="All Aircraft Navigation Controller" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p5r-C2-ghQ" userLabel="All Aircraft Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="All Aircraft" image="Categories" id="cse-85-xGb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5sN-Xz-uux">
@@ -792,7 +792,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvL-yn-LjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4480" y="1476"/>
+            <point key="canvasLocation" x="-4486" y="1474"/>
         </scene>
     </scenes>
     <resources>
@@ -802,7 +802,7 @@
         <image name="Star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pr3-jN-OFe"/>
+        <segue reference="y1K-Zs-KaH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94901960780000005" green="0.33725490200000002" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
