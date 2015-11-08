@@ -47,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.redColor()]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.blueColor()]
+        
         if CoreDataManager.sharedInstance.storeExists() == false {
             // Initial launch of the app; copy over data store and create categories
             do {
