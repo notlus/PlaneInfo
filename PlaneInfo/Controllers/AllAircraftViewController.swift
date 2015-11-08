@@ -25,7 +25,7 @@ class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDel
 
         if let category = self.category {
             // Create a predicate that matches the category
-            fetchRequest.predicate = NSPredicate(format: "categories.name CONTAINS %@ AND thumbnail != nil", category.name)
+            fetchRequest.predicate = NSPredicate(format: "categories.name CONTAINS %@", category.name)
         } else {
             // Temporarily filter out any `Aircraft` that don't have a thumbnail image
             fetchRequest.predicate = NSPredicate(format: "thumbnail != nil")
