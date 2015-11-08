@@ -73,7 +73,7 @@ func gatherAircraft() {
     }
     
     gatherAircraftOp.completionBlock = {
-        print("gather aircraft completed")// with \(lookupResults.count) aircraft")
+        print("gather aircraft completed")
 //        CFRunLoopStop(CFRunLoopGetMain())
     }
 

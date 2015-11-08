@@ -138,7 +138,10 @@ class DBDownloader {
                     let newResults = jsonResults.map({ rawElement -> DBPediaLookupResult in
                         let elementDict = rawElement as! [String: AnyObject]
                         let uri1 = elementDict["uri"]
-                        return DBPediaLookupResult(resourceURI: elementDict["uri"] as! String, label: elementDict["label"] as! String, abstract: "test", categories: [String: AnyObject]())
+                        return DBPediaLookupResult(resourceURI: elementDict["uri"] as! String,
+                            label: elementDict["label"] as! String,
+                            abstract: elementDict["abstract"] as! String,
+                            categories: [String: AnyObject]())
                     })
                     
                     // At this point, `jsonResults` has the results from the "lookup" API call that
@@ -162,7 +165,6 @@ class DBDownloader {
                                         let resourceData = jsonResult[uri] as? [String: AnyObject] {
                                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                             do {
-//                                                let _ = try self.getAircraftData(resource: resourceData)
                                                 try self.sharedContext.save()
                                             } catch {}
                                         })

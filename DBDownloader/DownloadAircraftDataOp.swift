@@ -81,7 +81,11 @@ class DownloadDataOp: Operation {
             finish()
         }
         
-        let dataURI = getDataURIFromResource(aircraft.uri)
+        guard let dataURI = getDataURIFromResource(aircraft.uri) else {
+            print("Failed to get data URI")
+            finish()
+            return
+        }
 
         let task = sharedSession.dataTaskWithURL(dataURI, completionHandler: { (data, response, error) -> Void in
             defer {
@@ -116,24 +120,24 @@ class DownloadDataOp: Operation {
     
     /// Given a DBPedia resource URL, create the corresponding data URL that can be used to return
     /// the resource data as JSON.
-    private func getDataURIFromResource(resourceURI: String) -> NSURL {
+    private func getDataURIFromResource(resourceURI: String) -> NSURL? {
         let resourceName = NSURL(string: resourceURI)!.lastPathComponent!
         
         let fullURL = DBDownloader.DBPediaAPIConstants.DATA_URL + "/\(resourceName).json"
         
-        return NSURL(string: fullURL)!
+        return NSURL(string: fullURL)
     }
 
     private func getAircraftData(aircraft: Aircraft, aircraftData: [String: AnyObject]) throws -> Aircraft? {
         if let manufacturer = aircraftData[DBDownloader.DBPediaAPIConstants.MANUFACTURER_KEY] as? [[String: String]] {
             let manufacturerDict = manufacturer[0]
             if manufacturerDict["type"] == "uri" {
-                let labels = aircraftData["http://www.w3.org/2000/01/rdf-schema#label"] as! [[String: String]]
-                for label in labels {
-                    if label["lang"] == "en" {
-                        aircraft.manufacturer = label["value"]!
-                        break
-                    }
+                if let manURI = NSURL(string: manufacturerDict["value"] as String!),
+                    let man = manURI.lastPathComponent?.stringByReplacingOccurrencesOfString("_", withString: " ") {
+                    print(man)
+                    aircraft.manufacturer = man
+                } else {
+                    aircraft.manufacturer = "Unknown"
                 }
             } else if manufacturerDict["type"] == "literal" {
                 aircraft.manufacturer = manufacturerDict["value"] as String!
@@ -177,10 +181,21 @@ class DownloadDataOp: Operation {
                 aircraft.yearIntroduced = value
         }
         
-        if let origin = aircraftData[DBDownloader.DBPediaAPIConstants.NATIONAL_ORIGIN_KEY] as? [AnyObject],
-            let originDict = origin[0] as? [String: AnyObject],
-            let value = originDict["value"] as? String {
+        if let origin = aircraftData[DBDownloader.DBPediaAPIConstants.NATIONAL_ORIGIN_KEY] as? [[String: String]] {
+            let originDict = origin[0]
+            if originDict["type"] == "uri" {
+                if let countryURI = NSURL(string: originDict["value"] as String!),
+                    let country = countryURI.lastPathComponent?.stringByReplacingOccurrencesOfString("_", withString: " ") {
+                        print(country)
+                        aircraft.country = country
+                } else {
+                    aircraft.country = "Unknown"
+                }
+            }
+            else if originDict["type"] == "literal" {
+                let value = originDict["value"] as String!
                 aircraft.country = value
+            }
         }
         
         if let thumbnailData = aircraftData[DBDownloader.DBPediaAPIConstants.THUMBNAIL_KEY] as? [[String: AnyObject]],

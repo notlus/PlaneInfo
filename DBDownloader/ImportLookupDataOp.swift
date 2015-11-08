@@ -42,7 +42,7 @@ class ImportLookupDataOp: Operation {
         }
     }
     
-    private func createAircraft(lookupResult: DBPediaLookupResult) { //-> Aircraft {
+    private func createAircraft(lookupResult: DBPediaLookupResult) {
         let fetchRequest = NSFetchRequest(entityName: "Aircraft")
         fetchRequest.predicate = NSPredicate(format: "uri == %@", lookupResult.resourceURI)
         var fetchResults: [Aircraft]?
@@ -57,15 +57,14 @@ class ImportLookupDataOp: Operation {
             fatalError("Error executing fetch request: \(error)")
         }
         
-        
         let ac = Aircraft(context: sharedContext)
         ac.abstract = lookupResult.abstract
         ac.uri = lookupResult.resourceURI
         ac.name = lookupResult.label
         
         let categoryRequest = NSFetchRequest(entityName: "Category")
-        let categoryName = "Military"
-        categoryRequest.predicate = NSPredicate(format: "name == %@", categoryName)
+        let categories = getCategoryForAircraft(lookupResult)
+        categoryRequest.predicate = NSPredicate(format: "name IN %@", categories)
         var categoryResult: [Category]?
         do {
             categoryResult = try sharedContext.executeFetchRequest(categoryRequest) as? [Category]
@@ -74,5 +73,40 @@ class ImportLookupDataOp: Operation {
         }
 
         ac.categories = Set<Category>(categoryResult!)
+    }
+    
+    func getCategoryForAircraft(aircraft: DBPediaLookupResult) -> Set<String> {
+        var categories = Set<String>()
+        if aircraft.abstract.lowercaseString.rangeOfString("commercial") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("civil") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("passenger") != nil {
+            categories.insert("Civilian")
+        }
+
+        if aircraft.abstract.lowercaseString.rangeOfString("military") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("united states air force") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("united states navy") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("united states marine") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("world war") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("fighter") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("armed forces") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("strike") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("bomber") != nil {
+                categories.insert("Military")
+        }
+
+        if aircraft.abstract.lowercaseString.rangeOfString("world war ii") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("world war 2") != nil {
+            categories.insert("World War 2")
+        } else if aircraft.abstract.lowercaseString.rangeOfString("world war i") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("world war 1") != nil {
+                categories.insert("World War 1")
+        }
+
+        if aircraft.abstract.lowercaseString.rangeOfString("experimental") != nil {
+            categories.insert("Experimental")
+        }
+
+        return categories
     }
 }
