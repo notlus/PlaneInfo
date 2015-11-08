@@ -22,9 +22,9 @@ class CategoriesViewController: UIViewController {
     // TODO: These colors should be a part of the `Category` entity, so that they can stay in sync
     private let colors = [UIColor.purpleColor(),
         UIColor(red: 31/255, green: 58/255, blue: 147/255, alpha: 1.0),
+        UIColor.blueColor(),
         UIColor(red: 58/255, green: 83/255, blue: 155/255, alpha: 1.0),
         UIColor(red: 65/255, green: 131/255, blue: 215/255, alpha: 1.0),
-        UIColor.blueColor(),
         UIColor(red: 25/255, green: 181/255, blue: 254/255, alpha: 1.0),
         UIColor(red: 102/255, green: 51/255, blue: 153/255, alpha: 1.0)]
     
@@ -32,6 +32,8 @@ class CategoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Categories"
         
         let fetchRequest = NSFetchRequest(entityName: "Category")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
