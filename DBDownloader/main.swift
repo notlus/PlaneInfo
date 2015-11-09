@@ -35,7 +35,7 @@ func gatherAircraft() {
 
     let searches = ["Airbus", "Boeing", "Lockheed", "Northrop_Grumman", "McDonnell_Douglas",
         "General_Dynamics", "Curtiss_Wright", "Fokker", "Messerschmitt", "Focke-Wulf",
-        "North_American", "Supermarine"] //, "Rockwell International"]
+        "North_American", "Supermarine", "Sukhoi"] //, "Rockwell International"]
 
     let operationQueue = NSOperationQueue()
     operationQueue.suspended = true
