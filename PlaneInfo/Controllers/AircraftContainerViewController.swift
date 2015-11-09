@@ -17,13 +17,37 @@ class AircraftContainerViewController: UIViewController {
     
     var aircraft: Aircraft?
     
+    private var favoriteEnabled: UIBarButtonItem!
+    private var favoriteButtonDisabled: UIBarButtonItem!
+    private var defaultTintColor: UIColor!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        defaultTintColor = navigationItem.rightBarButtonItem?.tintColor
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Star"), style: .Plain, target: self, action: "toggleFavorite")
+        
+        if aircraft!.favorite == true {
+            navigationItem.rightBarButtonItem?.tintColor = defaultTintColor
+        } else {
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.lightGrayColor()
+        }
+        
         // Start with the info view
         infoContainerView.hidden = false
         detailsContainerView.hidden = true
         galleryContainerView.hidden = true
+    }
+    
+    func toggleFavorite() {
+        print("toggleFavorite")
+        
+        aircraft!.favorite = !aircraft!.favorite
+        if aircraft!.favorite == true {
+            navigationItem.rightBarButtonItem?.tintColor = defaultTintColor
+        } else {
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.lightGrayColor()
+        }
     }
 
     @IBAction func segmentChanged(sender: UISegmentedControl) {

@@ -435,6 +435,7 @@
                             <constraint firstItem="Y50-l1-tXf" firstAttribute="trailing" secondItem="UfS-q9-Ilm" secondAttribute="trailing" constant="-31" id="zKc-BI-mWM"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="detailsContainerView" destination="a5y-US-gF2" id="eiY-ae-JpM"/>
                         <outlet property="galleryContainerView" destination="T1A-1x-wZs" id="tcr-eH-dOj"/>
@@ -485,11 +486,11 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBi-Oq-ec0">
-                                                    <rect key="frame" x="512" y="19" width="28" height="28"/>
+                                                    <rect key="frame" x="512" y="27.5" width="15" height="15"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="28" id="ZmB-zF-PdV"/>
-                                                        <constraint firstAttribute="height" constant="28" id="bEf-7E-ih2"/>
+                                                        <constraint firstAttribute="width" constant="15" id="ZmB-zF-PdV"/>
+                                                        <constraint firstAttribute="height" constant="15" id="bEf-7E-ih2"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="Star">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -502,11 +503,11 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUo-DB-ldp" userLabel="Unfavorites Button">
-                                                    <rect key="frame" x="512" y="19" width="28" height="28"/>
+                                                    <rect key="frame" x="512" y="27.5" width="15" height="15"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="28" id="Pfo-VG-EEd"/>
-                                                        <constraint firstAttribute="height" constant="28" id="dzu-mN-jjI"/>
+                                                        <constraint firstAttribute="width" constant="15" id="Pfo-VG-EEd"/>
+                                                        <constraint firstAttribute="height" constant="15" id="dzu-mN-jjI"/>
                                                     </constraints>
                                                     <state key="normal" image="Star">
                                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -518,15 +519,15 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vBi-Oq-ec0" secondAttribute="trailing" constant="-4" id="19p-5d-YIG"/>
-                                                <constraint firstItem="vBi-Oq-ec0" firstAttribute="centerY" secondItem="HUS-6K-ziI" secondAttribute="centerY" constant="-2" id="Cz9-Ej-naA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vBi-Oq-ec0" secondAttribute="trailing" constant="9" id="19p-5d-YIG"/>
+                                                <constraint firstItem="vBi-Oq-ec0" firstAttribute="centerY" secondItem="HUS-6K-ziI" secondAttribute="centerY" id="Cz9-Ej-naA"/>
                                                 <constraint firstItem="4hY-AP-6q1" firstAttribute="centerY" secondItem="HUS-6K-ziI" secondAttribute="centerY" id="OVR-4Z-Qh4"/>
                                                 <constraint firstItem="aLb-yM-u7u" firstAttribute="centerY" secondItem="HUS-6K-ziI" secondAttribute="centerY" id="TuM-n5-qCX"/>
                                                 <constraint firstItem="4hY-AP-6q1" firstAttribute="top" secondItem="HUS-6K-ziI" secondAttribute="topMargin" constant="-8" id="lsw-Ot-cnz"/>
                                                 <constraint firstItem="UUo-DB-ldp" firstAttribute="leading" secondItem="vBi-Oq-ec0" secondAttribute="leading" id="lvm-14-aLa"/>
                                                 <constraint firstItem="vBi-Oq-ec0" firstAttribute="leading" secondItem="4hY-AP-6q1" secondAttribute="trailing" constant="8" id="nOq-yT-hwf"/>
                                                 <constraint firstItem="4hY-AP-6q1" firstAttribute="leading" secondItem="aLb-yM-u7u" secondAttribute="trailing" constant="8" id="oQp-i6-lOe"/>
-                                                <constraint firstItem="UUo-DB-ldp" firstAttribute="centerY" secondItem="HUS-6K-ziI" secondAttribute="centerY" constant="-2" id="tqw-nI-uCi"/>
+                                                <constraint firstItem="UUo-DB-ldp" firstAttribute="centerY" secondItem="HUS-6K-ziI" secondAttribute="centerY" id="tqw-nI-uCi"/>
                                                 <constraint firstItem="aLb-yM-u7u" firstAttribute="leading" secondItem="HUS-6K-ziI" secondAttribute="leadingMargin" constant="-7" id="zv9-dn-bmP"/>
                                             </constraints>
                                         </tableViewCellContentView>
