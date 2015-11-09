@@ -23,27 +23,59 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" textLabel="fth-lv-vom" style="IBUITableViewCellStyleDefault" id="I1K-g7-nsQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="Bm5-dB-FX6" customClass="CategoryTableViewCell" customModule="PlaneInfo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I1K-g7-nsQ" id="WEf-Ee-0t8">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bm5-dB-FX6" id="7P9-Je-152">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fth-lv-vom">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="66"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S76-gt-EIN">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r4R-OC-p1B">
+                                                            <rect key="frame" x="90" y="3" width="90" height="60"/>
+                                                            <animations/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="90" id="5mQ-M1-SkV"/>
+                                                                <constraint firstAttribute="height" constant="60" id="LJw-cp-5bC"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAc-py-Gse">
+                                                            <rect key="frame" x="192" y="23" width="390" height="21"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <animations/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="UAc-py-Gse" firstAttribute="leading" secondItem="r4R-OC-p1B" secondAttribute="trailing" constant="12" id="Czz-KH-6ep"/>
+                                                        <constraint firstItem="UAc-py-Gse" firstAttribute="centerY" secondItem="S76-gt-EIN" secondAttribute="centerY" id="DSd-44-wSe"/>
+                                                        <constraint firstAttribute="trailing" secondItem="UAc-py-Gse" secondAttribute="trailing" constant="18" id="Ept-39-tbB"/>
+                                                        <constraint firstItem="r4R-OC-p1B" firstAttribute="centerY" secondItem="S76-gt-EIN" secondAttribute="centerY" id="MFI-Rc-4IB"/>
+                                                        <constraint firstItem="UAc-py-Gse" firstAttribute="top" secondItem="S76-gt-EIN" secondAttribute="top" constant="23" id="aPk-3Z-Bu7"/>
+                                                        <constraint firstAttribute="width" constant="600" id="gpR-UI-iHw"/>
+                                                        <constraint firstItem="r4R-OC-p1B" firstAttribute="leading" secondItem="S76-gt-EIN" secondAttribute="leading" constant="90" id="nJE-qX-OrL"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="S76-gt-EIN" firstAttribute="top" secondItem="7P9-Je-152" secondAttribute="top" id="IwI-Gp-P0F"/>
+                                                <constraint firstAttribute="trailing" secondItem="S76-gt-EIN" secondAttribute="trailing" id="N5J-Ix-ql3"/>
+                                                <constraint firstItem="S76-gt-EIN" firstAttribute="leading" secondItem="7P9-Je-152" secondAttribute="leading" id="dck-Qa-8cT"/>
+                                                <constraint firstAttribute="bottom" secondItem="S76-gt-EIN" secondAttribute="bottom" id="exK-eK-Pwt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="categoryImageView" destination="r4R-OC-p1B" id="ZQY-1Z-dl2"/>
+                                            <outlet property="categoryView" destination="S76-gt-EIN" id="ZRk-8p-N6N"/>
+                                            <outlet property="titleLabel" destination="UAc-py-Gse" id="G7b-up-Ngq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -781,7 +813,7 @@
         <scene sceneID="iU8-Mj-Up0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p5r-C2-ghQ" userLabel="All Aircraft Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All Aircraft" image="Categories" id="cse-85-xGb"/>
+                    <tabBarItem key="tabBarItem" title="All Aircraft" image="Airplane" id="cse-85-xGb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5sN-Xz-uux">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -799,6 +831,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Airplane" width="25" height="25"/>
         <image name="Categories" width="24" height="24"/>
         <image name="IMG_0857" width="960" height="1280"/>
         <image name="Quiz" width="24" height="24"/>

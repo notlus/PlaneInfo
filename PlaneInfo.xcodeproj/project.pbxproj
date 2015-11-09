@@ -32,9 +32,6 @@
 		37CBEAF21BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF11BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift */; };
 		37CBEAF41BEC9A85003D1A14 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF31BEC9A85003D1A14 /* Photo.swift */; };
 		37CBEAF61BEC9AC9003D1A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF51BEC9AC9003D1A14 /* AppDelegate.swift */; };
-		37CBEAFB1BEC9AE9003D1A14 /* star_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAF81BEC9AE9003D1A14 /* star_24.png */; };
-		37CBEAFC1BEC9AE9003D1A14 /* star_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAF91BEC9AE9003D1A14 /* star_48.png */; };
-		37CBEAFD1BEC9AE9003D1A14 /* star_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFA1BEC9AE9003D1A14 /* star_64.png */; };
 		37CBEB001BEC9B4B003D1A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFF1BEC9B4B003D1A14 /* Assets.xcassets */; };
 		37CBEB0B1BEC9C7F003D1A14 /* PlaneInfo.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEAFE1BEC9B06003D1A14 /* PlaneInfo.sqlite */; };
 		37CBEB0E1BEC9C9E003D1A14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37CBEB0C1BEC9C9E003D1A14 /* Main.storyboard */; };
@@ -43,6 +40,7 @@
 		37CBEB131BEC9D05003D1A14 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE41BEC9A14003D1A14 /* Aircraft.swift */; };
 		37CBEB141BEC9D11003D1A14 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE61BEC9A14003D1A14 /* Category.swift */; };
 		37CBEB151BEC9D19003D1A14 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAF31BEC9A85003D1A14 /* Photo.swift */; };
+		37F989C71BF08F0100238155 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F989C61BF08F0100238155 /* CategoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,9 +94,6 @@
 		37CBEAF11BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllAircraftTableViewCell.swift; sourceTree = "<group>"; };
 		37CBEAF31BEC9A85003D1A14 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		37CBEAF51BEC9AC9003D1A14 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PlaneInfo/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		37CBEAF81BEC9AE9003D1A14 /* star_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_24.png; sourceTree = "<group>"; };
-		37CBEAF91BEC9AE9003D1A14 /* star_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_48.png; sourceTree = "<group>"; };
-		37CBEAFA1BEC9AE9003D1A14 /* star_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_64.png; sourceTree = "<group>"; };
 		37CBEAFE1BEC9B06003D1A14 /* PlaneInfo.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlaneInfo.sqlite; sourceTree = "<group>"; };
 		37CBEAFF1BEC9B4B003D1A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PlaneInfo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		37CBEB011BEC9B63003D1A14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlaneInfoTests/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -107,6 +102,7 @@
 		37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaneInfoUITests.swift; path = PlaneInfoUITests/PlaneInfoUITests.swift; sourceTree = SOURCE_ROOT; };
 		37CBEB0D1BEC9C9E003D1A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PlaneInfo/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		37CBEB101BEC9CA7003D1A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PlaneInfo/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		37F989C61BF08F0100238155 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +230,7 @@
 			children = (
 				37CBEAF11BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift */,
 				37CBEADF1BEC998A003D1A14 /* GalleryCollectionViewCell.swift */,
+				37F989C61BF08F0100238155 /* CategoryTableViewCell.swift */,
 			);
 			name = Views;
 			path = PlaneInfo/Views;
@@ -258,9 +255,6 @@
 			children = (
 				37449E311BEC9F7D00ABC6D0 /* Categories.plist */,
 				37CBEAFE1BEC9B06003D1A14 /* PlaneInfo.sqlite */,
-				37CBEAF81BEC9AE9003D1A14 /* star_24.png */,
-				37CBEAF91BEC9AE9003D1A14 /* star_48.png */,
-				37CBEAFA1BEC9AE9003D1A14 /* star_64.png */,
 			);
 			name = Resources;
 			path = PlaneInfo/Resources;
@@ -370,11 +364,8 @@
 			files = (
 				37CBEB0B1BEC9C7F003D1A14 /* PlaneInfo.sqlite in Resources */,
 				37CBEB0E1BEC9C9E003D1A14 /* Main.storyboard in Resources */,
-				37CBEAFC1BEC9AE9003D1A14 /* star_48.png in Resources */,
-				37CBEAFB1BEC9AE9003D1A14 /* star_24.png in Resources */,
 				37CBEB001BEC9B4B003D1A14 /* Assets.xcassets in Resources */,
 				37CBEB111BEC9CA7003D1A14 /* LaunchScreen.storyboard in Resources */,
-				37CBEAFD1BEC9AE9003D1A14 /* star_64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +400,7 @@
 				37CBEAF01BEC9A31003D1A14 /* FlickrClient.swift in Sources */,
 				37CBEAED1BEC9A14003D1A14 /* CoreDataManager.swift in Sources */,
 				37CBEADB1BEC992D003D1A14 /* CategoriesViewController.swift in Sources */,
+				37F989C71BF08F0100238155 /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

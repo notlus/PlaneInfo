@@ -85,9 +85,30 @@ extension CategoriesViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath) as UITableViewCell //CategoryTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryTableViewCell
         cell.contentView.backgroundColor = colors[indexPath.row]
-        cell.textLabel?.text = categories[indexPath.row].name
+        cell.categoryView.backgroundColor = colors[indexPath.row]
+        let category = categories[indexPath.row]
+        cell.titleLabel.text = category.name
+        if category.name == "Military" {
+            cell.categoryImageView.image = UIImage(named: "Military")
+        }
+        else if category.name == "Civilian" {
+            cell.categoryImageView.image = UIImage(named: "Civilian")
+        }
+        else if category.name == "World War 2" {
+            cell.categoryImageView.image = UIImage(named: "WorldWar2")
+        }
+        else if category.name == "World War 1" {
+            cell.categoryImageView.image = UIImage(named: "WorldWar1")
+        }
+        else if category.name == "Vietnam" {
+            cell.categoryImageView.image = UIImage(named: "VietnamAircraft")
+        }
+        else if category.name == "Experimental" {
+            cell.categoryImageView.image = UIImage(named: "ExperimentalAircraft")
+        }
+        
         return cell
     }
 }
