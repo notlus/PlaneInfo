@@ -37,6 +37,11 @@ class AircraftContainerViewController: UIViewController {
         infoContainerView.hidden = false
         detailsContainerView.hidden = true
         galleryContainerView.hidden = true
+        self.tabBarController!.tabBar.hidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController!.tabBar.hidden = false
     }
     
     func toggleFavorite() {
