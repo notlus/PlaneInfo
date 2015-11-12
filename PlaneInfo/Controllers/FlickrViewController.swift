@@ -1,0 +1,223 @@
+//
+//  FlickrViewController.swift
+//  PlaneInfo
+//
+//  Created by Jeffrey Sulton on 9/8/15.
+//  Copyright (c) 2015 notluS. All rights reserved.
+//
+
+import CoreData
+import UIKit
+
+class FlickrViewController: UIViewController,
+    UICollectionViewDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout {
+    
+    var searchTerm: String?
+    
+    var photos = [FlickrPhoto]() {
+        didSet {
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.hidden = true
+        }
+    }
+    
+    @IBOutlet weak var collectionButton: UIButton! {
+        didSet {
+            collectionButton.enabled = false
+        }
+    }
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
+    
+    @IBOutlet weak var noImagesLabel: UILabel! {
+        didSet {
+            noImagesLabel.hidden = true
+        }
+    }
+
+    // MARK: Private Properties
+    
+    private var selectedPhotos = Set<NSIndexPath>() {
+        didSet {
+            if selectedPhotos.count > 0 {
+                collectionButton.enabled = true
+            }
+            else {
+                collectionButton.enabled = false
+            }
+        }
+    }
+    
+    private let reuseIdentifier = "PhotoCell"
+    
+    // MARK: Public Properties
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        activityView.startAnimating()
+        downloadPhotos()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+    }
+
+    // MARK: Actions
+    
+    @IBAction func addPhotos() {
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        print("Adding \(selectedPhotos.count) photos")
+    }
+    
+    @IBAction func done(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: UICollectionViewDataSource
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        guard let photoCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? CollectionViewPhotoCell else {
+            fatalError("Failed to dequeue CollectionViewPhotoCell")
+        }
+        
+        var photo = photos[indexPath.row]
+        
+        if photo.downloaded {
+            print("Photo downloaded")
+            photoCell.photoView.image = UIImage(contentsOfFile: photo.localPath.absoluteString)
+        } else {
+            print("Downloading photo")
+            photoCell.activityView.startAnimating()
+            photoCell.photoView.hidden = true
+            photoCell.overlayView.hidden = false
+            
+            downloadPhoto(photo, completion: { (image) -> () in
+                if let image = image {
+                    photo.downloaded = true
+                    photoCell.photoView.hidden = false
+                    photoCell.overlayView.hidden = true
+                    photoCell.activityView.stopAnimating()
+                    photoCell.photoView.image = image
+                } else {
+                    // There was an error downloading
+                    photoCell.activityView.stopAnimating()
+                    photoCell.overlayView.backgroundColor = UIColor.redColor()
+                }
+            })
+        }
+        
+        photoCell.photoView.alpha = 1.0
+        
+        return photoCell
+    }
+    
+    // MARK: UICollectionViewDelegate
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        guard let photoCell = collectionView.cellForItemAtIndexPath(indexPath) as? CollectionViewPhotoCell else {
+            fatalError("Failed to get photo cell at index path \(indexPath.row)")
+        }
+        
+        if selectedPhotos.contains(indexPath) {
+            // Unselect photo
+            photoCell.photoView.alpha = 1.0
+            selectedPhotos.remove(indexPath)
+        } else {
+            // Select photo
+            selectedPhotos.insert(indexPath)
+            photoCell.photoView.alpha = 0.25
+        }
+    }
+    
+    // MARK: UICollectionViewDelegateFlowLayout
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(100, 100)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: -10, left: 10, bottom: 0, right: 10)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    // MARK:  Private Functions
+    
+    private func downloadPhotos() -> Void {
+        if let searchTerm = searchTerm {
+            FlickrClient.sharedInstance.downloadImagesForSearchTerm(searchTerm) { (photos, error) -> () in
+                if let error = error {
+                    print("Error: \(error) downloading images")
+                    return
+                }
+                
+                if let photos = photos {
+                    print("Found \(photos.count) photos")
+                    self.photos += photos
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.collectionView.hidden = false
+                    self.activityView.stopAnimating()
+                })
+            }
+        }
+
+        /*
+        FlickrClient.sharedInstance.downloadImagesForLocation(pin, pageCount: pin.pageCount) { (photos, pages, error) -> () in
+            
+            if let photos = photos {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    // Update the pin with the number of pages associated with the location
+                    self.pin.pageCount = pages
+                    
+                    print("Saved \(photos.count) photos")
+                    
+                    self.collectionButton.enabled = true
+                    self.collectionView.reloadData()
+                })
+            } else {
+                // No photos found
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.noImagesLabel.hidden = false
+                    self.collectionView.hidden = true
+                    self.collectionButton.enabled = false
+                })
+            }
+        }
+*/
+    }
+        
+    private func downloadPhoto(photo: FlickrPhoto, completion: (image: UIImage?) -> ()) {
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            if let data = FlickrClient.sharedInstance.downloadImageForPhoto(photo) {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(image: UIImage(data: data))
+                })
+            }
+        })
+    }
+}

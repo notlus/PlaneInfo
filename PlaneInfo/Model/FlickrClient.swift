@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+struct FlickrPhoto {
+    var localPath: NSURL
+    var remotePath: NSURL
+    var downloaded: Bool
+}
+
 public class FlickrClient {
     
     static let sharedInstance = FlickrClient()
@@ -38,9 +44,13 @@ public class FlickrClient {
         return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     }()
 
+    private lazy var cachesDirectory: NSURL = {
+        return NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
+    }()
+
     /// Given a search term, attempt to download images from Flickr. Call the provided
     /// completion handler, providing an array of `Photo` instances or an error, when done.
-    func downloadImagesForSearchTerm(searchTerm: String, completion: (photos: [Photo]?, error: ErrorType?) -> ()) {
+    func downloadImagesForSearchTerm(searchTerm: String, completion: (photos: [FlickrPhoto]?, error: ErrorType?) -> ()) {
         if searchTerm.isEmpty {
             print("Nothing to search for")
             let error = FlickClientError.InvalidSearch(searchTerm)
@@ -68,58 +78,35 @@ public class FlickrClient {
             
             // Create an array of tuples, where the tuple contains the remote and local URLs for the
             // image.
-            let photos = photosData.map({(photoData: [String: AnyObject]) -> (NSURL, NSURL) in
+            let photos = photosData.map({(photoData: [String: AnyObject]) -> (FlickrPhoto) in
 
                 // Get the URL for the photo and create a tuple of the remote URL and a generated
                 // filename
                 if let photoString = photoData[APIConstants.EXTRAS] as? String,
                     let photoURL = NSURL(string: photoString) {
                     let filename = "\(NSDate().timeIntervalSince1970)-\(arc4random())"
-                        return (photoURL, NSURL(string: filename)!)
+//                        let fullPath = self.cachesDirectory
+                        let fullPath = "\(self.cachesDirectory)/\(filename)"
+                        
+                        return FlickrPhoto(localPath: NSURL(string: fullPath)!, remotePath: photoURL, downloaded: false)
                 }
 
-                return (NSURL(), NSURL())
+                return FlickrPhoto(localPath: NSURL(), remotePath: NSURL(), downloaded: false)
             })
-
-            var newPhotos = [Photo]()
-            
-            // Download the photos on the global queue
-            for (remoteURL, localURL) in photos {
-                let newPhoto = Photo(localPath: localURL.path!, remotePath: remoteURL.absoluteString, context: CoreDataManager.sharedInstance.managedObjectContext)
-                newPhotos.append(newPhoto)
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-                    if let _ = self.downloadImageForPhoto(newPhoto) {
-                        print("Downloaded photo from \(newPhoto.remotePath)")
-                    } else {
-                        print("Failed to download photo from \(newPhoto.remotePath)")
-                    }
-                })
-            }
-            
-            completion(photos: newPhotos, error: nil)
+            completion(photos: photos, error: nil)
         }
     }
 
-    func downloadImageForPhoto(photo: Photo) -> NSData? {
-        guard let remoteURL = NSURL(string: photo.remotePath) else {
-                print("Invalid remote path")
-                fatalError()
-        }
-
-        guard let fullPath = NSURL(string: photo.localPath, relativeToURL: appDelegate.galleryPath) else {
-            print("Failed to create URL for photo")
-            return nil
-        }
-        
+    func downloadImageForPhoto(photo: FlickrPhoto) -> NSData? {
         let data: NSData
         do {
-            data = try NSData(contentsOfURL: remoteURL, options: .DataReadingUncached)
+            data = try NSData(contentsOfURL: photo.remotePath, options: .DataReadingUncached)
         } catch {
             print("\(error)")
             return nil
         }
         
-        if (!data.writeToURL(fullPath, atomically: true)) {
+        if (!data.writeToURL(photo.localPath, atomically: true)) {
             print("Failed to write to URL: \(photo.localPath)")
             return nil
         }

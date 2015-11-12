@@ -6,16 +6,59 @@
 //  Copyright © 2015 notluS. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
-class GalleryCollectionViewController: UICollectionViewController {
-    // TODO: Move to GalleryCollectionViewCell
+class GalleryCollectionViewController: UIViewController, NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    // The `Aircraft` to which the gallery of photos belongs
+    var aircraft: Aircraft?
+
+    // MARK: Core Data
+    
+    private var sharedContext: NSManagedObjectContext {
+        return CoreDataManager.sharedInstance.managedObjectContext
+    }
+    
+    private lazy var fetchedResultsController: NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest(entityName: "Photo")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+
+        guard let aircraft = self.aircraft else {
+            return NSFetchedResultsController()
+        }
+        
+        // Create a predicate that retrieves all photos for the provided aircraft
+//        fetchRequest.predicate = NSPredicate(format: "photo CONTAINS %@", aircraft)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+            managedObjectContext: self.sharedContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
+        return fetchedResultsController
+    }()
+
     private let reuseIdentifier = "GalleryCell"
 
-    var aircraft: Aircraft?
+    @IBOutlet var collectionView: UICollectionView!
+    
+    // MARK: View Management
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.backgroundColor = UIColor.clearColor()
+        
+//        do {
+//            try fetchedResultsController.performFetch()
+//            fetchedResultsController.delegate = self
+//        }
+//        catch {
+//            print("Fetch failed")
+//            fatalError()
+//        }
+        
+//        print("fetched \(fetchedResultsController.fetchedObjects!.count) photos")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -25,6 +68,7 @@ class GalleryCollectionViewController: UICollectionViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+/*
         if let aircraft = aircraft {
             FlickrClient.sharedInstance.downloadImagesForSearchTerm(aircraft.name) { (photos, error) -> () in
                 if let error = error {
@@ -36,14 +80,21 @@ class GalleryCollectionViewController: UICollectionViewController {
                 CoreDataManager.sharedInstance.saveContext()
             }
         }
+*/
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 12
+    func loadFlickrVC() {
+        print("loadFlickrVC")
+        performSegueWithIdentifier("ShowFlickrVC", sender: self)
+    }
+    
+    // MARK: UICollectionViewDataSource
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (fetchedResultsController.sections?[section])?.numberOfObjects ?? 0
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? GalleryCollectionViewCell else {
             fatalError("Failed to dequeue GalleryCollectionViewCell")
         }
@@ -55,6 +106,18 @@ class GalleryCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowFlickrVC" {
+            print("Showing ShowFlickrVC")
+            guard let flickrVC = segue.destinationViewController as? FlickrViewController else {
+                return
+            }
+            
+            flickrVC.searchTerm = aircraft?.name
+        }
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
