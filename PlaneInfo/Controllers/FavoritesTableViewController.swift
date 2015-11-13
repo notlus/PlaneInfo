@@ -48,10 +48,13 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
         atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
             
             switch type {
-                case .Insert:
-                    self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-                case .Delete:
-                    self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            case .Insert:
+                self.tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .Delete:
+                self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            case .Update:
+                // What should I do here?
+                print("Received an update")
             default:
                     fatalError("Unexpected change")
             }
@@ -69,6 +72,14 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
                 try sharedContext.save()
             } catch {
                 fatalError("Error saving context: \(error)")
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowContainerSegue" {
+            if let destination = segue.destinationViewController as? AircraftContainerViewController {
+                destination.aircraft = sender as? Aircraft
             }
         }
     }

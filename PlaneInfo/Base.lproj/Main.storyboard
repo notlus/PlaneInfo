@@ -227,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQ2-c1-PVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2799" y="2020"/>
+            <point key="canvasLocation" x="-2367" y="3200"/>
         </scene>
         <!--Aircraft Details-->
         <scene sceneID="EoQ-d7-h6Q">
@@ -396,7 +396,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Utf-LK-XWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2799" y="1476"/>
+            <point key="canvasLocation" x="-2367" y="2656"/>
         </scene>
         <!--Aircraft Container View Controller-->
         <scene sceneID="Kef-DW-AgZ">
@@ -410,21 +410,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfS-q9-Ilm" userLabel="Info Container View">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfS-q9-Ilm" userLabel="Info Container View">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="bED-Xy-Xsk" kind="embed" identifier="AircraftInfoSegue" id="fs5-AX-yoJ"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5y-US-gF2" userLabel="Details Container View">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5y-US-gF2" userLabel="Details Container View">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="hor-oB-KIK" kind="embed" identifier="AircraftDetailsSegue" id="eg6-gK-Gmd"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1A-1x-wZs" userLabel="Gallery Container View">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1A-1x-wZs" userLabel="Gallery Container View">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <animations/>
                                 <connections>
@@ -476,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uK6-mI-pw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3787" y="1474"/>
+            <point key="canvasLocation" x="-3355" y="2654"/>
         </scene>
         <!--All Aircraft-->
         <scene sceneID="tne-QT-ifu">
@@ -692,6 +692,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="cro-1o-zcJ"/>
+                    <connections>
+                        <segue destination="EfH-l0-h7N" kind="show" identifier="ShowContainerSegue" id="vvK-Ia-dcl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5IT-CW-be0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -782,7 +785,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RF4-zS-86R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2799" y="904"/>
+            <point key="canvasLocation" x="-2367" y="2084"/>
         </scene>
         <!--Categories Navigation Controller-->
         <scene sceneID="YjN-h1-sVY">
@@ -999,7 +1002,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCd-mf-xuw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2079" y="904"/>
+            <point key="canvasLocation" x="-1647" y="2084"/>
         </scene>
     </scenes>
     <resources>
@@ -1011,5 +1014,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nfz-Az-sfQ"/>
+        <segue reference="vvK-Ia-dcl"/>
     </inferredMetricsTieBreakers>
 </document>
