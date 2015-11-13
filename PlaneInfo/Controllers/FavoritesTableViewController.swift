@@ -10,6 +10,9 @@ import CoreData
 import UIKit
 
 class FavoritesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, AllAircraftTableViewCellDelegate {
+    
+    // MARK: Core Data
+    
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
     }
