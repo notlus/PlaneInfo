@@ -62,6 +62,8 @@ class FlickrViewController: UIViewController,
     private let reuseIdentifier = "PhotoCell"
     
     // MARK: Public Properties
+
+    var delegate: SavePhotosDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,8 +71,6 @@ class FlickrViewController: UIViewController,
         downloadPhotos()
     }
 
-    override func viewWillAppear(animated: Bool) {
-    }
 
     // MARK: Actions
     
@@ -78,6 +78,13 @@ class FlickrViewController: UIViewController,
         dismissViewControllerAnimated(true, completion: nil)
         
         print("Adding \(selectedPhotos.count) photos")
+        
+        var flickrPhotos = [FlickrPhoto]()
+        for photoIndex in selectedPhotos {
+            flickrPhotos.append(photos[photoIndex.row])
+        }
+        
+        delegate?.save(flickrPhotos)
     }
     
     @IBAction func done(sender: UIBarButtonItem) {

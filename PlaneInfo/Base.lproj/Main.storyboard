@@ -880,7 +880,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <animations/>
                                 <items>
-                                    <navigationItem title="Flickr Client" id="bqX-4s-Rj0">
+                                    <navigationItem title="Download Photos" id="bqX-4s-Rj0">
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="1dv-DF-ATW">
                                             <connections>
                                                 <action selector="done:" destination="gUj-Ci-ZW0" id="FCi-Ev-KSr"/>

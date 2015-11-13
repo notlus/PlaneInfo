@@ -9,7 +9,15 @@
 import CoreData
 import UIKit
 
-class GalleryCollectionViewController: UIViewController, NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+protocol SavePhotosDelegate {
+    func save(flickrPhotos: [FlickrPhoto])
+}
+
+class GalleryCollectionViewController: UIViewController,
+    NSFetchedResultsControllerDelegate,
+    UICollectionViewDataSource,
+    UICollectionViewDelegate,
+    SavePhotosDelegate {
 
     // The `Aircraft` to which the gallery of photos belongs
     var aircraft: Aircraft?
@@ -21,15 +29,15 @@ class GalleryCollectionViewController: UIViewController, NSFetchedResultsControl
     }
     
     private lazy var fetchedResultsController: NSFetchedResultsController = {
-        let fetchRequest = NSFetchRequest(entityName: "Photo")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-
         guard let aircraft = self.aircraft else {
             return NSFetchedResultsController()
         }
+
+        let fetchRequest = NSFetchRequest(entityName: "Photo")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "localPath", ascending: true)]
         
         // Create a predicate that retrieves all photos for the provided aircraft
-//        fetchRequest.predicate = NSPredicate(format: "photo CONTAINS %@", aircraft)
+        fetchRequest.predicate = NSPredicate(format: "aircraft == %@", aircraft)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
             managedObjectContext: self.sharedContext,
             sectionNameKeyPath: nil,
@@ -38,7 +46,14 @@ class GalleryCollectionViewController: UIViewController, NSFetchedResultsControl
         return fetchedResultsController
     }()
 
+    private lazy var cachesDirectory: NSURL = {
+        return NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
+    }()
+
     private let reuseIdentifier = "GalleryCell"
+
+    /// A dictionary that maps `NSFetchedResultsChangeType`s to an array of `NSIndexPaths`s
+    private var objectChanges = [NSFetchedResultsChangeType: [NSIndexPath]]()
 
     @IBOutlet var collectionView: UICollectionView!
     
@@ -49,45 +64,37 @@ class GalleryCollectionViewController: UIViewController, NSFetchedResultsControl
         
         collectionView.backgroundColor = UIColor.clearColor()
         
-//        do {
-//            try fetchedResultsController.performFetch()
-//            fetchedResultsController.delegate = self
-//        }
-//        catch {
-//            print("Fetch failed")
-//            fatalError()
-//        }
-        
-//        print("fetched \(fetchedResultsController.fetchedObjects!.count) photos")
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
-/*
-        if let aircraft = aircraft {
-            FlickrClient.sharedInstance.downloadImagesForSearchTerm(aircraft.name) { (photos, error) -> () in
-                if let error = error {
-                    print("Error: \(error) downloading images")
-                    return
-                }
-                
-                print("Found \(photos?.count) photos")
-                CoreDataManager.sharedInstance.saveContext()
-            }
+        do {
+            try fetchedResultsController.performFetch()
+            fetchedResultsController.delegate = self
         }
-*/
+        catch {
+            print("Fetch failed")
+            fatalError()
+        }
+        
+        print("fetched \(fetchedResultsController.fetchedObjects!.count) photos")
     }
-    
+
     func loadFlickrVC() {
         print("loadFlickrVC")
         performSegueWithIdentifier("ShowFlickrVC", sender: self)
     }
     
+    
+    // MARK: SavePhotosDelegate
+    
+    func save(flickrPhotos: [FlickrPhoto]) {
+        print("Saving photos")
+        sharedContext.performBlock { () -> Void in
+            for flickrPhoto in flickrPhotos {
+                let _ = Photo(localPath: flickrPhoto.localPath.lastPathComponent!, remotePath: flickrPhoto.remotePath.absoluteString, aircraft: self.aircraft!, context: self.sharedContext)
+            }
+            
+            try! self.sharedContext.save()
+        }
+    }
+
     // MARK: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,7 +107,13 @@ class GalleryCollectionViewController: UIViewController, NSFetchedResultsControl
         }
         
         // Configure the cell
-        cell.imageView.image = UIImage(named: "IMG_0857")
+        guard let photo = fetchedResultsController.objectAtIndexPath(indexPath) as? Photo else {
+            fatalError("Failed to get object from index path \(indexPath.row)")
+        }
+        
+        let photoPath = NSURL(string: "\(cachesDirectory)\(photo.localPath)")!
+        let image = UIImage(contentsOfFile: photoPath.path!)
+        cell.imageView.image = image
         return cell
     }
 
@@ -114,37 +127,59 @@ class GalleryCollectionViewController: UIViewController, NSFetchedResultsControl
             }
             
             flickrVC.searchTerm = aircraft?.name
+            flickrVC.delegate = self
         }
     }
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     }
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
-    }
-    */
+    // MARK: FetchedResultsControllerDelegate
 
+    func controller(controller: NSFetchedResultsController,
+        didChangeObject anObject: AnyObject,
+        atIndexPath indexPath: NSIndexPath?,
+        forChangeType type: NSFetchedResultsChangeType,
+        newIndexPath: NSIndexPath?) {
+            
+            switch type {
+            case .Insert:
+                print("Got insert")
+                if let insertIndexPath = newIndexPath {
+                    var arr = objectChanges[type]
+                    if arr == nil {
+                        arr = [NSIndexPath]()
+                    }
+                    arr?.append(insertIndexPath)
+                    objectChanges[type] = arr
+                }
+            default:
+                fatalError("Unsupported change type: \(type)")
+            }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        print("controllerDidChangeContent, changes count: \(self.objectChanges.count)")
+        
+        collectionView.performBatchUpdates({ () -> Void in
+            for (changeType, indexPaths) in self.objectChanges {
+                switch changeType {
+                case .Insert:
+                    print("Inserting \(indexPaths.count) index paths")
+                    self.collectionView.insertItemsAtIndexPaths(indexPaths)
+                    self.objectChanges[changeType]?.removeAll()
+                    
+                default:
+                    fatalError("Unexpected change type: \(changeType)")
+                }
+            }
+            }) { (finished) -> Void in
+                print("Finished with batch updates, finished = \(finished)")
+                
+                self.objectChanges.removeAll()
+                self.collectionView.reloadData()
+        }
+        
+        print("Exiting controllerDidChangeContent")
+    }
 }
