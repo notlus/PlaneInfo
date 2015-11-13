@@ -55,7 +55,7 @@ class CategoriesViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowAircraftSegue" {
-            guard let aircraftVC = segue.destinationViewController as? AllAircraftViewController else {
+            guard let aircraftVC = segue.destinationViewController as? AircraftTableViewController else {
                 return
             }
             

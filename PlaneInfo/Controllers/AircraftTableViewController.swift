@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDelegate, AllAircraftTableViewCellDelegate {
+class AircraftTableViewController: UIViewController, NSFetchedResultsControllerDelegate, AllAircraftTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -97,7 +97,7 @@ class AllAircraftViewController: UIViewController, NSFetchedResultsControllerDel
 
 // MARK: UITableViewDelegate
 
-extension AllAircraftViewController: UITableViewDelegate {
+extension AircraftTableViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("Selected row \(indexPath.row)")
         let aircraft = fetchedResultsController.objectAtIndexPath(indexPath) as! Aircraft
@@ -111,7 +111,7 @@ extension AllAircraftViewController: UITableViewDelegate {
 
 // MARK: UITableViewDataSource
 
-extension AllAircraftViewController: UITableViewDataSource {
+extension AircraftTableViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = fetchedResultsController.sections?[section]
         let rows = section?.numberOfObjects ?? 0

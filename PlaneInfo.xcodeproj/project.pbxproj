@@ -21,7 +21,7 @@
 		37CBEAD71BEC992D003D1A14 /* AircraftDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */; };
 		37CBEAD81BEC992D003D1A14 /* AircraftInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD21BEC992D003D1A14 /* AircraftInfoViewController.swift */; };
 		37CBEAD91BEC992D003D1A14 /* AircraftQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD31BEC992D003D1A14 /* AircraftQuizViewController.swift */; };
-		37CBEADA1BEC992D003D1A14 /* AllAircraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD41BEC992D003D1A14 /* AllAircraftViewController.swift */; };
+		37CBEADA1BEC992D003D1A14 /* AircraftTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD41BEC992D003D1A14 /* AircraftTableViewController.swift */; };
 		37CBEADB1BEC992D003D1A14 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD51BEC992D003D1A14 /* CategoriesViewController.swift */; };
 		37CBEADD1BEC9952003D1A14 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEADC1BEC9952003D1A14 /* GalleryCollectionViewController.swift */; };
 		37CBEAE01BEC998A003D1A14 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEADF1BEC998A003D1A14 /* GalleryCollectionViewCell.swift */; };
@@ -85,7 +85,7 @@
 		37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftDetailsTableViewController.swift; sourceTree = "<group>"; };
 		37CBEAD21BEC992D003D1A14 /* AircraftInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftInfoViewController.swift; sourceTree = "<group>"; };
 		37CBEAD31BEC992D003D1A14 /* AircraftQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftQuizViewController.swift; sourceTree = "<group>"; };
-		37CBEAD41BEC992D003D1A14 /* AllAircraftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllAircraftViewController.swift; sourceTree = "<group>"; };
+		37CBEAD41BEC992D003D1A14 /* AircraftTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftTableViewController.swift; sourceTree = "<group>"; };
 		37CBEAD51BEC992D003D1A14 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		37CBEADC1BEC9952003D1A14 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		37CBEADF1BEC998A003D1A14 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 				37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */,
 				37CBEAD21BEC992D003D1A14 /* AircraftInfoViewController.swift */,
 				37CBEAD31BEC992D003D1A14 /* AircraftQuizViewController.swift */,
-				37CBEAD41BEC992D003D1A14 /* AllAircraftViewController.swift */,
+				37CBEAD41BEC992D003D1A14 /* AircraftTableViewController.swift */,
 				37CBEAD51BEC992D003D1A14 /* CategoriesViewController.swift */,
 			);
 			name = Controllers;
@@ -398,7 +398,7 @@
 				3783306D1BF2E81200AF650D /* FlickrViewController.swift in Sources */,
 				37CBEAEA1BEC9A14003D1A14 /* Aircraft.swift in Sources */,
 				37CBEAE01BEC998A003D1A14 /* GalleryCollectionViewCell.swift in Sources */,
-				37CBEADA1BEC992D003D1A14 /* AllAircraftViewController.swift in Sources */,
+				37CBEADA1BEC992D003D1A14 /* AircraftTableViewController.swift in Sources */,
 				37CBEAD61BEC992D003D1A14 /* AircraftContainerViewController.swift in Sources */,
 				37CBEAEE1BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld in Sources */,
 				37CBEAF61BEC9AC9003D1A14 /* AppDelegate.swift in Sources */,

@@ -481,7 +481,7 @@
         <!--All Aircraft-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="All Aircraft" id="BYZ-38-t0r" customClass="AllAircraftViewController" customModule="PlaneInfo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="All Aircraft" id="BYZ-38-t0r" customClass="AircraftTableViewController" customModule="PlaneInfo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -1014,6 +1014,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nfz-Az-sfQ"/>
-        <segue reference="vvK-Ia-dcl"/>
+        <segue reference="4bw-Hf-2AF"/>
     </inferredMetricsTieBreakers>
 </document>
