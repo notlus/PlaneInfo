@@ -18,7 +18,7 @@ class Photo: NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    init(localPath: String, remotePath: String, context: NSManagedObjectContext) {
+    init(localPath: String, remotePath: String, aircraft: Aircraft, context: NSManagedObjectContext) {
         guard let entity = NSEntityDescription.entityForName("Photo", inManagedObjectContext: context) else {
             fatalError()
         }
@@ -27,5 +27,6 @@ class Photo: NSManagedObject {
         
         self.localPath = localPath
         self.remotePath = remotePath
+        self.aircraft = aircraft
     }
 }

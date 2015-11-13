@@ -21,7 +21,7 @@ class Aircraft : NSManagedObject {
     @NSManaged var favorite: Bool
     @NSManaged var thumbnail: NSData
     @NSManaged var categories: Set<Category>
-    @NSManaged var photos: [Photo]
+    @NSManaged var photos: Set<Photo>
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
