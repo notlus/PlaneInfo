@@ -69,8 +69,7 @@ class GalleryCollectionViewController: UIViewController,
             fetchedResultsController.delegate = self
         }
         catch {
-            print("Fetch failed")
-            fatalError()
+            fatalError("Fetch failed, error: \(error)")
         }
         
         print("fetched \(fetchedResultsController.fetchedObjects!.count) photos")
