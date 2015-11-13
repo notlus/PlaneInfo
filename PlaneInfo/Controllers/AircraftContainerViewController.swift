@@ -21,6 +21,8 @@ class AircraftContainerViewController: UIViewController {
     private var favoriteButtonDisabled: UIBarButtonItem!
     private var defaultTintColor: UIColor!
     
+    private var galleryVC: GalleryCollectionViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,6 +74,7 @@ class AircraftContainerViewController: UIViewController {
             infoContainerView.hidden = true
             detailsContainerView.hidden = true
             galleryContainerView.hidden = false
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: galleryVC, action: "loadFlickrVC")
         }
     }
     
@@ -84,6 +87,7 @@ class AircraftContainerViewController: UIViewController {
         } else if segue.identifier == "AircraftGallerySegue" {
             let destination = segue.destinationViewController as! GalleryCollectionViewController
             destination.aircraft = aircraft
+            galleryVC = destination
         } else if segue.identifier == "AircraftInfoSegue" {
             let destination = segue.destinationViewController as! AircraftInfoViewController
             destination.aircraft = aircraft
