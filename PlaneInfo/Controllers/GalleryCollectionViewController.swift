@@ -54,6 +54,8 @@ class GalleryCollectionViewController: UIViewController,
 
     /// A dictionary that maps `NSFetchedResultsChangeType`s to an array of `NSIndexPaths`s
     private var objectChanges = [NSFetchedResultsChangeType: [NSIndexPath]]()
+    
+    private var selectedIndexPath: NSIndexPath?
 
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var backroundImageView: UIImageView!
@@ -137,10 +139,32 @@ class GalleryCollectionViewController: UIViewController,
             
             flickrVC.searchTerm = aircraft?.name
             flickrVC.delegate = self
+        } else if segue.identifier == "ShowPhotoVC"{
+            guard let photoVC = segue.destinationViewController as? AircraftPhotoViewController,
+                let indexPath = selectedIndexPath else {
+                return
+            }
+            
+            guard let photo = fetchedResultsController.objectAtIndexPath(indexPath) as? Photo else {
+                return
+            }
+            
+            guard let photoPath = NSURL(string: "\(cachesDirectory)\(photo.localPath)"),
+                let path = photoPath.path else {
+                return
+            }
+            
+            photoVC.photoPath = path
+            photoVC.aircraftName = aircraft?.name
+            
+        } else {
+            fatalError("Unknown segue: \(segue.identifier)")
         }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        selectedIndexPath = indexPath
+        performSegueWithIdentifier("ShowPhotoVC", sender: self)
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
