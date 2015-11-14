@@ -479,10 +479,10 @@
             </objects>
             <point key="canvasLocation" x="-3355" y="2654"/>
         </scene>
-        <!--All Aircraft-->
+        <!--Aircraft-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="All Aircraft" id="BYZ-38-t0r" customClass="AircraftTableViewController" customModule="PlaneInfo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Aircraft" id="BYZ-38-t0r" customClass="AircraftTableViewController" customModule="PlaneInfo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -589,7 +589,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="All Aircraft" id="xgX-ah-kXS"/>
+                    <navigationItem key="navigationItem" title="Aircraft" id="xgX-ah-kXS"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="lFB-7r-sIc" id="GiD-0l-CHe"/>
