@@ -126,7 +126,7 @@ extension FavoritesTableViewController {
             if let image = UIImage(data: aircraft.thumbnail) {
                 cell.thumbnailImageView.image = image
             } else {
-                cell.thumbnailImageView.image = nil
+                cell.thumbnailImageView.image = UIImage(named: "NoPhotoImage")
             }
         }
         
