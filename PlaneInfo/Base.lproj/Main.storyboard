@@ -143,6 +143,7 @@
         <scene sceneID="CiC-PB-Wtm">
             <objects>
                 <tabBarController id="CuI-5h-WiQ" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="y4o-Sz-vJW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -410,21 +411,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UfS-q9-Ilm" userLabel="Info Container View">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfS-q9-Ilm" userLabel="Info Container View">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="bED-Xy-Xsk" kind="embed" identifier="AircraftInfoSegue" id="fs5-AX-yoJ"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5y-US-gF2" userLabel="Details Container View">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5y-US-gF2" userLabel="Details Container View">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <animations/>
                                 <connections>
                                     <segue destination="hor-oB-KIK" kind="embed" identifier="AircraftDetailsSegue" id="eg6-gK-Gmd"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1A-1x-wZs" userLabel="Gallery Container View">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1A-1x-wZs" userLabel="Gallery Container View">
                                 <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <animations/>
                                 <connections>
@@ -712,8 +713,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Ii-QR-d7X">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="aUt-LQ-wqf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <animations/>
+                            </imageView>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Ii-QR-d7X">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <animations/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="98g-ha-NZs">
                                     <size key="itemSize" width="150" height="150"/>
@@ -754,32 +759,42 @@
                                     <outlet property="delegate" destination="lTh-jE-N0o" id="bgB-K3-wLv"/>
                                 </connections>
                             </collectionView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwc-a0-Xfs">
-                                <rect key="frame" x="0.0" y="410" width="600" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ7-jK-Eh0">
+                                <rect key="frame" x="200" y="458" width="201" height="34"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.39215686274509803" green="0.11480869193314906" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="vja-bu-gS3"/>
+                                    <constraint firstAttribute="width" constant="201" id="3o3-NV-myu"/>
+                                    <constraint firstAttribute="height" constant="34" id="o5D-fJ-rJK"/>
                                 </constraints>
-                                <state key="normal" title="Add from Flickr">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="1" minY="0.0" maxX="1" maxY="0.0"/>
+                                <state key="normal" title="Find Photos on Flickr">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loadFlickrVC" destination="lTh-jE-N0o" eventType="touchUpInside" id="0mj-lg-Q26"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="qwc-a0-Xfs" firstAttribute="top" secondItem="6Ii-QR-d7X" secondAttribute="bottom" constant="-40" id="GdR-ir-Rk7"/>
+                            <constraint firstItem="aUt-LQ-wqf" firstAttribute="leading" secondItem="6Ii-QR-d7X" secondAttribute="leading" id="3Xv-1l-2ak"/>
+                            <constraint firstItem="aUt-LQ-wqf" firstAttribute="centerY" secondItem="OLt-5E-ZQC" secondAttribute="centerY" id="NJ2-bn-e9i"/>
                             <constraint firstAttribute="trailing" secondItem="6Ii-QR-d7X" secondAttribute="trailing" id="ORt-t6-YHc"/>
-                            <constraint firstItem="qwc-a0-Xfs" firstAttribute="top" secondItem="6Ii-QR-d7X" secondAttribute="bottom" constant="-40" id="Q31-zZ-HCv"/>
-                            <constraint firstAttribute="trailing" secondItem="qwc-a0-Xfs" secondAttribute="trailing" id="THE-Sv-p1V"/>
+                            <constraint firstItem="aUt-LQ-wqf" firstAttribute="centerX" secondItem="OLt-5E-ZQC" secondAttribute="centerX" id="Qdv-Kn-iKu"/>
                             <constraint firstItem="6Ii-QR-d7X" firstAttribute="leading" secondItem="OLt-5E-ZQC" secondAttribute="leading" id="XFS-di-v8M"/>
-                            <constraint firstItem="qwc-a0-Xfs" firstAttribute="leading" secondItem="OLt-5E-ZQC" secondAttribute="leading" id="aFS-wF-W2z"/>
-                            <constraint firstItem="pzn-Q5-t84" firstAttribute="top" secondItem="qwc-a0-Xfs" secondAttribute="bottom" constant="40" id="mfA-rf-V70"/>
+                            <constraint firstItem="PZ7-jK-Eh0" firstAttribute="centerX" secondItem="OLt-5E-ZQC" secondAttribute="centerX" id="ZRY-Ku-RxA"/>
+                            <constraint firstItem="aUt-LQ-wqf" firstAttribute="top" secondItem="lFh-Va-9jb" secondAttribute="bottom" id="biO-kR-vbf"/>
+                            <constraint firstItem="PZ7-jK-Eh0" firstAttribute="centerY" secondItem="OLt-5E-ZQC" secondAttribute="centerY" constant="225" id="p3O-iV-A7h"/>
+                            <constraint firstItem="pzn-Q5-t84" firstAttribute="top" secondItem="6Ii-QR-d7X" secondAttribute="bottom" id="wh1-wh-cwR"/>
                             <constraint firstItem="6Ii-QR-d7X" firstAttribute="top" secondItem="lFh-Va-9jb" secondAttribute="bottom" id="x4k-Nv-rpj"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backroundImageView" destination="aUt-LQ-wqf" id="K3H-Pe-3ZQ"/>
                         <outlet property="collectionView" destination="6Ii-QR-d7X" id="mZK-Eh-60I"/>
+                        <outlet property="findPhotosButton" destination="PZ7-jK-Eh0" id="GIW-hr-2Hh"/>
                         <segue destination="gUj-Ci-ZW0" kind="presentation" identifier="ShowFlickrVC" id="5HI-hU-HDP"/>
                     </connections>
                 </viewController>
@@ -904,7 +919,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pND-sW-an4">
-                                <rect key="frame" x="0.0" y="110" width="600" height="444"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="510"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Lhi-Az-hzd">
@@ -979,7 +994,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cmy-ce-zqm" firstAttribute="leading" secondItem="pNk-VU-njc" secondAttribute="leading" id="1e5-FC-GD1"/>
-                            <constraint firstItem="pND-sW-an4" firstAttribute="top" secondItem="cmy-ce-zqm" secondAttribute="bottom" constant="66" id="4Px-lj-y64"/>
+                            <constraint firstItem="pND-sW-an4" firstAttribute="top" secondItem="cmy-ce-zqm" secondAttribute="bottom" id="4Px-lj-y64"/>
                             <constraint firstItem="cmy-ce-zqm" firstAttribute="top" secondItem="oaI-Mm-ysj" secondAttribute="bottom" id="6bV-yh-r3R"/>
                             <constraint firstAttribute="trailing" secondItem="cmy-ce-zqm" secondAttribute="trailing" id="A7V-dh-YAe"/>
                             <constraint firstItem="5jm-R7-5K8" firstAttribute="top" secondItem="WtS-Hz-5gx" secondAttribute="bottom" id="A8b-OS-jyG"/>
@@ -990,7 +1005,7 @@
                             <constraint firstItem="pND-sW-an4" firstAttribute="width" secondItem="WtS-Hz-5gx" secondAttribute="width" id="Tmb-Hi-1Jz"/>
                             <constraint firstItem="pND-sW-an4" firstAttribute="leading" secondItem="WtS-Hz-5gx" secondAttribute="leading" id="aAc-o7-fil"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WtS-Hz-5gx" secondAttribute="trailing" constant="-20" id="kwh-rg-oxn"/>
-                            <constraint firstItem="pND-sW-an4" firstAttribute="top" secondItem="oaI-Mm-ysj" secondAttribute="bottom" constant="110" id="qtc-bb-uXL"/>
+                            <constraint firstItem="pND-sW-an4" firstAttribute="top" secondItem="oaI-Mm-ysj" secondAttribute="bottom" constant="44" id="qtc-bb-uXL"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1008,6 +1023,7 @@
     <resources>
         <image name="Airplane" width="25" height="25"/>
         <image name="Categories" width="24" height="24"/>
+        <image name="FourPlanes" width="60" height="60"/>
         <image name="IMG_0857" width="960" height="1280"/>
         <image name="Quiz" width="24" height="24"/>
         <image name="Star" width="24" height="24"/>

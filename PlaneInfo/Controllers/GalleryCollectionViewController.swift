@@ -56,6 +56,8 @@ class GalleryCollectionViewController: UIViewController,
     private var objectChanges = [NSFetchedResultsChangeType: [NSIndexPath]]()
 
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var backroundImageView: UIImageView!
+    @IBOutlet weak var findPhotosButton: UIButton!
     
     // MARK: View Management
     
@@ -72,14 +74,19 @@ class GalleryCollectionViewController: UIViewController,
             fatalError("Fetch failed, error: \(error)")
         }
         
+        if fetchedResultsController.fetchedObjects?.count > 0 {
+            collectionView.hidden = false
+            findPhotosButton.hidden = true
+            backroundImageView.hidden = true
+        }
+        
         print("fetched \(fetchedResultsController.fetchedObjects!.count) photos")
     }
 
-    func loadFlickrVC() {
+    @IBAction func loadFlickrVC() {
         print("loadFlickrVC")
         performSegueWithIdentifier("ShowFlickrVC", sender: self)
     }
-    
     
     // MARK: SavePhotosDelegate
     
@@ -91,6 +98,9 @@ class GalleryCollectionViewController: UIViewController,
             }
             
             try! self.sharedContext.save()
+            self.collectionView.hidden = false
+            self.findPhotosButton.hidden = true
+            self.backroundImageView.hidden = true
         }
     }
 
