@@ -173,7 +173,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_0857" translatesAutoresizingMaskIntoConstraints="NO" id="nTT-Pp-GRI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="nTT-Pp-GRI">
                                 <rect key="frame" x="0.0" y="53" width="600" height="237"/>
                                 <animations/>
                                 <constraints>
@@ -510,7 +510,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aLb-yM-u7u">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoPhotoImage" translatesAutoresizingMaskIntoConstraints="NO" id="aLb-yM-u7u">
                                                     <rect key="frame" x="1" y="0.0" width="95" height="70"/>
                                                     <animations/>
                                                     <constraints>
@@ -713,7 +713,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="aUt-LQ-wqf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="aUt-LQ-wqf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <animations/>
                             </imageView>
@@ -1024,7 +1024,7 @@
         <image name="Airplane" width="25" height="25"/>
         <image name="Categories" width="24" height="24"/>
         <image name="FourPlanes" width="60" height="60"/>
-        <image name="IMG_0857" width="960" height="1280"/>
+        <image name="NoPhotoImage" width="312" height="200"/>
         <image name="Quiz" width="24" height="24"/>
         <image name="Star" width="24" height="24"/>
     </resources>

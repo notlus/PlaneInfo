@@ -22,7 +22,12 @@ class AircraftInfoViewController: UIViewController {
         
         if let aircraft = aircraft {
             nameLabel.text = aircraft.name
-            imageView.image = UIImage(data: aircraft.thumbnail)
+            if let image = UIImage(data: aircraft.thumbnail) {
+                imageView.image = image
+            } else {
+                imageView.image = UIImage(named: "NoPhotoImage")
+            }
+            
             abstractTextView.text = aircraft.abstract
         }
     }
