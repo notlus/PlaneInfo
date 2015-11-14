@@ -173,7 +173,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="nTT-Pp-GRI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="nTT-Pp-GRI">
                                 <rect key="frame" x="0.0" y="53" width="600" height="237"/>
                                 <animations/>
                                 <constraints>
@@ -492,19 +492,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lFB-7r-sIc">
-                                <rect key="frame" x="28" y="64" width="544" height="477"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AircraftCell" id="Pbm-tT-Zkk" customClass="AllAircraftTableViewCell" customModule="PlaneInfo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="544" height="70"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pbm-tT-Zkk" id="HUS-6K-ziI">
-                                            <rect key="frame" x="0.0" y="0.0" width="544" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hY-AP-6q1">
-                                                    <rect key="frame" x="104" y="0.0" width="400" height="70"/>
+                                                    <rect key="frame" x="104" y="0.0" width="456" height="70"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -519,7 +519,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vBi-Oq-ec0">
-                                                    <rect key="frame" x="512" y="27.5" width="15" height="15"/>
+                                                    <rect key="frame" x="568" y="27" width="15" height="15"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="ZmB-zF-PdV"/>
@@ -536,7 +536,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUo-DB-ldp" userLabel="Unfavorites Button">
-                                                    <rect key="frame" x="512" y="27.5" width="15" height="15"/>
+                                                    <rect key="frame" x="568" y="27" width="15" height="15"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="Pfo-VG-EEd"/>
@@ -582,10 +582,10 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lFB-7r-sIc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="BX9-7n-hF4"/>
+                            <constraint firstItem="lFB-7r-sIc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="BX9-7n-hF4"/>
                             <constraint firstItem="lFB-7r-sIc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GuV-4D-uDc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lFB-7r-sIc" secondAttribute="trailing" constant="8" id="kfQ-lf-btl"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lFB-7r-sIc" secondAttribute="bottom" constant="15" id="vPc-Ei-OxN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lFB-7r-sIc" secondAttribute="trailing" constant="-20" id="kfQ-lf-btl"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lFB-7r-sIc" secondAttribute="bottom" id="vPc-Ei-OxN"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
