@@ -37,10 +37,10 @@ class AircraftPhotoViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    override func prefersStatusBarHidden() -> Bool {
-//        // No status bar
-//        return true
-//    }
+    override func prefersStatusBarHidden() -> Bool {
+        // No status bar
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

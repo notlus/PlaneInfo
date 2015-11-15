@@ -1044,11 +1044,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoPhotoImage" translatesAutoresizingMaskIntoConstraints="NO" id="Xd7-ts-Uyf">
-                                <rect key="frame" x="0.0" y="52" width="600" height="548"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <animations/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uut-gp-dA5">
-                                <rect key="frame" x="0.0" y="8" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3Gn-Dv-Tdf"/>
@@ -1070,7 +1070,7 @@
                             <constraint firstItem="uut-gp-dA5" firstAttribute="bottom" secondItem="Xd7-ts-Uyf" secondAttribute="top" id="0Zl-a6-MeB"/>
                             <constraint firstItem="zxu-wo-FHW" firstAttribute="top" secondItem="Xd7-ts-Uyf" secondAttribute="bottom" id="4s1-0D-Ctb"/>
                             <constraint firstItem="uut-gp-dA5" firstAttribute="leading" secondItem="Xd7-ts-Uyf" secondAttribute="leading" id="DFM-LV-Yz2"/>
-                            <constraint firstItem="uut-gp-dA5" firstAttribute="top" secondItem="VlM-fJ-RQy" secondAttribute="bottom" constant="8" id="DRk-aW-4aN"/>
+                            <constraint firstItem="uut-gp-dA5" firstAttribute="top" secondItem="VlM-fJ-RQy" secondAttribute="bottom" id="DRk-aW-4aN"/>
                             <constraint firstAttribute="trailing" secondItem="Xd7-ts-Uyf" secondAttribute="trailing" id="Hfd-nr-JJA"/>
                             <constraint firstItem="uut-gp-dA5" firstAttribute="trailing" secondItem="Xd7-ts-Uyf" secondAttribute="trailing" id="J1c-Hg-bvV"/>
                             <constraint firstItem="Xd7-ts-Uyf" firstAttribute="leading" secondItem="Eky-y8-2dh" secondAttribute="leading" id="gbR-p1-byx"/>
