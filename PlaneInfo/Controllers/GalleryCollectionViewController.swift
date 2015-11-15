@@ -22,6 +22,8 @@ class GalleryCollectionViewController: UIViewController,
     // The `Aircraft` to which the gallery of photos belongs
     var aircraft: Aircraft?
 
+    private let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     // MARK: Core Data
     
     private var sharedContext: NSManagedObjectContext {
@@ -46,9 +48,9 @@ class GalleryCollectionViewController: UIViewController,
         return fetchedResultsController
     }()
 
-    private lazy var cachesDirectory: NSURL = {
-        return NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
-    }()
+//    private lazy var cachesDirectory: NSURL = {
+//        return NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
+//    }()
 
     private let reuseIdentifier = "GalleryCell"
 
@@ -96,10 +98,26 @@ class GalleryCollectionViewController: UIViewController,
         print("Saving photos")
         sharedContext.performBlock { () -> Void in
             for flickrPhoto in flickrPhotos {
+                // Move the photo to the gallery directory
+                if !self.movePhotoToGallery(flickrPhoto.localPath) {
+                    // TODO: Should we alert the user here? Maybe keep a running total of photos
+                    //       and report a single time to the user.
+                    print("Unable to copy photo \(flickrPhoto.localPath) to gallery")
+                    continue
+                }
+                
+                // Create a `Photo` object for the photo
                 let _ = Photo(localPath: flickrPhoto.localPath.lastPathComponent!, remotePath: flickrPhoto.remotePath.absoluteString, aircraft: self.aircraft!, context: self.sharedContext)
             }
             
-            try! self.sharedContext.save()
+            do {
+                try self.sharedContext.save()
+            } catch {
+                fatalError("Failed to save context after saving photos")
+            }
+            
+            // Now that we have some photos, show the collection view and hide the background view 
+            // and the find button.
             self.collectionView.hidden = false
             self.findPhotosButton.hidden = true
             self.backroundImageView.hidden = true
@@ -122,8 +140,8 @@ class GalleryCollectionViewController: UIViewController,
             fatalError("Failed to get object from index path \(indexPath.row)")
         }
         
-        let photoPath = NSURL(string: "\(cachesDirectory)\(photo.localPath)")!
-        let image = UIImage(contentsOfFile: photoPath.path!)
+        let photoPath = getGalleryPathForPhoto(photo.localPath)
+        let image = UIImage(contentsOfFile: photoPath)
         cell.imageView.image = image
         return cell
     }
@@ -149,12 +167,9 @@ class GalleryCollectionViewController: UIViewController,
                 return
             }
             
-            guard let photoPath = NSURL(string: "\(cachesDirectory)\(photo.localPath)"),
-                let path = photoPath.path else {
-                return
-            }
-            
-            photoVC.photoPath = path
+            let photoPath = getGalleryPathForPhoto(photo.localPath)
+
+            photoVC.photoPath = photoPath
             photoVC.aircraftName = aircraft?.name
             
         } else {
@@ -233,4 +248,36 @@ class GalleryCollectionViewController: UIViewController,
         
         print("Exiting controllerDidChangeContent")
     }
+    
+    /// Get the full path to the photo
+    private func getGalleryPathForPhoto(photoName: String) -> String {
+        if let photoURL = NSURL(string: "\(appDelegate.galleryPath)\(photoName)"),
+            let photoPath = photoURL.path {
+                return photoPath
+        }
+
+        // Just return the original name
+        return photoName
+    }
+    
+    /// Move a photo at `sourcePhotoPath` to the "Gallery" directory
+    private func movePhotoToGallery(sourcePhotoPath: NSURL) -> Bool {
+        guard let sourcePath = sourcePhotoPath.path,
+            var galleryPath = appDelegate.galleryPath.path else {
+                return false
+        }
+        
+        galleryPath = "\(galleryPath)/\(sourcePhotoPath.lastPathComponent!)"
+        print("galleryPath=\(galleryPath)")
+        
+        do {
+            try NSFileManager.defaultManager().moveItemAtPath(sourcePath, toPath: galleryPath)
+            return true
+        } catch {
+            print("Failed to move photo from \(sourcePhotoPath) to \(galleryPath), error=\(error)")
+        }
+        
+        return false
+    }
+
 }
