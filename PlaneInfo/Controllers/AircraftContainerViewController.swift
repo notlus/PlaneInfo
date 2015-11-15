@@ -42,6 +42,10 @@ class AircraftContainerViewController: UIViewController {
         self.tabBarController!.tabBar.hidden = true
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController!.tabBar.hidden = true
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         self.tabBarController!.tabBar.hidden = false
     }
