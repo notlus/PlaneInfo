@@ -30,7 +30,12 @@ class DownloadThumbnailOp: Operation {
             finish()
         }
         
-        let request = NSURLRequest(URL: NSURL(string: thumbnailURL)!)
+        guard let thumbnailURL = NSURL(string: thumbnailURL) else {
+            finish()
+            return
+        }
+        
+        let request = NSURLRequest(URL: thumbnailURL)
         task = sharedSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
             defer {
                 print("Finishing DownloadThumbnailOp task")
