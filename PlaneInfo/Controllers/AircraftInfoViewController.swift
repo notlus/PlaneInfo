@@ -17,6 +17,26 @@ class AircraftInfoViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var abstractTextView: UITextView!
     
+    @IBAction func handleTouch(sender: AnyObject) {
+        if (sender.state == UIGestureRecognizerState.Ended) && aircraft?.thumbnail != nil {
+            print("imageView has been tapped")
+            performSegueWithIdentifier("ShowPhotoVC", sender: self)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowPhotoVC" {
+            guard let photoVC = segue.destinationViewController as? AircraftPhotoViewController else {
+                fatalError("Could not retrieve destination VC as AircraftPhotoViewController")
+            }
+            
+            photoVC.aircraftName = aircraft?.name
+            if let thumbnail = aircraft?.thumbnail {
+                photoVC.photo = UIImage(data: thumbnail)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +46,7 @@ class AircraftInfoViewController: UIViewController {
                 imageView.image = image
             } else {
                 imageView.image = UIImage(named: "NoPhotoImage")
+                imageView.contentMode = .ScaleAspectFit
             }
             
             abstractTextView.text = aircraft.abstract

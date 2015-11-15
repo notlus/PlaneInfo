@@ -12,12 +12,15 @@ class AircraftPhotoViewController: UIViewController {
 
     var aircraftName: String?
     var photoPath: String?
+    var photo: UIImage?
     
     @IBOutlet weak var aircraftPhoto: UIImageView! {
         didSet {
             print("Setting photo for aircraft")
             if let path = photoPath {
                 aircraftPhoto.image = UIImage(contentsOfFile: path)
+            } else if let photo = photo {
+                aircraftPhoto.image = photo
             }
         }
     }
@@ -34,6 +37,11 @@ class AircraftPhotoViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+//    override func prefersStatusBarHidden() -> Bool {
+//        // No status bar
+//        return true
+//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
