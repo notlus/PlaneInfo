@@ -173,60 +173,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="nTT-Pp-GRI">
-                                <rect key="frame" x="0.0" y="53" width="600" height="237"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRD-FR-4W5">
+                                <rect key="frame" x="10" y="206" width="580" height="278"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="368" id="eeO-I6-EhC"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="eeO-I6-EhC"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRD-FR-4W5">
-                                <rect key="frame" x="20" y="295" width="560" height="185"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="185" id="6Ag-yh-b5t"/>
+                                    <constraint firstAttribute="height" constant="247" id="6Ag-yh-b5t"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6Ag-yh-b5t"/>
+                                    </mask>
+                                </variation>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXC-Sl-irN">
-                                <rect key="frame" x="25" y="15" width="473" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXC-Sl-irN">
+                                <rect key="frame" x="20" y="176" width="560" height="30"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="81D-Yk-t05"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nTT-Pp-GRI">
+                                <rect key="frame" x="20" y="8" width="560" height="160"/>
+                                <animations/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="K0l-Ba-oxo"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="MnC-4j-70R" appends="YES" id="1gP-9d-LgK"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="nTT-Pp-GRI" secondAttribute="trailing" constant="-20" id="7F7-Bw-XWz"/>
-                            <constraint firstItem="L9x-0m-FaW" firstAttribute="top" secondItem="XRD-FR-4W5" secondAttribute="bottom" constant="20" id="Chc-kR-52C"/>
-                            <constraint firstItem="nTT-Pp-GRI" firstAttribute="top" secondItem="BBF-OT-3dg" secondAttribute="bottom" constant="53" id="Pfs-Xf-AQs"/>
-                            <constraint firstItem="nTT-Pp-GRI" firstAttribute="leading" secondItem="XRD-FR-4W5" secondAttribute="leading" constant="-20" id="QIx-AL-3m1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LXC-Sl-irN" secondAttribute="trailing" constant="82" id="Whq-3H-Tb6"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="nTT-Pp-GRI" secondAttribute="leading" constant="20" id="YN2-eM-cvc"/>
-                            <constraint firstItem="nTT-Pp-GRI" firstAttribute="top" secondItem="LXC-Sl-irN" secondAttribute="bottom" constant="8" id="eBB-B4-4bH"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="LXC-Sl-irN" secondAttribute="leading" constant="-5" id="eHc-9C-thQ"/>
-                            <constraint firstItem="nTT-Pp-GRI" firstAttribute="centerX" secondItem="v1y-KE-2Nj" secondAttribute="centerX" id="jMs-9w-RuS"/>
-                            <constraint firstItem="nTT-Pp-GRI" firstAttribute="trailing" secondItem="XRD-FR-4W5" secondAttribute="trailing" constant="20" id="mkb-Nv-s8l"/>
-                            <constraint firstItem="XRD-FR-4W5" firstAttribute="top" secondItem="nTT-Pp-GRI" secondAttribute="bottom" constant="5" id="uGE-2z-jwC"/>
-                            <constraint firstItem="LXC-Sl-irN" firstAttribute="top" secondItem="BBF-OT-3dg" secondAttribute="bottom" constant="15" id="vFF-0P-l0g"/>
+                            <constraint firstItem="LXC-Sl-irN" firstAttribute="leading" secondItem="v1y-KE-2Nj" secondAttribute="leadingMargin" id="3Dw-3Q-zen"/>
+                            <constraint firstAttribute="trailing" secondItem="XRD-FR-4W5" secondAttribute="trailing" constant="10" id="4Yz-1u-Edg"/>
+                            <constraint firstItem="LXC-Sl-irN" firstAttribute="trailing" secondItem="v1y-KE-2Nj" secondAttribute="trailingMargin" id="4oA-ga-j0n"/>
+                            <constraint firstItem="nTT-Pp-GRI" firstAttribute="top" secondItem="BBF-OT-3dg" secondAttribute="bottom" constant="8" symbolic="YES" id="7ob-9i-PgT"/>
+                            <constraint firstItem="L9x-0m-FaW" firstAttribute="top" secondItem="XRD-FR-4W5" secondAttribute="bottom" constant="16" id="Chc-kR-52C"/>
+                            <constraint firstItem="XRD-FR-4W5" firstAttribute="top" secondItem="LXC-Sl-irN" secondAttribute="bottom" id="L1g-po-dGz"/>
+                            <constraint firstItem="nTT-Pp-GRI" firstAttribute="leading" secondItem="LXC-Sl-irN" secondAttribute="leading" id="dA0-ue-pJc"/>
+                            <constraint firstItem="LXC-Sl-irN" firstAttribute="top" secondItem="nTT-Pp-GRI" secondAttribute="bottom" constant="8" id="fme-mL-mfA"/>
+                            <constraint firstItem="XRD-FR-4W5" firstAttribute="leading" secondItem="v1y-KE-2Nj" secondAttribute="leading" constant="10" id="nJX-bT-eN1"/>
+                            <constraint firstItem="nTT-Pp-GRI" firstAttribute="trailing" secondItem="LXC-Sl-irN" secondAttribute="trailing" id="sJk-zb-GWp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="abstractTextView" destination="XRD-FR-4W5" id="V15-Bs-o0u"/>
-                        <outlet property="imageView" destination="nTT-Pp-GRI" id="RKF-VT-0Dq"/>
+                        <outlet property="imageView" destination="nTT-Pp-GRI" id="O5d-Ps-XhD"/>
                         <outlet property="nameLabel" destination="LXC-Sl-irN" id="WMb-F6-Hmk"/>
+                        <segue destination="G2D-33-s2T" kind="presentation" identifier="ShowPhotoVC" id="mYe-TV-49I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQ2-c1-PVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MnC-4j-70R">
+                    <connections>
+                        <action selector="handleTouch:" destination="bED-Xy-Xsk" id="4Wk-pL-4rB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2367" y="3200"/>
         </scene>
@@ -713,7 +724,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="aUt-LQ-wqf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FourPlanes" translatesAutoresizingMaskIntoConstraints="NO" id="FT3-KH-cix">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <animations/>
                             </imageView>
@@ -760,12 +771,12 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ7-jK-Eh0">
-                                <rect key="frame" x="200" y="458" width="201" height="34"/>
+                                <rect key="frame" x="203" y="232" width="195" height="35"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.39215686274509803" green="0.11480869193314906" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="201" id="3o3-NV-myu"/>
-                                    <constraint firstAttribute="height" constant="34" id="o5D-fJ-rJK"/>
+                                    <constraint firstAttribute="width" constant="195" id="eTN-aR-g5w"/>
+                                    <constraint firstAttribute="height" constant="35" id="ivr-Ua-Kmy"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="1" minY="0.0" maxX="1" maxY="0.0"/>
                                 <state key="normal" title="Find Photos on Flickr">
@@ -779,20 +790,20 @@
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="aUt-LQ-wqf" firstAttribute="leading" secondItem="6Ii-QR-d7X" secondAttribute="leading" id="3Xv-1l-2ak"/>
-                            <constraint firstItem="aUt-LQ-wqf" firstAttribute="centerY" secondItem="OLt-5E-ZQC" secondAttribute="centerY" id="NJ2-bn-e9i"/>
+                            <constraint firstItem="PZ7-jK-Eh0" firstAttribute="centerY" secondItem="OLt-5E-ZQC" secondAttribute="centerY" id="2ML-Rr-DTo"/>
+                            <constraint firstItem="PZ7-jK-Eh0" firstAttribute="centerX" secondItem="OLt-5E-ZQC" secondAttribute="centerX" id="6aT-RY-j3c"/>
+                            <constraint firstItem="FT3-KH-cix" firstAttribute="top" secondItem="lFh-Va-9jb" secondAttribute="bottom" id="DD1-Fj-CXA"/>
+                            <constraint firstItem="pzn-Q5-t84" firstAttribute="top" secondItem="FT3-KH-cix" secondAttribute="bottom" id="K9f-on-6SS"/>
+                            <constraint firstAttribute="trailing" secondItem="FT3-KH-cix" secondAttribute="trailing" id="Lnh-vj-I7i"/>
                             <constraint firstAttribute="trailing" secondItem="6Ii-QR-d7X" secondAttribute="trailing" id="ORt-t6-YHc"/>
-                            <constraint firstItem="aUt-LQ-wqf" firstAttribute="centerX" secondItem="OLt-5E-ZQC" secondAttribute="centerX" id="Qdv-Kn-iKu"/>
                             <constraint firstItem="6Ii-QR-d7X" firstAttribute="leading" secondItem="OLt-5E-ZQC" secondAttribute="leading" id="XFS-di-v8M"/>
-                            <constraint firstItem="PZ7-jK-Eh0" firstAttribute="centerX" secondItem="OLt-5E-ZQC" secondAttribute="centerX" id="ZRY-Ku-RxA"/>
-                            <constraint firstItem="aUt-LQ-wqf" firstAttribute="top" secondItem="lFh-Va-9jb" secondAttribute="bottom" id="biO-kR-vbf"/>
-                            <constraint firstItem="PZ7-jK-Eh0" firstAttribute="centerY" secondItem="OLt-5E-ZQC" secondAttribute="centerY" constant="225" id="p3O-iV-A7h"/>
+                            <constraint firstItem="FT3-KH-cix" firstAttribute="leading" secondItem="OLt-5E-ZQC" secondAttribute="leading" id="nQK-Gd-M3H"/>
                             <constraint firstItem="pzn-Q5-t84" firstAttribute="top" secondItem="6Ii-QR-d7X" secondAttribute="bottom" id="wh1-wh-cwR"/>
                             <constraint firstItem="6Ii-QR-d7X" firstAttribute="top" secondItem="lFh-Va-9jb" secondAttribute="bottom" id="x4k-Nv-rpj"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backroundImageView" destination="aUt-LQ-wqf" id="K3H-Pe-3ZQ"/>
+                        <outlet property="backroundImageView" destination="FT3-KH-cix" id="9Xb-J6-y9z"/>
                         <outlet property="collectionView" destination="6Ii-QR-d7X" id="mZK-Eh-60I"/>
                         <outlet property="findPhotosButton" destination="PZ7-jK-Eh0" id="GIW-hr-2Hh"/>
                         <segue destination="gUj-Ci-ZW0" kind="presentation" identifier="ShowFlickrVC" id="5HI-hU-HDP"/>
@@ -1078,7 +1089,7 @@
     <resources>
         <image name="Airplane" width="25" height="25"/>
         <image name="Categories" width="24" height="24"/>
-        <image name="FourPlanes" width="60" height="60"/>
+        <image name="FourPlanes" width="530" height="530"/>
         <image name="NoPhotoImage" width="312" height="200"/>
         <image name="Quiz" width="24" height="24"/>
         <image name="Star" width="24" height="24"/>
@@ -1086,5 +1097,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Nfz-Az-sfQ"/>
         <segue reference="4bw-Hf-2AF"/>
+        <segue reference="oy3-QJ-dNU"/>
     </inferredMetricsTieBreakers>
 </document>
