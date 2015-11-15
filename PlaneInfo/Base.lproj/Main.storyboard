@@ -153,7 +153,6 @@
                     <connections>
                         <segue destination="u8b-bV-hpl" kind="relationship" relationship="viewControllers" id="MKH-N1-bgE"/>
                         <segue destination="p5r-C2-ghQ" kind="relationship" relationship="viewControllers" id="EmS-2L-oJg"/>
-                        <segue destination="yGC-55-yIY" kind="relationship" relationship="viewControllers" id="Ex3-OP-Qkm"/>
                         <segue destination="ZDp-QL-eUz" kind="relationship" relationship="viewControllers" id="1qW-pD-pqG"/>
                     </connections>
                 </tabBarController>
@@ -834,26 +833,6 @@
             </objects>
             <point key="canvasLocation" x="-5174" y="691"/>
         </scene>
-        <!--Quiz Navigation Controller-->
-        <scene sceneID="hKz-mW-u9v">
-            <objects>
-                <navigationController title="Quiz" automaticallyAdjustsScrollViewInsets="NO" id="yGC-55-yIY" userLabel="Quiz Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Quiz" image="Quiz" id="Bhs-jf-QhD"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JoX-th-aSp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="f7f-jd-Y1m" kind="relationship" relationship="rootViewController" id="G4r-pz-rhi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wFP-XS-Fdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-5180" y="2418"/>
-        </scene>
         <!--Favorites Navigation Controller-->
         <scene sceneID="NpH-q2-QW2">
             <objects>
@@ -1091,7 +1070,6 @@
         <image name="Categories" width="24" height="24"/>
         <image name="FourPlanes" width="530" height="530"/>
         <image name="NoPhotoImage" width="312" height="200"/>
-        <image name="Quiz" width="24" height="24"/>
         <image name="Star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
