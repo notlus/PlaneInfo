@@ -20,8 +20,7 @@ class CategoriesViewController: UIViewController {
     private var categories = [Category]()
     
     // TODO: These colors should be a part of the `Category` entity, so that they can stay in sync
-    private let colors = [UIColor.purpleColor(),
-        UIColor(red: 31/255, green: 58/255, blue: 147/255, alpha: 1.0),
+      private let colors = [UIColor(red: 31/255, green: 58/255, blue: 147/255, alpha: 1.0),
         UIColor.blueColor(),
         UIColor(red: 58/255, green: 83/255, blue: 155/255, alpha: 1.0),
         UIColor(red: 65/255, green: 131/255, blue: 215/255, alpha: 1.0),
@@ -101,9 +100,6 @@ extension CategoriesViewController: UITableViewDataSource {
         }
         else if category.name == "World War 1" {
             cell.categoryImageView.image = UIImage(named: "WorldWar1")
-        }
-        else if category.name == "Vietnam" {
-            cell.categoryImageView.image = UIImage(named: "VietnamAircraft")
         }
         else if category.name == "Experimental" {
             cell.categoryImageView.image = UIImage(named: "ExperimentalAircraft")
