@@ -71,7 +71,6 @@ class FlickrViewController: UIViewController,
         downloadPhotos()
     }
 
-
     // MARK: Actions
     
     @IBAction func addPhotos() {
@@ -190,31 +189,6 @@ class FlickrViewController: UIViewController,
                 })
             }
         }
-
-        /*
-        FlickrClient.sharedInstance.downloadImagesForLocation(pin, pageCount: pin.pageCount) { (photos, pages, error) -> () in
-            
-            if let photos = photos {
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    // Update the pin with the number of pages associated with the location
-                    self.pin.pageCount = pages
-                    
-                    print("Saved \(photos.count) photos")
-                    
-                    self.collectionButton.enabled = true
-                    self.collectionView.reloadData()
-                })
-            } else {
-                // No photos found
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.noImagesLabel.hidden = false
-                    self.collectionView.hidden = true
-                    self.collectionButton.enabled = false
-                })
-            }
-        }
-*/
     }
         
     private func downloadPhoto(photo: FlickrPhoto, completion: (image: UIImage?) -> ()) {
