@@ -95,11 +95,15 @@ class ImportLookupDataOp: Operation {
                 categories.insert("Military")
         }
 
-        if aircraft.abstract.lowercaseString.rangeOfString("world war ii") != nil ||
-            aircraft.abstract.lowercaseString.rangeOfString("world war 2") != nil {
+        if (aircraft.abstract.lowercaseString.rangeOfString("world war ii") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("world war 2") != nil) &&
+            !aircraft.abstract.lowercaseString.containsString("post-world war") &&
+            !aircraft.abstract.lowercaseString.containsString("post world war") {
             categories.insert("World War 2")
-        } else if aircraft.abstract.lowercaseString.rangeOfString("world war i") != nil ||
-            aircraft.abstract.lowercaseString.rangeOfString("world war 1") != nil {
+        } else if (aircraft.abstract.lowercaseString.rangeOfString("world war i") != nil ||
+            aircraft.abstract.lowercaseString.rangeOfString("world war 1") != nil) &&
+            !aircraft.abstract.lowercaseString.containsString("post-world war") &&
+            !aircraft.abstract.lowercaseString.containsString("post world war") {
                 categories.insert("World War 1")
         }
 

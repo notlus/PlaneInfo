@@ -35,7 +35,7 @@ func gatherAircraft() {
 
     let searches = ["Airbus", "Boeing", "Lockheed", "Northrop_Grumman", "McDonnell_Douglas",
         "General_Dynamics", "Curtiss_Wright", "Fokker", "Messerschmitt", "Focke-Wulf",
-        "North_American", "Supermarine", "Sukhoi"] //, "Rockwell International"]
+        "North_American", "Supermarine", "Sukhoi", "Rockwell", "Mikoyan", "Dassault"]
 
     let operationQueue = NSOperationQueue()
     operationQueue.suspended = true
@@ -89,6 +89,7 @@ let fetchRequest = NSFetchRequest(entityName: "Category")
 let fetchResults = try sharedContext.executeFetchRequest(fetchRequest)
 if fetchResults.count == 0 {
     // Load categories
+    // TODO: Don't hard code this path
     let categoriesPath = "/Users/jeffrey_sulton/development/Udacity/Projects/PlaneInfo/PlaneInfo/Resources/Categories.plist"
     guard let categories = NSDictionary(contentsOfFile: categoriesPath) as? [String: String] else {
         print("Failed to create dictionary from plist")
