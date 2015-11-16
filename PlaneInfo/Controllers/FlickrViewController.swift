@@ -71,13 +71,8 @@ class FlickrViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if FlickrClient.connectedToNetwork() {
-            infoView.showDownloading(true)
-            downloadPhotos()
-        } else {
-            print("No internet connection")
-            infoView.showNoInternet(true)
-        }
+        
+        startDownload()
     }
 
     // MARK: Actions
@@ -97,6 +92,10 @@ class FlickrViewController: UIViewController,
     
     @IBAction func done(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func retryDownload() {
+        startDownload()
     }
     
     // MARK: UICollectionViewDataSource
@@ -179,6 +178,15 @@ class FlickrViewController: UIViewController,
     
     // MARK:  Private Functions
     
+    private func startDownload() {
+        if FlickrClient.connectedToNetwork() {
+            infoView.showDownloading(true)
+            downloadPhotos()
+        } else {
+            print("No internet connection")
+            infoView.showNoInternet(true)
+        }
+    }
     
     /// Use the Flickr search API to find photos for `searchTerm`
     private func downloadPhotos() -> Void {
