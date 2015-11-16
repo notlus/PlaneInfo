@@ -1,10 +1,10 @@
 ## Overview
 
-**Plane Info** is an iOS application that shows you pictures and information about aircraft from around the world. 
+**Plane Info** is an iOS application that shows you pictures and information about aircraft from around the world. Some of the features are:
 
-	* View aircraft by category
+	* View information about aircraft by category
+    * Download photos from Flickr
 	* Save favorites for quick access
-	* Download photos from Flickr
 
 This project consists of two parts:
 
@@ -21,19 +21,31 @@ Having had a interest in aviation from a young age, I have wanted to have an app
 
 ## PlaneDownloader
 
-**PlaneDownloader** is an OS X command-line tool that uses [DBPedia](http://wiki.dbpedia.org) to find and download data about aircraft and store it in Core Data. It uses some heuristics to find and categorize aircraft
+**PlaneDownloader** is an OS X command-line tool that uses the [DBPedia Lookup](http://lookup.dbpedia.org) to find various aircraft and downloads data about aircraft using [DBPedia](http://wiki.dbpedia.org) and store it in Core Data. It uses some heuristics to find, categorize and gather data about aircraft. 
 
 ## Aircaft Data
-**Plane Info** uses a pre-populated Core Data store to retrieve information about aircraft categories, data and photos. The store is populated using the **PlaneDownloader** tool. The app also updates the store with new photos that have been saved by the user.
+**Plane Info** uses a pre-populated Core Data store to retrieve information about aircraft categories, data and photos. The store is populated using the **PlaneDownloader** tool. The app also updates the store with new photos that have been downloaded from Flickr and saved by the user.
+
+## Platform Requirements
+
+### Plane Info
+Requires Xcode 7.0 or higher to build and supports iOS 8.4 and above.
+
+### PlaneDownloader
+Requires Xcode 7.0 or higher to build and OS X 10.10 and above.
 
 ## Installation
 
-**Plane Info** requires Xcode 7.0 or higher to build and supports iOS 8.0 and above. To build, open PlaneInfo.xcodeproj and choose the "PlaneInfo" target
+### Plane Info
+To build, open PlaneInfo.xcodeproj in Xcode and choose the "PlaneInfo" scheme and choose "Build" from the "Product" menu. Building this target
+
+### PlaneDownloader
+To build, open PlaneInfo.xcodeproj in Xcode and choose the "PlaneDownloader" scheme and choose "Build" from the "Product" menu. This will generate the "PlaneDownloader" command-line tool, which can be run from a terminal window. The tool takes no arguments and will output a file named "PlaneInfo.sqlite" in the "Documents" folder. To update the aircraft data for the **Plane Info** app, the "PlaneInfo.sqlite" created by this tool can be copied into the Xcode resources to replace what is currently there.
 
 ## Future Plans
 
+* Improve heuristics for aircraft discovery, categorization and data collection
+* Add search capability
 * Provide more photos with the app
 * Allow searching additional locations for photos
 * Additional categories
-* Search for aircraft in the app
-* Improve heuristics for aircraft discovery, categorization and data collection
