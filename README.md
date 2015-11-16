@@ -42,6 +42,14 @@ To build, open PlaneInfo.xcodeproj in Xcode and choose the "PlaneInfo" scheme an
 ### PlaneDownloader
 To build, open PlaneInfo.xcodeproj in Xcode and choose the "PlaneDownloader" scheme and choose "Build" from the "Product" menu. This will generate the "PlaneDownloader" command-line tool, which can be run from a terminal window. The tool takes no arguments and will output a file named "PlaneInfo.sqlite" in the "Documents" folder. To update the aircraft data for the **Plane Info** app, the "PlaneInfo.sqlite" created by this tool can be copied into the Xcode resources to replace what is currently there.
 
+Note that before building the path to the "categories.plist" file must be updated. It is currently hardcoded like this: "/Users/user name/development/Udacity/Projects/PlaneInfo/PlaneInfo/Resources/Categories.plist". This will be fixed in a future update.
+
+## Issues
+* **PlaneDownloader** is buggy and crashes processing some data.
+* The heuristics used to categorize and gather aircraft data are not very good, so the accuracy of some of the categorization is poor.
+* The detailed aircraft data is incomplete due to the varying ways that the data is made available in [DBPedia](http://wiki.dbpedia.org).
+* As I am far from a designer, the UI needs some help
+
 ## Future Plans
 
 * Improve heuristics for aircraft discovery, categorization and data collection
