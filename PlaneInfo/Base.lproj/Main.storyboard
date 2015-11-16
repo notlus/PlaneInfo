@@ -97,42 +97,6 @@
             </objects>
             <point key="canvasLocation" x="-4480" y="691"/>
         </scene>
-        <!--Start Quiz-->
-        <scene sceneID="BVk-wa-PSP">
-            <objects>
-                <viewController title="Start Quiz" id="f7f-jd-Y1m" customClass="AircraftQuizViewController" customModule="PlaneInfo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3TN-Lh-gRk"/>
-                        <viewControllerLayoutGuide type="bottom" id="nLV-A1-tki"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Y3q-sy-5jH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTX-jh-3N3">
-                                <rect key="frame" x="79" y="273" width="442" height="53"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="442" id="W8V-sg-umG"/>
-                                    <constraint firstAttribute="height" constant="53" id="x5c-bC-MSn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <state key="normal" title="Start Quiz"/>
-                            </button>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="rTX-jh-3N3" firstAttribute="centerY" secondItem="Y3q-sy-5jH" secondAttribute="centerY" id="3EY-4z-Uwd"/>
-                            <constraint firstItem="rTX-jh-3N3" firstAttribute="centerX" secondItem="Y3q-sy-5jH" secondAttribute="centerX" id="cte-li-Emi"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Quiz" id="3qQ-4e-SKn"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ewj-Fh-HgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4471" y="2418"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CiC-PB-Wtm">
             <objects>
