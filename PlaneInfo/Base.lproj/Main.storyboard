@@ -194,6 +194,7 @@
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nTT-Pp-GRI">
                                 <rect key="frame" x="20" y="8" width="560" height="160"/>
                                 <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="K0l-Ba-oxo"/>
@@ -1054,9 +1055,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoPhotoImage" translatesAutoresizingMaskIntoConstraints="NO" id="Xd7-ts-Uyf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoPhotoImage" translatesAutoresizingMaskIntoConstraints="NO" id="Xd7-ts-Uyf">
                                 <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uut-gp-dA5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
