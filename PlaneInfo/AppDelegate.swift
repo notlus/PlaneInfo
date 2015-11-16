@@ -22,16 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return self.documentsDirectory.URLByAppendingPathComponent("Gallery/")
     }()
     
+    private let hasRunKey = "firstLaunch"
+    
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
     }
 
     private func loadDefaultData() throws {
-        let storePath = NSBundle.mainBundle().pathForResource("PlaneInfo", ofType: "sqlite")
-        do {
-            try CoreDataManager.sharedInstance.copyStoreFromPath(storePath!)
-        } catch let error as NSError {
-            fatalError("Failed to copy store to documents directory, error=\(error)")
+        if CoreDataManager.sharedInstance.storeExists() == false {
+            let storePath = NSBundle.mainBundle().pathForResource("PlaneInfo", ofType: "sqlite")
+            do {
+                try CoreDataManager.sharedInstance.copyStoreFromPath(storePath!)
+            } catch let error as NSError {
+                fatalError("Failed to copy store to documents directory, error=\(error)")
+            }
         }
         
         // Create the directory for the gallery photos
@@ -49,10 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.blueColor()]
         
-        if CoreDataManager.sharedInstance.storeExists() == false {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let hasRun = defaults.boolForKey(hasRunKey)
+        if !hasRun {
             // Initial launch of the app; copy over data store and create categories
             do {
                 try loadDefaultData()
+                defaults.setBool(true, forKey: hasRunKey)
             } catch {
                 print("Caught error: \(error)")
                 return false
