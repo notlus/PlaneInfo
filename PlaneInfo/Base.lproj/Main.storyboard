@@ -54,7 +54,6 @@
                                                         </label>
                                                     </subviews>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="0.98710867869999996" green="0.62231624070000002" blue="0.1398925982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="r4R-OC-p1B" firstAttribute="leading" secondItem="S76-gt-EIN" secondAttribute="leading" constant="48" id="0pt-tv-hrr"/>
                                                         <constraint firstItem="UAc-py-Gse" firstAttribute="leading" secondItem="r4R-OC-p1B" secondAttribute="trailing" constant="17" id="KfX-zg-lDe"/>
@@ -64,7 +63,6 @@
                                                 </view>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="S76-gt-EIN" secondAttribute="trailing" id="N6w-Xf-Ucp"/>
                                                 <constraint firstItem="S76-gt-EIN" firstAttribute="leading" secondItem="7P9-Je-152" secondAttribute="leading" id="WWc-8a-n3A"/>
@@ -73,7 +71,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="categoryImageView" destination="r4R-OC-p1B" id="ZQY-1Z-dl2"/>
                                             <outlet property="categoryView" destination="S76-gt-EIN" id="ZRk-8p-N6N"/>
