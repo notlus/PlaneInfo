@@ -48,7 +48,7 @@ Note that before building the path to the "categories.plist" file must be update
 * **PlaneDownloader** is buggy and crashes processing some data.
 * The heuristics used to categorize and gather aircraft data are not very good, so the accuracy of some of the categorization is poor.
 * The detailed aircraft data is incomplete due to the varying ways that the data is made available in [DBPedia](http://wiki.dbpedia.org).
-* As I am far from a designer, the UI needs some help
+* As I am far from a designer, the UI needs some help.
 
 ## Future Plans
 
