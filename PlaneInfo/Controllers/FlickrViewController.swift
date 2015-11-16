@@ -38,7 +38,11 @@ class FlickrViewController: UIViewController,
         }
     }
     @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var infoView: FlickrInfoView! {
+        didSet {
+            infoView.hidden = true
+        }
+    }
     
     @IBOutlet weak var noImagesLabel: UILabel! {
         didSet {
@@ -67,8 +71,13 @@ class FlickrViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityView.startAnimating()
-        downloadPhotos()
+        if FlickrClient.connectedToNetwork() {
+            infoView.showDownloading(true)
+            downloadPhotos()
+        } else {
+            print("No internet connection")
+            infoView.showNoInternet(true)
+        }
     }
 
     // MARK: Actions
@@ -170,11 +179,17 @@ class FlickrViewController: UIViewController,
     
     // MARK:  Private Functions
     
+    
+    /// Use the Flickr search API to find photos for `searchTerm`
     private func downloadPhotos() -> Void {
         if let searchTerm = searchTerm {
             FlickrClient.sharedInstance.downloadImagesForSearchTerm(searchTerm) { (photos, error) -> () in
                 if let error = error {
                     print("Error: \(error) downloading images")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.infoView.showDownloadError("A timeout occurred while downloading photos, please retry")
+                    })
+                    
                     return
                 }
                 
@@ -185,7 +200,7 @@ class FlickrViewController: UIViewController,
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.collectionView.hidden = false
-                    self.activityView.stopAnimating()
+                    self.infoView.showDownloading(false)
                 })
             }
         }

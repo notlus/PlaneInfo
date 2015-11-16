@@ -18,6 +18,7 @@
 		3783306F1BF2EB9100AF650D /* CollectionViewPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783306E1BF2EB9100AF650D /* CollectionViewPhotoCell.swift */; };
 		379B299F1BBE530000508701 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B299E1BBE530000508701 /* main.swift */; };
 		379B29A41BBE53DE00508701 /* DBDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B29A31BBE53DE00508701 /* DBDownloader.swift */; };
+		37B1FE601BF96365007F08EE /* FlickrInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B1FE5F1BF96365007F08EE /* FlickrInfoView.swift */; };
 		37C0624C1BED7F0F009334B5 /* PlaneInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */; };
 		37CBEAD61BEC992D003D1A14 /* AircraftContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD01BEC992D003D1A14 /* AircraftContainerViewController.swift */; };
 		37CBEAD71BEC992D003D1A14 /* AircraftDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */; };
@@ -84,6 +85,7 @@
 		379B299C1BBE530000508701 /* DBDownloader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DBDownloader; sourceTree = BUILT_PRODUCTS_DIR; };
 		379B299E1BBE530000508701 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		379B29A31BBE53DE00508701 /* DBDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBDownloader.swift; sourceTree = "<group>"; };
+		37B1FE5F1BF96365007F08EE /* FlickrInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrInfoView.swift; sourceTree = "<group>"; };
 		37C0624A1BED5E1A009334B5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlaneInfo/Info.plist; sourceTree = SOURCE_ROOT; };
 		37CBEAD01BEC992D003D1A14 /* AircraftContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftContainerViewController.swift; sourceTree = "<group>"; };
 		37CBEAD11BEC992D003D1A14 /* AircraftDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftDetailsTableViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				37CBEAF11BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift */,
 				37CBEADF1BEC998A003D1A14 /* GalleryCollectionViewCell.swift */,
 				37F989C61BF08F0100238155 /* CategoryTableViewCell.swift */,
+				37B1FE5F1BF96365007F08EE /* FlickrInfoView.swift */,
 			);
 			name = Views;
 			path = PlaneInfo/Views;
@@ -408,6 +411,7 @@
 				37CBEAE01BEC998A003D1A14 /* GalleryCollectionViewCell.swift in Sources */,
 				37CBEADA1BEC992D003D1A14 /* AircraftTableViewController.swift in Sources */,
 				37CBEAD61BEC992D003D1A14 /* AircraftContainerViewController.swift in Sources */,
+				37B1FE601BF96365007F08EE /* FlickrInfoView.swift in Sources */,
 				37CBEAEE1BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld in Sources */,
 				37CBEAF61BEC9AC9003D1A14 /* AppDelegate.swift in Sources */,
 				3783306F1BF2EB9100AF650D /* CollectionViewPhotoCell.swift in Sources */,

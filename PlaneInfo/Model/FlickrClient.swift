@@ -86,7 +86,6 @@ public class FlickrClient {
                 if let photoString = photoData[APIConstants.EXTRAS] as? String,
                     let photoURL = NSURL(string: photoString) {
                     let filename = "\(NSDate().timeIntervalSince1970)-\(arc4random())"
-//                        let fullPath = self.cachesDirectory
                         let fullPath = "\(self.cachesDirectory)/\(filename)"
                         
                         return FlickrPhoto(localPath: NSURL(string: fullPath)!, remotePath: photoURL, downloaded: false)
@@ -124,7 +123,29 @@ public class FlickrClient {
         return UIImage(contentsOfFile: fullPath.path!)
     }
 
-    /// Using the supplied arguments, download images from Flickr. On completion, call the 
+    static func connectedToNetwork() -> Bool {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(&zeroAddress, {
+            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        }) else {
+            return false
+        }
+        
+        var flags : SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.Reachable)
+        let needsConnection = flags.contains(.ConnectionRequired)
+        return (isReachable && !needsConnection)
+    }
+
+    /// Using the supplied arguments, download images from Flickr. On completion, call the
     /// completion handler. The completion handler takes an array of `[String: AnyObject]`, where
     /// each element represents a photo from Flickr.
     private func getImageFromFlickr(arguments: [String: String], completion: (photoPaths: [[String: AnyObject]], error: NSError?) -> ()) {
@@ -135,6 +156,7 @@ public class FlickrClient {
             let task = session.dataTaskWithRequest(request) { data, response, error in
                 if let err = error {
                     print("Request failed with error=\(err)")
+                    completion(photoPaths: [[String: AnyObject]](), error: err)
                 }
                 else {
                     print("Request succeeded")
@@ -152,7 +174,7 @@ public class FlickrClient {
                         completion(photoPaths: photoArray, error: nil)
                     }
                     else {
-                        completion(photoPaths: [[String: AnyObject]](), error: NSError(domain: "FlickrClient", code: FlickrClient.NO_PHOTOS_FOUND, userInfo: nil))
+                        completion(photoPaths: [[String: AnyObject]](), error: NSError(domain: self.FLICKR_CLIENT_DOMAIN, code: FlickrClient.NO_PHOTOS_FOUND, userInfo: nil))
                     }
                 }
             }
@@ -183,27 +205,5 @@ public class FlickrClient {
 
     private func createBoundingBox(lat: Double, _ lon: Double) -> String {
         return "\(floor(lon)),\(floor(lat)),\(ceil(lon)),\(ceil(lat))"
-    }
-
-    func connectedToNetwork() -> Bool {
-        
-        var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-        
-        guard let defaultRouteReachability = withUnsafePointer(&zeroAddress, {
-            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
-        }) else {
-            return false
-        }
-        
-        var flags : SCNetworkReachabilityFlags = []
-        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
-            return false
-        }
-        
-        let isReachable = flags.contains(.Reachable)
-        let needsConnection = flags.contains(.ConnectionRequired)
-        return (isReachable && !needsConnection)
     }
 }

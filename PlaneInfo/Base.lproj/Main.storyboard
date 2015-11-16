@@ -903,7 +903,46 @@
                                     <action selector="addPhotos" destination="gUj-Ci-ZW0" eventType="touchUpInside" id="1XK-e1-jju"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pND-sW-an4">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-3j-2fq" customClass="FlickrInfoView" customModule="PlaneInfo" customModuleProvider="target">
+                                <rect key="frame" x="129" y="175" width="343" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unable to connect to the Internet. Please check your connection and retry." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKh-Wm-dKG">
+                                        <rect key="frame" x="0.0" y="80" width="343" height="66"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="WEk-Yc-bth"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KNt-SF-VOo">
+                                        <rect key="frame" x="153" y="150" width="37" height="37"/>
+                                        <animations/>
+                                        <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k9-8h-crP">
+                                        <rect key="frame" x="153" y="154" width="37" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Retry"/>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="CKh-Wm-dKG" firstAttribute="leading" secondItem="4J4-3j-2fq" secondAttribute="leading" id="0EW-OI-0X2"/>
+                                    <constraint firstItem="CKh-Wm-dKG" firstAttribute="top" secondItem="4J4-3j-2fq" secondAttribute="top" constant="80" id="0MN-ei-bwP"/>
+                                    <constraint firstItem="7k9-8h-crP" firstAttribute="top" secondItem="CKh-Wm-dKG" secondAttribute="bottom" constant="8" symbolic="YES" id="3Qq-ZU-LtT"/>
+                                    <constraint firstItem="CKh-Wm-dKG" firstAttribute="centerX" secondItem="7k9-8h-crP" secondAttribute="centerX" id="bvd-b5-IwM"/>
+                                    <constraint firstAttribute="width" constant="343" id="fDL-gn-xth"/>
+                                    <constraint firstAttribute="trailing" secondItem="CKh-Wm-dKG" secondAttribute="trailing" id="veN-fh-eDP"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="activityView" destination="KNt-SF-VOo" id="jFg-Pl-nAN"/>
+                                    <outlet property="infoLabel" destination="CKh-Wm-dKG" id="pC6-we-cQJ"/>
+                                    <outlet property="retryButton" destination="7k9-8h-crP" id="IQN-dd-Sol"/>
+                                </connections>
+                            </view>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pND-sW-an4">
                                 <rect key="frame" x="0.0" y="44" width="600" height="510"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -969,11 +1008,6 @@
                                     <outlet property="delegate" destination="gUj-Ci-ZW0" id="Hcg-Z1-Tfv"/>
                                 </connections>
                             </collectionView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KNt-SF-VOo">
-                                <rect key="frame" x="282" y="282" width="37" height="37"/>
-                                <animations/>
-                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -983,20 +1017,21 @@
                             <constraint firstItem="cmy-ce-zqm" firstAttribute="top" secondItem="oaI-Mm-ysj" secondAttribute="bottom" id="6bV-yh-r3R"/>
                             <constraint firstAttribute="trailing" secondItem="cmy-ce-zqm" secondAttribute="trailing" id="A7V-dh-YAe"/>
                             <constraint firstItem="5jm-R7-5K8" firstAttribute="top" secondItem="WtS-Hz-5gx" secondAttribute="bottom" id="A8b-OS-jyG"/>
+                            <constraint firstItem="WtS-Hz-5gx" firstAttribute="top" secondItem="4J4-3j-2fq" secondAttribute="bottom" constant="128" id="EJ5-fA-AB8"/>
                             <constraint firstItem="WtS-Hz-5gx" firstAttribute="top" secondItem="pND-sW-an4" secondAttribute="bottom" constant="-1" id="Grd-xj-2UV"/>
                             <constraint firstItem="WtS-Hz-5gx" firstAttribute="leading" secondItem="pNk-VU-njc" secondAttribute="leadingMargin" constant="-20" id="HeV-2d-PN9"/>
-                            <constraint firstItem="KNt-SF-VOo" firstAttribute="centerX" secondItem="pNk-VU-njc" secondAttribute="centerX" id="Hyu-Ul-jON"/>
-                            <constraint firstItem="KNt-SF-VOo" firstAttribute="centerY" secondItem="pNk-VU-njc" secondAttribute="centerY" id="OZa-3o-mg6"/>
                             <constraint firstItem="pND-sW-an4" firstAttribute="width" secondItem="WtS-Hz-5gx" secondAttribute="width" id="Tmb-Hi-1Jz"/>
+                            <constraint firstItem="4J4-3j-2fq" firstAttribute="centerX" secondItem="pNk-VU-njc" secondAttribute="centerX" id="ZrO-iX-97H"/>
                             <constraint firstItem="pND-sW-an4" firstAttribute="leading" secondItem="WtS-Hz-5gx" secondAttribute="leading" id="aAc-o7-fil"/>
+                            <constraint firstItem="4J4-3j-2fq" firstAttribute="top" secondItem="cmy-ce-zqm" secondAttribute="bottom" constant="131" id="i8M-cy-X4F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WtS-Hz-5gx" secondAttribute="trailing" constant="-20" id="kwh-rg-oxn"/>
                             <constraint firstItem="pND-sW-an4" firstAttribute="top" secondItem="oaI-Mm-ysj" secondAttribute="bottom" constant="44" id="qtc-bb-uXL"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityView" destination="KNt-SF-VOo" id="V3V-FW-tla"/>
                         <outlet property="collectionButton" destination="WtS-Hz-5gx" id="naH-vN-tUc"/>
                         <outlet property="collectionView" destination="pND-sW-an4" id="uXY-ey-Fa0"/>
+                        <outlet property="infoView" destination="4J4-3j-2fq" id="cEI-jl-O74"/>
                         <outlet property="navigationBar" destination="cmy-ce-zqm" id="b2E-KD-GxI"/>
                     </connections>
                 </viewController>
