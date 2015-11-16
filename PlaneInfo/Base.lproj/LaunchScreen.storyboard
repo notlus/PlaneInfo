@@ -28,19 +28,23 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozn-1S-woy">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="f9N-l2-hT8"/>
+                                    <constraint firstAttribute="height" constant="49" id="f9N-l2-hT8"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="PW2-Qo-8ds"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="VZV-UU-huV"/>
                                     <barButtonItem image="Categories" id="uaz-xp-mEH"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lRK-LC-aPp"/>
-                                    <barButtonItem image="Categories" id="lZj-gK-lTn"/>
+                                    <barButtonItem image="Airplane" id="lZj-gK-lTn">
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SL7-Mo-zHc"/>
-                                    <barButtonItem image="Star" id="l9X-kJ-3JL"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Kxu-2r-8XT"/>
+                                    <barButtonItem image="Star" id="l9X-kJ-3JL">
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="fJS-Sw-jE6"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -62,6 +66,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Airplane" width="25" height="25"/>
         <image name="Categories" width="24" height="24"/>
         <image name="Star" width="24" height="24"/>
     </resources>
