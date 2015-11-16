@@ -41,11 +41,4 @@ class AircraftPhotoViewController: UIViewController {
         // No status bar
         return true
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-
-    }
 }
