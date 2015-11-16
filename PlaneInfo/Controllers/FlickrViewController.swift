@@ -195,7 +195,13 @@ class FlickrViewController: UIViewController,
                 if let error = error {
                     print("Error: \(error) downloading images")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.infoView.showDownloadError("A timeout occurred while downloading photos, please retry")
+                        if let error = error as? FlickrClientError {
+                            if error == FlickrClientError.NoPhotosFound {
+                                self.infoView.showNoPhotos()
+                            }
+                        } else {
+                            self.infoView.showDownloadError("A timeout occurred while downloading photos, please retry")
+                        }
                     })
                     
                     return

@@ -44,4 +44,12 @@ class FlickrInfoView: UIView {
         retryButton.hidden = false
         activityView.stopAnimating()
     }
+    
+    func showNoPhotos() {
+        hidden = false
+        infoLabel.hidden = false
+        infoLabel.text = "No photos found for this aircraft"
+        retryButton.hidden = true
+        activityView.stopAnimating()
+    }
 }

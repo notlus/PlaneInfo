@@ -15,6 +15,21 @@ struct FlickrPhoto {
     var downloaded: Bool
 }
 
+enum FlickrClientError: ErrorType {
+    case InvalidSearch(String)
+    case NoPhotosFound
+    case Unknown
+}
+
+extension FlickrClientError: Equatable {}
+
+func ==(lhs: FlickrClientError, rhs: FlickrClientError) -> Bool {
+    switch (lhs, rhs) {
+    default:
+        return lhs._code == rhs._code
+    }
+}
+
 public class FlickrClient {
     
     static let sharedInstance = FlickrClient()
@@ -28,18 +43,10 @@ public class FlickrClient {
         static let MAX_PAGE = "210"
     }
 
-    enum FlickClientError : ErrorType {
-        case InvalidSearch(String)
-        case NoPhotosFound
-        case Unknown
-    }
-
     private let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     private let session = NSURLSession.sharedSession()
     
     private let FLICKR_CLIENT_DOMAIN = "com.notlus.flickr"
-    
-    private static let NO_PHOTOS_FOUND = 1000
     
     private lazy var documentsDirectory: NSURL = {
         return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
@@ -54,7 +61,7 @@ public class FlickrClient {
     func downloadImagesForSearchTerm(searchTerm: String, completion: (photos: [FlickrPhoto]?, error: ErrorType?) -> ()) {
         if searchTerm.isEmpty {
             print("Nothing to search for")
-            let error = FlickClientError.InvalidSearch(searchTerm)
+            let error = FlickrClientError.InvalidSearch(searchTerm)
             completion(photos: nil, error: error)
         }
         
@@ -148,7 +155,7 @@ public class FlickrClient {
     /// Using the supplied arguments, download images from Flickr. On completion, call the
     /// completion handler. The completion handler takes an array of `[String: AnyObject]`, where
     /// each element represents a photo from Flickr.
-    private func getImageFromFlickr(arguments: [String: String], completion: (photoPaths: [[String: AnyObject]], error: NSError?) -> ()) {
+    private func getImageFromFlickr(arguments: [String: String], completion: (photoPaths: [[String: AnyObject]], error: ErrorType?) -> ()) {
         
         // Create a URL from the arguments
         if let flickrURL = createURLFromArguments(arguments) {
@@ -174,7 +181,7 @@ public class FlickrClient {
                         completion(photoPaths: photoArray, error: nil)
                     }
                     else {
-                        completion(photoPaths: [[String: AnyObject]](), error: NSError(domain: self.FLICKR_CLIENT_DOMAIN, code: FlickrClient.NO_PHOTOS_FOUND, userInfo: nil))
+                        completion(photoPaths: [[String: AnyObject]](), error: FlickrClientError.NoPhotosFound) //NSError(domain: self.FLICKR_CLIENT_DOMAIN, code: FlickClientError.NoPhotosFound, userInfo: nil))
                     }
                 }
             }
