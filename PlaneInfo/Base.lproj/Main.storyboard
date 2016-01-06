@@ -415,7 +415,7 @@
         <!--Aircraft-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Aircraft" id="BYZ-38-t0r" customClass="AircraftTableViewController" customModule="PlaneInfo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Aircraft" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="AircraftTableViewController" customModule="PlaneInfo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -429,7 +429,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AircraftCell" id="Pbm-tT-Zkk" customClass="AllAircraftTableViewCell" customModule="PlaneInfo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="70"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pbm-tT-Zkk" id="HUS-6K-ziI">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
@@ -994,8 +994,8 @@
         <image name="Star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nfz-Az-sfQ"/>
-        <segue reference="vvK-Ia-dcl"/>
+        <segue reference="y1K-Zs-KaH"/>
+        <segue reference="4bw-Hf-2AF"/>
         <segue reference="mYe-TV-49I"/>
     </inferredMetricsTieBreakers>
 </document>
