@@ -21,6 +21,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
     @IBOutlet weak var aircraftIntroduced: NSTextField!
     @IBOutlet weak var nextButton: NSButton!
     @IBOutlet weak var previousButton: NSButton!
+    @IBOutlet weak var aircraftNumber: NSTextField!
 
     /// Factory method to create an instance of `EditorMainWindowController`
     class func Create() -> EditorMainWindowController {
@@ -36,7 +37,23 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
     private var aircraft = [Aircraft]()
     
     // The currently selected `Aircraft`
-    private var currentIndex = 0
+    private var currentIndex = 0 {
+        didSet {
+            if currentIndex == 0 {
+                previousButton.enabled = false
+            } else {
+                previousButton.enabled = true
+            }
+            
+            if currentIndex == aircraft.count {
+                nextButton.enabled = false
+            } else {
+                nextButton.enabled = true
+            }
+
+            aircraftNumber.stringValue = "\(currentIndex + 1) of \(aircraft.count)"
+        }
+    }
     
     // Track whether any data has be modified
     private var dirty = false
@@ -50,7 +67,8 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
 
 //        showOpenPanel("Choose the data store") { (selectedFile) -> Void in
 //            print("Chose file \(selectedFile)")
-            self.fetchAircraft()
+            self.aircraft = try! self.fetchAircraft() ?? [Aircraft]()
+            self.currentIndex = 0
 //        }
         
         self.populateUI()
@@ -102,8 +120,6 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
         switch textField {
         case aircraftName:
             currentAircraft.name = textField.stringValue
-//        case aircraftAbstract:
-//            currentAircraft.abstract = textField.stringValue
         case numberBuilt:
             currentAircraft.numberBuilt = textField.stringValue
         case aircraftCountry:
@@ -142,28 +158,18 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
         }
     }
 
-    private func fetchAircraft() {
+    private func fetchAircraft() throws -> [Aircraft]? {
         let fetchRequest = NSFetchRequest(entityName: "Aircraft")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
-        let fetchResults = try! sharedContext.executeFetchRequest(fetchRequest)
-        print("Fetched \(fetchResults.count) results")
-        aircraft = fetchResults as? [Aircraft] ?? [Aircraft]()
+//        let fetchResults = try! sharedContext.executeFetchRequest(fetchRequest)
+//        print("Fetched \(fetchResults.count) results")
+//        aircraft = fetchResults as? [Aircraft] ?? [Aircraft]()
+        
+        return try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft]
     }
     
     private func populateUI() {
-        if currentIndex == 0 {
-            previousButton.enabled = false
-        } else {
-            previousButton.enabled = true
-        }
-        
-        if currentIndex == aircraft.count {
-            nextButton.enabled = false
-        } else {
-            nextButton.enabled = true
-        }
-        
         let currentAircraft = aircraft[currentIndex]
         aircraftName.stringValue = currentAircraft.name
         aircraftAbstract.string = currentAircraft.abstract
