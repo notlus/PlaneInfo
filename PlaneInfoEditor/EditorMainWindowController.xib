@@ -19,6 +19,7 @@
                 <outlet property="nextButton" destination="BNc-Do-eLu" id="cO6-82-aWR"/>
                 <outlet property="numberBuilt" destination="aAK-h3-eJY" id="5nX-Yf-c9m"/>
                 <outlet property="previousButton" destination="A8U-2n-Vtx" id="hXj-hO-OU2"/>
+                <outlet property="thumnailImageView" destination="rS9-TW-SHH" id="fSl-k9-UUu"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -31,7 +32,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="679" height="411"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4GJ-Wc-XeC">
                         <rect key="frame" x="31" y="347" width="351" height="28"/>
@@ -275,6 +276,13 @@
                             <real value="3.4028234663852886e+38"/>
                         </customSpacing>
                     </stackView>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rS9-TW-SHH">
+                        <rect key="frame" x="28" y="8" width="196" height="91"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="190" id="JWl-5r-3Sx"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="photo" image="NoPhotoImage" id="Ri2-Xj-FA8"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="61m-o1-Ati" secondAttribute="bottom" constant="122" id="0CA-1k-ZZw"/>
@@ -288,7 +296,9 @@
                     <constraint firstAttribute="trailing" secondItem="boD-T8-Sj0" secondAttribute="trailing" constant="32" id="6DK-0C-RmK"/>
                     <constraint firstItem="gBW-vF-uoo" firstAttribute="leading" secondItem="bCl-tb-WaX" secondAttribute="leading" id="6e5-ey-wOr"/>
                     <constraint firstAttribute="trailing" secondItem="zoY-sn-ZYZ" secondAttribute="trailing" constant="95" id="81R-gi-FlC"/>
+                    <constraint firstItem="rS9-TW-SHH" firstAttribute="leading" secondItem="61m-o1-Ati" secondAttribute="leading" id="8xM-DU-vky"/>
                     <constraint firstItem="FRt-5t-7Dk" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="31" id="9pf-rd-x6h"/>
+                    <constraint firstItem="rS9-TW-SHH" firstAttribute="bottom" secondItem="UCh-i9-EQ8" secondAttribute="bottom" id="AP3-Jk-Ody"/>
                     <constraint firstItem="4GJ-Wc-XeC" firstAttribute="baseline" secondItem="aAK-h3-eJY" secondAttribute="baseline" id="Ae7-sH-PZb"/>
                     <constraint firstItem="lIl-MG-FzU" firstAttribute="leading" secondItem="aAK-h3-eJY" secondAttribute="leading" id="C05-fF-jnu"/>
                     <constraint firstItem="bCl-tb-WaX" firstAttribute="baseline" secondItem="meg-v4-cV4" secondAttribute="baseline" id="C3b-ng-ZQJ"/>
@@ -319,6 +329,7 @@
                     <constraint firstAttribute="bottom" secondItem="mzp-Is-3Ov" secondAttribute="bottom" constant="119" id="jPF-iM-8cN"/>
                     <constraint firstItem="lIl-MG-FzU" firstAttribute="baseline" secondItem="FRt-5t-7Dk" secondAttribute="baseline" id="len-8d-z25"/>
                     <constraint firstItem="boD-T8-Sj0" firstAttribute="top" secondItem="zci-1P-rih" secondAttribute="bottom" id="mLe-nG-9i3"/>
+                    <constraint firstItem="rS9-TW-SHH" firstAttribute="top" secondItem="61m-o1-Ati" secondAttribute="bottom" constant="26" id="o9l-5N-SRg"/>
                     <constraint firstItem="hsI-cx-pdX" firstAttribute="top" secondItem="meg-v4-cV4" secondAttribute="bottom" constant="6" id="ptR-kB-yQl"/>
                     <constraint firstItem="lIl-MG-FzU" firstAttribute="trailing" secondItem="bCl-tb-WaX" secondAttribute="trailing" id="rXv-l9-qcx"/>
                     <constraint firstItem="dzy-fU-aRR" firstAttribute="top" secondItem="zoY-sn-ZYZ" secondAttribute="bottom" constant="1" id="wX7-iM-Nrm"/>
@@ -335,4 +346,7 @@
             <point key="canvasLocation" x="549.5" y="322.5"/>
         </window>
     </objects>
+    <resources>
+        <image name="NoPhotoImage" width="312" height="200"/>
+    </resources>
 </document>

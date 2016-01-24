@@ -22,6 +22,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
     @IBOutlet weak var nextButton: NSButton!
     @IBOutlet weak var previousButton: NSButton!
     @IBOutlet weak var aircraftNumber: NSTextField!
+    @IBOutlet weak var thumnailImageView: NSImageView!
 
     /// Factory method to create an instance of `EditorMainWindowController`
     class func Create() -> EditorMainWindowController {
@@ -64,7 +65,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-
+        
 //        showOpenPanel("Choose the data store") { (selectedFile) -> Void in
 //            print("Chose file \(selectedFile)")
             self.aircraft = try! self.fetchAircraft() ?? [Aircraft]()
@@ -72,6 +73,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
 //        }
         
         self.populateUI()
+        window?.title = "Plane Editor" //self.aircraft[currentIndex].name
     }
     
     // MARK: Actions
@@ -162,10 +164,6 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
         let fetchRequest = NSFetchRequest(entityName: "Aircraft")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
-//        let fetchResults = try! sharedContext.executeFetchRequest(fetchRequest)
-//        print("Fetched \(fetchResults.count) results")
-//        aircraft = fetchResults as? [Aircraft] ?? [Aircraft]()
-        
         return try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft]
     }
     
@@ -178,5 +176,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
         aircraftCrew.stringValue = currentAircraft.crew
         aircraftManufacturer.stringValue = currentAircraft.manufacturer
         aircraftIntroduced.stringValue = currentAircraft.yearIntroduced
+        let image = NSImage(data: currentAircraft.thumbnail)
+        thumnailImageView.image = image ?? NSImage(named: "NoPhotoImage")
     }
 }
