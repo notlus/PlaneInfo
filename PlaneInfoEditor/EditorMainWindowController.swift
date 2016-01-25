@@ -8,7 +8,11 @@
 
 import Cocoa
 
-class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
+protocol UpdateImage {
+    func updateImage(newImage: NSImage?)
+}
+
+class EditorMainWindowController: NSWindowController, NSTextViewDelegate, UpdateImage {
 
     // MARK: Outlets
     
@@ -22,7 +26,11 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
     @IBOutlet weak var nextButton: NSButton!
     @IBOutlet weak var previousButton: NSButton!
     @IBOutlet weak var aircraftNumber: NSTextField!
-    @IBOutlet weak var thumnailImageView: NSImageView!
+    @IBOutlet weak var thumnailImageView: AircraftImageView! {
+        didSet {
+            thumnailImageView.delegate = self
+        }
+    }
 
     /// Factory method to create an instance of `EditorMainWindowController`
     class func Create() -> EditorMainWindowController {
@@ -117,6 +125,14 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate {
         currentAircraft.abstract = textView.string!
     }
     
+    func updateImage(newImage: NSImage?) {
+        print("updateImage")
+        if let image = newImage {
+            currentAircraft.thumbnail = image.TIFFRepresentation!
+            try! sharedContext.save()
+        }
+    }
+
     private func updateAircraft(textField: NSTextField) {
         print("Updating aircraft")
         switch textField {
