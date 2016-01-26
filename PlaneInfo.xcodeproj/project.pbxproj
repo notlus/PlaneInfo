@@ -91,7 +91,6 @@
 		3727C7D11BE7D505006E451B /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		37396DEE1C49ECCD00AD19FB /* PlaneInfoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaneInfoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37396DF01C49ECCD00AD19FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		37396DF31C49ECCD00AD19FB /* PlaneInfoEditor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlaneInfoEditor.xcdatamodel; sourceTree = "<group>"; };
 		37396DF51C49ECCD00AD19FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37396DF81C49ECCD00AD19FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		37396DFA1C49ECCD00AD19FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,7 +185,6 @@
 				37396DF51C49ECCD00AD19FB /* Assets.xcassets */,
 				37396DF71C49ECCD00AD19FB /* MainMenu.xib */,
 				37396DFA1C49ECCD00AD19FB /* Info.plist */,
-				37396DF21C49ECCD00AD19FB /* PlaneInfoEditor.xcdatamodeld */,
 				37396DFF1C49EFE200AD19FB /* EditorMainWindowController.swift */,
 				37396E001C49EFE200AD19FB /* EditorMainWindowController.xib */,
 				3722D18A1C5556620083297F /* AircraftImageView.swift */,
@@ -823,16 +821,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		37396DF21C49ECCD00AD19FB /* PlaneInfoEditor.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				37396DF31C49ECCD00AD19FB /* PlaneInfoEditor.xcdatamodel */,
-			);
-			currentVersion = 37396DF31C49ECCD00AD19FB /* PlaneInfoEditor.xcdatamodel */;
-			path = PlaneInfoEditor.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
