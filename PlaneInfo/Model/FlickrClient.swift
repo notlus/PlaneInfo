@@ -7,7 +7,16 @@
 
 import Foundation
 import SystemConfiguration
-import UIKit
+#if os(iOS)
+    import UIKit
+    typealias XAppDelegate = NSApplicationDelegate
+    typealias XImage = UIImage
+#else
+    import AppKit
+    typealias XApplication = NSApplication
+    typealias XAppDelegate = NSApplicationDelegate
+    typealias XImage = NSImage
+#endif
 
 struct FlickrPhoto {
     var localPath: NSURL
@@ -17,6 +26,7 @@ struct FlickrPhoto {
 
 enum FlickrClientError: ErrorType {
     case InvalidSearch(String)
+    case InvalidGroupID
     case NoPhotosFound
     case Unknown
 }
@@ -38,12 +48,13 @@ public class FlickrClient {
         static let API_KEY = "7a7950524c71e50ecca5e2bd7535fe69"
         static let BASE_URL = "https://api.flickr.com/services/rest/"
         static let API_METHOD = "flickr.photos.search"
+        static let GROUP_API_METHOD = "flickr.groups.pools.getPhotos"
         static let FORMAT = "json"
         static let EXTRAS = "url_m"
         static let MAX_PAGE = "210"
     }
 
-    private let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    private let appDelegate = XApplication.sharedApplication().delegate
     private let session = NSURLSession.sharedSession()
     
     private let FLICKR_CLIENT_DOMAIN = "com.notlus.flickr"
@@ -55,7 +66,7 @@ public class FlickrClient {
     private lazy var cachesDirectory: NSURL = {
         return NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
     }()
-
+    
     /// Given a search term, attempt to download images from Flickr. Call the provided
     /// completion handler, providing an array of `Photo` instances or an error, when done.
     func downloadImagesForSearchTerm(searchTerm: String, completion: (photos: [FlickrPhoto]?, error: ErrorType?) -> ()) {
@@ -84,9 +95,8 @@ public class FlickrClient {
             
             print("Got \(photosData.count) photos")
             
-            // Create an array of tuples, where the tuple contains the remote and local URLs for the
-            // image.
-            let photos = photosData.map({(photoData: [String: AnyObject]) -> (FlickrPhoto) in
+            // Map from an array photos to an array of `FlickrPhoto`
+            let photos = photosData.flatMap({(photoData: [String: AnyObject]) -> (FlickrPhoto?) in
 
                 // Get the URL for the photo and create a tuple of the remote URL and a generated
                 // filename
@@ -98,12 +108,83 @@ public class FlickrClient {
                         return FlickrPhoto(localPath: NSURL(string: fullPath)!, remotePath: photoURL, downloaded: false)
                 }
 
-                return FlickrPhoto(localPath: NSURL(), remotePath: NSURL(), downloaded: false)
+                return nil
             })
+            
             completion(photos: photos, error: nil)
         }
     }
 
+    func downloadPhotosForGroup(groupID: String, completion: (photos: [FlickrPhoto]?, error: ErrorType?) -> Void) -> Void {
+        if groupID.isEmpty {
+            print("No group ID provided")
+            let error = FlickrClientError.InvalidGroupID
+            completion(photos: nil, error: error)
+            return
+        }
+        
+        var methodArguments = [
+            "method": APIConstants.GROUP_API_METHOD,
+            "api_key": APIConstants.API_KEY,
+            "format": APIConstants.FORMAT,
+            "extras": "url_m, url_l, url_o, license, description", //APIConstants.EXTRAS,
+            "per_page": "500", // APIConstants.MAX_PAGE,
+            "group_id": groupID,
+            "nojsoncallback": "1",
+            ]
+        
+        for var i: Int = 0; i < 10; i = i + 1 {
+            print("Page \(i)")
+            methodArguments["page"] = "\(i)"
+            getImageFromFlickr(methodArguments) { (photosData, error) -> () in
+                if let error = error {
+                    print("Received an error downloading photos: \(error)")
+                    completion(photos: nil, error: error)
+                    return
+                }
+                
+                print("Got \(photosData.count) photos")
+                
+                // Map from an array photos to an array of `FlickrPhoto`
+                let photos = photosData.flatMap({(photoData: [String: AnyObject]) -> (FlickrPhoto?) in
+                    
+                    // Get the URL for the photo and create a tuple of the remote URL and a generated
+                    // filename
+                    var photoString = ""
+                    if let o = photoData["url_m"] as? String {
+                        photoString = o
+                    } else if let l = photoData["url_l"] as? String {
+                        photoString = l
+                    }
+                    
+                    if let photoURL = NSURL(string: photoString) {
+                        //                    print("description: \(photoData["description"])")
+                        
+                        let license = photoData["license"] as! String
+                        
+                        var title = photoData["title"] as? NSString ?? ""
+                        title = title.stringByReplacingOccurrencesOfString("\"", withString: "")
+                        title = title.stringByReplacingOccurrencesOfString(" ", withString: "-")
+                        title = title.stringByReplacingOccurrencesOfString("|", withString: "-")
+                        let filename = "license-\(license)-\(title)-\(NSDate().timeIntervalSince1970)-\(arc4random())"
+                        let fullPath = "\(self.documentsDirectory)Flickr/\(filename)"
+                        
+                        if let fileURL = NSURL(string: fullPath) {
+                            if license != "0" {
+                                return FlickrPhoto(localPath: fileURL, remotePath: photoURL, downloaded: false)
+                            }
+                        }
+                    }
+                    
+                    return nil
+                })
+                
+                completion(photos: photos, error: nil)
+            }
+            
+        }
+    }
+    
     func downloadImageForPhoto(photo: FlickrPhoto) -> NSData? {
         let data: NSData
         do {
@@ -121,15 +202,17 @@ public class FlickrClient {
         return data
     }
 
-    func getLocalPhoto(photo: Photo) -> UIImage? {
+#if os(iOS)
+    func getLocalPhoto(photo: Photo) -> XImage? {
         guard let fullPath = NSURL(string: photo.localPath, relativeToURL: appDelegate.galleryPath)  else {
             print("Failed to create full path from \(photo.localPath) and \(appDelegate.galleryPath)")
             return nil
         }
 
-        return UIImage(contentsOfFile: fullPath.path!)
+        return XImage(contentsOfFile: fullPath.path!)
     }
-
+#endif
+    
     static func connectedToNetwork() -> Bool {
         
         var zeroAddress = sockaddr_in()
@@ -181,7 +264,7 @@ public class FlickrClient {
                         completion(photoPaths: photoArray, error: nil)
                     }
                     else {
-                        completion(photoPaths: [[String: AnyObject]](), error: FlickrClientError.NoPhotosFound) //NSError(domain: self.FLICKR_CLIENT_DOMAIN, code: FlickClientError.NoPhotosFound, userInfo: nil))
+                        completion(photoPaths: [[String: AnyObject]](), error: FlickrClientError.NoPhotosFound)
                     }
                 }
             }
