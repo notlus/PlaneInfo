@@ -8,13 +8,14 @@
 
 import CoreData
 
-private let SQLITE_FILE_NAME        = "PlaneInfo.sqlite"
+//private let SQLITE_FILE_NAME        = "PlaneInfo.sqlite"
 private let kCoreDataErrorDomain    = "com.notlus.planeinfo.coredata"
 
 class CoreDataManager {
     // MARK: - Core Data stack
     
     static let sharedInstance = CoreDataManager()
+    var SQLITE_FILE_NAME = "PlaneInfo.sqlite"
     
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.notlus.PlaneInfo" in the application's documents Application Support directory.
@@ -28,11 +29,11 @@ class CoreDataManager {
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
+    lazy private var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(SQLITE_FILE_NAME)
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(self.SQLITE_FILE_NAME)
 
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
