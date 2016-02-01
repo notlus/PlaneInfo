@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-/// A struct that represents the results of a DBPedia lookup operation
+/// Represents the results of a DBPedia lookup operation.
 struct DBPediaLookupResult {
     var resourceURI: String
     var label: String
