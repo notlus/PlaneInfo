@@ -80,8 +80,11 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
             self.currentIndex = 0
 //        }
         
-        self.populateUI()
-        window?.title = "Plane Editor" //self.aircraft[currentIndex].name
+        if aircraft.count > 0 {
+            self.populateUI()
+        }
+        
+        window?.title = "Plane Editor"
     }
     
     // MARK: Actions
