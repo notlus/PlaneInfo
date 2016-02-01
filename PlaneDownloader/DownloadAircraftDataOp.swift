@@ -95,7 +95,7 @@ class DownloadDataOp: Operation {
         let task = sharedSession.dataTaskWithURL(dataURI, completionHandler: { (data, response, error) -> Void in
             defer {
                 print("Finishing DownloadDataOp task")
-//                self.finish()
+                self.finish()
             }
             
             if let error = error {
@@ -221,6 +221,8 @@ class DownloadDataOp: Operation {
     }
 }
 
+/// Downloads detailed data about each `Aircraft` in the persistent store. Downloads are done in
+/// parallel using a `DownloadDataOp` operation for each `Aircraft`.
 class DownloadAircraftDetailsOp: Operation {
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
@@ -233,14 +235,22 @@ class DownloadAircraftDetailsOp: Operation {
             finish()
         }
         
-        let aircraftResults: [Aircraft]
+        var fetchResults: [Aircraft]? = nil
         let fetchRequest = NSFetchRequest(entityName: "Aircraft")
         do {
-            aircraftResults = try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft] ?? []
+            fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft]
         } catch {
-            aircraftResults = []
+            // No results
+            finish()
+            return
         }
         
+        guard let aircraftResults = fetchResults else {
+            finish()
+            return
+        }
+        
+        // Start a `DownloadDataOp` operation for each `Aircraft` fetched
         for aircraft in aircraftResults {
             if cancelled {
                 finish()
@@ -258,7 +268,5 @@ class DownloadAircraftDetailsOp: Operation {
             self.addDependency(dataOp)
             internalQueue.addOperation(dataOp)
         }
-        
-//        finish()
     }
 }
