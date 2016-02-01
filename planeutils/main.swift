@@ -7,33 +7,6 @@
 //
 import Foundation
 
-/// Protocol that defines common functionality for all options supported
-protocol UtilsOption {
-    var filename: String? {get set}
-    
-    func execute() throws
-}
-
-/// Struct that defines the `Export` operation
-struct Export: UtilsOption {
-    var filename: String?
-    
-    func execute() throws {
-        print("Executing 'Export' to file: \(filename)")
-    }
-}
-
-/// Struct that defines the `GetData` operation
-struct GetData: UtilsOption {
-    var filename: String?
-    
-    func execute() throws {
-        print("Executing 'GetData'")
-        let planeData = PlaneData()
-        try planeData.getData()
-    }
-}
-
 enum PlaneUtilsErrors: ErrorType {
     case InvalidOption
 }
@@ -43,29 +16,31 @@ private enum CommandLineState {
     case Start, Running, Command, GatherData, File, Done
 }
 
-private var operation: UtilsOption?;
-//private var operation = UtilsOperation.None
-
-/// Commands come in the form "<command> --file <filename>
-func processCommandLine(arguments: [String]) throws {
+/// Process command line arguments and return a PlaneUtilsOperationCommands come in the form "<command> --file <filename>
+func processCommandLine(arguments: [String]) throws -> PlaneUtilsCommand {
     var state = CommandLineState.Start
+    var command: PlaneUtilsCommand?;
     
     for argument in arguments {
         switch argument {
         case "export":
             // Retrieve names of aircraft from Core Data
             print("Retrieve names")
-            operation = Export()
+            command = ExportPlaneDataCommand()
         case "updatedata":
             // Download data about aircraft
             print("Download aircraft data")
-            operation = GetData()
+            command = UpdatePlaneDataCommand()
+            state = .Done
+        case "generatedata":
+            command = GeneratePlaneDataCommand()
+            state = .Done
         case "--file":
             state = .File
         default:
             switch state {
             case .File:
-                operation?.filename = argument
+                command?.filename = argument
                 continue
             case .Start:
                 state = .Running
@@ -77,14 +52,17 @@ func processCommandLine(arguments: [String]) throws {
             throw PlaneUtilsErrors.InvalidOption
         }
     }
+    
+    return command!
 }
 
 do {
-    try processCommandLine(Process.arguments)
-    try operation?.execute()
+    let command = try processCommandLine(Process.arguments)
+    try command.execute()
 } catch let error {
     print("Caught error: \(error)")
     exit(EXIT_FAILURE)
 }
 
+CFRunLoopRun()
 print("All done")
