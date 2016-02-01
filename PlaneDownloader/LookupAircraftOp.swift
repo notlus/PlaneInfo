@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Uses the DBPedia "lookup" API to search for a given search term. The result of the operation is
+/// an array of `DBPediaLookupResult` objects in the `results` property.
 class LookupAircraftOp: Operation {
     
     struct LookupAPIConstants {
@@ -76,7 +78,10 @@ class LookupAircraftOp: Operation {
                     // Filter all of the top level objects and remove any elements that are not
                     // of the class "http://dbpedia.org/ontology/Aircraft"
                     jsonResults = resultsArray.filter({ (element) -> Bool in
-                        let classes = self.getClasses(element as! [String: AnyObject])
+                        guard let classes = self.getClasses(element as! [String: AnyObject]) else {
+                            return false;
+                        }
+                        
                         for c in classes {
                             let uri = c["uri"]! as String
                             if uri == DBDownloader.DataConstants.AIRCRAFT_CLASS {
@@ -94,10 +99,9 @@ class LookupAircraftOp: Operation {
                     
                     print("Found \(jsonResults.count) aircraft")
                     
-                    // Create a model object for the result.
+                    // Create an array of `DBPedialLookupResult` object from the JSON results.
                     self.results = jsonResults.map({ rawElement -> DBPediaLookupResult in
                         let elementDict = rawElement as! [String: AnyObject]
-                        //                            let uri1 = elementDict["uri"]
                         return DBPediaLookupResult(resourceURI: elementDict["uri"] as! String,
                             label: elementDict["label"] as! String,
                             abstract: elementDict["description"] as! String,
@@ -126,9 +130,7 @@ class LookupAircraftOp: Operation {
     }
 
     /// Get a map of `classes` for a DBPedia lookup request
-    private func getClasses(object: [String: AnyObject]) -> [[String: String]] {
-        let o = object
-        let classes = o["classes"] as! [[String: String]]
-        return classes
+    private func getClasses(object: [String: AnyObject]) -> [[String: String]]? {
+        return object["classes"] as? [[String: String]]
     }
 }
