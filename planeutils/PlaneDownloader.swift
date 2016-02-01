@@ -9,37 +9,26 @@
 import CoreData
 import Foundation
 
-private let acErrorDomain = "com.notlus.acdownloader"
-
-private var sharedContext: NSManagedObjectContext {
-    return CoreDataManager.sharedInstance.managedObjectContext
-}
-
-/// Parent operation that waits for the download and import operations to complete
-class GatherAircraftOp: Operation {
-    
-    override func execute() {
-        if cancelled {
-            finish()
-            return
-        }
-        
-        print("Executing GatherAircraftOp")
-        
-        finish()
-    }
-}
-
 class PlaneData {
-    func getData() throws {
+    private let acErrorDomain = "com.notlus.acdownloader"
+    
+    private var sharedContext: NSManagedObjectContext {
+        return CoreDataManager.sharedInstance.managedObjectContext
+    }
+
+    private lazy var documentsDirectory: NSURL = {
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory,
+                                                               inDomains: .UserDomainMask).first!
+    }()
+    
+    func getData(completion: ()->()) throws {
         let fetchRequest = NSFetchRequest(entityName: "Category")
         
         let fetchResults = try sharedContext.executeFetchRequest(fetchRequest)
         if fetchResults.count == 0 {
             // Load categories
-            // TODO: Don't hard code this path
-            let categoriesPath = "/Users/jeffrey_sulton/development/Udacity/Projects/PlaneInfo/PlaneInfo/Resources/Categories.plist"
-            guard let categories = NSDictionary(contentsOfFile: categoriesPath) as? [String: String] else {
+            let categoriesPath = documentsDirectory.URLByAppendingPathComponent("Categories.plist")
+            guard let categories = NSDictionary(contentsOfURL: categoriesPath) as? [String: String] else {
                 print("Failed to create dictionary from plist")
                 throw NSError(domain: acErrorDomain, code: 901, userInfo: nil)
             }
@@ -55,23 +44,22 @@ class PlaneData {
                         "General_Dynamics", "Curtiss_Wright", "Fokker", "Messerschmitt", "Focke-Wulf",
                         "North_American", "Supermarine", "Sukhoi", "Rockwell", "Mikoyan", "Dassault"]
 
-        getDataForManufacturers(manufacturers)
+        getDataForSearchTerms(manufacturers, completion: completion)
     }
     
-    private func getDataForManufacturers(manufacturers: [String]) {
+    /// Creates new Core Data entities 
+    private func getDataForSearchTerms(searchTerms: [String], completion: () -> ()) {
         print("Starting download")
         
         let operationQueue = NSOperationQueue()
         operationQueue.suspended = true
         
-        let gatherAircraftOp = GatherAircraftOp()
-        operationQueue.addOperation(gatherAircraftOp)
-        
-        // Add operation to download the details for each aircraft
-        let downloadDetails = DownloadAircraftDetailsOp()
-        downloadDetails.completionBlock = {
-            print("DownloadAircraftDetailsOp completed")
+        let aircraftDataOperation = AircraftDataOperation()
+        aircraftDataOperation.completionBlock = {
+            print("Aircraft data operation completed")
         }
+
+        operationQueue.addOperation(aircraftDataOperation)
         
         let importOp = ImportLookupDataOp()
         importOp.completionBlock = {
@@ -80,27 +68,35 @@ class PlaneData {
         
         operationQueue.addOperation(importOp)
         
-        // Perform a search for all search items
-        for manufacturer in manufacturers {
+        // Create a `LookupAircraftOp` operation for each search term and import the results into
+        // the Core Data model using the `ImportLookupDataOp` operation. After these complete, the
+        // `DownloadAircraftDetailsOp` operation is used to download detailed information about 
+        // each aircraft.
+        for searchTerm in searchTerms {
             
-            let lookupOp = LookupAircraftOp(searchTerm: manufacturer)
+            let lookupOp = LookupAircraftOp(searchTerm: searchTerm)
             operationQueue.addOperation(lookupOp)
             
             importOp.addDependency(lookupOp)
             
             lookupOp.completionBlock = {
-                print("Lookup operation completed for \(manufacturer)")
+                print("Lookup operation completed for \(searchTerm)")
                 importOp.lookupResults.appendContentsOf(lookupOp.results)
             }
             
-            gatherAircraftOp.addDependency(importOp)
+            // `aircraftDataOperation` is dependent on `importOp`.
+            aircraftDataOperation.addDependency(importOp)
         }
         
-        gatherAircraftOp.completionBlock = {
-            print("gather aircraft completed")
+        // Add operation to download the details for each aircraft
+        let downloadDetails = DownloadAircraftDetailsOp()
+        downloadDetails.completionBlock = {
+            print("DownloadAircraftDetailsOp completed")
+            completion()
         }
         
-        downloadDetails.addDependency(gatherAircraftOp)
+        // `downloadDetails` is dependent on `aircraftDataOperation`.
+        downloadDetails.addDependency(aircraftDataOperation)
         operationQueue.addOperation(downloadDetails)
         
         // Start operations
