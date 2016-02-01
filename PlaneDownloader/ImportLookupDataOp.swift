@@ -9,6 +9,8 @@
 import CoreData
 import Foundation
 
+/// Creates `Aircraft` model objects from the lookup data in `DBPediaLookupResult` objects. If the
+/// aircraft already exists, the lookup data is skipped.
 class ImportLookupDataOp: Operation {
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
@@ -42,6 +44,9 @@ class ImportLookupDataOp: Operation {
         }
     }
     
+    // Creates an `Aircraft` object from a corresponding `DBPediaLookupResult` object. Before 
+    // creating, it checks if `lookupResult.resourceURI` matches any exisiting entries in the 
+    // `Aircraft` entity. If it does, that lookup entry is ignored.
     private func createAircraft(lookupResult: DBPediaLookupResult) {
         let fetchRequest = NSFetchRequest(entityName: "Aircraft")
         fetchRequest.predicate = NSPredicate(format: "uri == %@", lookupResult.resourceURI)
