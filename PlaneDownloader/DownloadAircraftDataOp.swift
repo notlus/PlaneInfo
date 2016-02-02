@@ -257,6 +257,11 @@ class DownloadAircraftDetailsOp: Operation {
                 break
             }
             
+            if aircraft.modified == true {
+                print("Aircraft has been modified, skipping")
+                continue
+            }
+            
             let dataOp = DownloadDataOp(aircraft: aircraft, context: sharedContext)
             dataOp.completionBlock = {
                 print("DownloadDataOp completed for \(aircraft.name)")

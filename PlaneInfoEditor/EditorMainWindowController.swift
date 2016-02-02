@@ -31,6 +31,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
             thumnailImageView.delegate = self
         }
     }
+    @IBOutlet weak var modifiedLabel: NSTextField!
 
     /// Factory method to create an instance of `EditorMainWindowController`
     class func Create() -> EditorMainWindowController {
@@ -46,23 +47,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
     private var aircraft = [Aircraft]()
     
     // The currently selected `Aircraft`
-    private var currentIndex = 0 {
-        didSet {
-            if currentIndex == 0 {
-                previousButton.enabled = false
-            } else {
-                previousButton.enabled = true
-            }
-            
-            if currentIndex == aircraft.count {
-                nextButton.enabled = false
-            } else {
-                nextButton.enabled = true
-            }
-
-            aircraftNumber.stringValue = "\(currentIndex + 1) of \(aircraft.count)"
-        }
-    }
+    private var currentIndex = 0
     
     // Track whether any data has be modified
     private var dirty = false
@@ -103,6 +88,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
     @IBAction func previousAircraft(sender: AnyObject) {
         if dirty {
             print("Saving context")
+            currentAircraft.modified = dirty
             try! sharedContext.save()
             dirty = false
         }
@@ -138,6 +124,8 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
 
     private func updateAircraft(textField: NSTextField) {
         print("Updating aircraft")
+        currentAircraft.modified = true
+        modifiedLabel.stringValue = currentAircraft.modified ? "true" : "false"
         switch textField {
         case aircraftName:
             currentAircraft.name = textField.stringValue
@@ -152,6 +140,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         case aircraftIntroduced:
             currentAircraft.yearIntroduced = textField.stringValue
         default:
+            currentAircraft.modified = false
             fatalError("Unknown text field")
         }
     }
@@ -197,5 +186,20 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         aircraftIntroduced.stringValue = currentAircraft.yearIntroduced
         let image = NSImage(data: currentAircraft.thumbnail)
         thumnailImageView.image = image ?? NSImage(named: "NoPhotoImage")
+        modifiedLabel.stringValue = currentAircraft.modified ? "true" : "false"
+        
+        if currentIndex == 0 {
+            previousButton.enabled = false
+        } else {
+            previousButton.enabled = true
+        }
+        
+        if currentIndex == aircraft.count {
+            nextButton.enabled = false
+        } else {
+            nextButton.enabled = true
+        }
+        
+        aircraftNumber.stringValue = "\(currentIndex + 1) of \(aircraft.count)"
     }
 }

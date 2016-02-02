@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10137.1" systemVersion="15D21" minimumToolsVersion="Automatic">
     <entity name="Aircraft" representedClassName="Aircraft" syncable="YES">
         <attribute name="abstract" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="crew" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberBuilt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -25,7 +26,7 @@
         <relationship name="aircraft" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Aircraft" inverseName="photos" inverseEntity="Aircraft" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Aircraft" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="Aircraft" positionX="-63" positionY="-18" width="128" height="240"/>
         <element name="Category" positionX="-54" positionY="36" width="128" height="75"/>
         <element name="Photo" positionX="-54" positionY="18" width="128" height="105"/>
     </elements>
