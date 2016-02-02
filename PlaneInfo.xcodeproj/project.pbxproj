@@ -41,6 +41,7 @@
 		37449E2F1BEC9ED800ABC6D0 /* PlaneInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */; };
 		3783306D1BF2E81200AF650D /* FlickrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783306C1BF2E81200AF650D /* FlickrViewController.swift */; };
 		3783306F1BF2EB9100AF650D /* CollectionViewPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783306E1BF2EB9100AF650D /* CollectionViewPhotoCell.swift */; };
+		37A390111C60839B00E69E7D /* PlaneInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */; };
 		37B0EE5E1C573F62007929C3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B0EE5D1C573F62007929C3 /* main.swift */; };
 		37B1FE601BF96365007F08EE /* FlickrInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B1FE5F1BF96365007F08EE /* FlickrInfoView.swift */; };
 		37CBEAD61BEC992D003D1A14 /* AircraftContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAD01BEC992D003D1A14 /* AircraftContainerViewController.swift */; };
@@ -576,6 +577,7 @@
 				3706B0F31C5D742400229A0C /* Photo.swift in Sources */,
 				3706B0EF1C5D72CD00229A0C /* ImportLookupDataOp.swift in Sources */,
 				3706B0EE1C5D72CD00229A0C /* DownloadAircraftDataOp.swift in Sources */,
+				37A390111C60839B00E69E7D /* PlaneInfo.xcdatamodeld in Sources */,
 				3706B0EA1C5D71DE00229A0C /* PlaneDownloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -903,6 +905,7 @@
 				3706B0E71C5D5A4900229A0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		37396DFD1C49ECCD00AD19FB /* Build configuration list for PBXNativeTarget "PlaneInfoEditor" */ = {
 			isa = XCConfigurationList;
