@@ -16,7 +16,7 @@
                 <outlet property="aircraftManufacturer" destination="boD-T8-Sj0" id="8Ko-BK-ymP"/>
                 <outlet property="aircraftName" destination="4GJ-Wc-XeC" id="S87-39-QhT"/>
                 <outlet property="aircraftNumber" destination="Eik-55-A0b" id="bcZ-vU-t4E"/>
-                <outlet property="modifiedLabel" destination="dir-Oj-bU6" id="pCD-rh-neS"/>
+                <outlet property="nameLabel" destination="FRt-5t-7Dk" id="g8e-2v-qmQ"/>
                 <outlet property="nextButton" destination="BNc-Do-eLu" id="cO6-82-aWR"/>
                 <outlet property="numberBuilt" destination="aAK-h3-eJY" id="5nX-Yf-c9m"/>
                 <outlet property="previousButton" destination="A8U-2n-Vtx" id="hXj-hO-OU2"/>
@@ -284,14 +284,6 @@
                         </constraints>
                         <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="photo" image="NoPhotoImage" id="Ri2-Xj-FA8"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dir-Oj-bU6">
-                        <rect key="frame" x="59" y="147" width="60" height="37"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Yxe-1j-JK6">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="61m-o1-Ati" secondAttribute="bottom" constant="336" id="0CA-1k-ZZw"/>

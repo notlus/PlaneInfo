@@ -31,7 +31,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
             thumnailImageView.delegate = self
         }
     }
-    @IBOutlet weak var modifiedLabel: NSTextField!
+    @IBOutlet weak var nameLabel: NSTextField!
 
     /// Factory method to create an instance of `EditorMainWindowController`
     class func Create() -> EditorMainWindowController {
@@ -125,7 +125,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
     private func updateAircraft(textField: NSTextField) {
         print("Updating aircraft")
         currentAircraft.modified = true
-        modifiedLabel.stringValue = currentAircraft.modified ? "true" : "false"
+        updateNameLabel()
         switch textField {
         case aircraftName:
             currentAircraft.name = textField.stringValue
@@ -186,7 +186,8 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         aircraftIntroduced.stringValue = currentAircraft.yearIntroduced
         let image = NSImage(data: currentAircraft.thumbnail)
         thumnailImageView.image = image ?? NSImage(named: "NoPhotoImage")
-        modifiedLabel.stringValue = currentAircraft.modified ? "true" : "false"
+        
+        updateNameLabel()
         
         if currentIndex == 0 {
             previousButton.enabled = false
@@ -201,5 +202,13 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         }
         
         aircraftNumber.stringValue = "\(currentIndex + 1) of \(aircraft.count)"
+    }
+    
+    private func updateNameLabel() {
+        if currentAircraft.modified {
+            nameLabel.stringValue = "\(nameLabel.stringValue) (modified)"
+        } else {
+            nameLabel.stringValue = "Name"
+        }
     }
 }
