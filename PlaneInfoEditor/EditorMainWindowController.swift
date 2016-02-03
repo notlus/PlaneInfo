@@ -206,7 +206,7 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
     
     private func updateNameLabel() {
         if currentAircraft.modified {
-            nameLabel.stringValue = "\(nameLabel.stringValue) (modified)"
+            nameLabel.stringValue = "Name (modified)"
         } else {
             nameLabel.stringValue = "Name"
         }
