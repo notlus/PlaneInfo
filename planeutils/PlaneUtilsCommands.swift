@@ -6,6 +6,7 @@
 //  Copyright © 2016 notluS. All rights reserved.
 //
 import Foundation
+import CoreData
 
 /// Protocol that defines common functionality for all commands supported
 protocol PlaneUtilsCommand {
@@ -18,8 +19,34 @@ protocol PlaneUtilsCommand {
 struct ExportPlaneDataCommand: PlaneUtilsCommand {
     var filename: String?
     
+    private var sharedContext: NSManagedObjectContext {
+        return CoreDataManager.sharedInstance.managedObjectContext
+    }
+    
     func execute() throws {
         print("Executing 'exportdata' to file: \(filename)")
+        let fetchRequest = NSFetchRequest(entityName: "Aircraft")
+        guard let fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft] else {
+            print("No data found for export")
+            return
+        }
+        
+        print("Found \(fetchResults.count) aircraft:\n")
+
+        if let filename = filename,
+            let outputStream = NSOutputStream(toFileAtPath: filename, append: true) {
+            print("Saving data to file: \(filename)")
+            outputStream.open()
+            for result in fetchResults {
+                let name = "\(result.name)\n"
+                outputStream.write(name, maxLength: name.characters.count)
+            }
+            outputStream.close()
+        } else {
+            for result in fetchResults {
+                print("\(result.name)")
+            }
+        }
     }
 }
 
@@ -33,6 +60,7 @@ struct UpdatePlaneDataCommand: PlaneUtilsCommand {
         try planeData.getData({ () in
             CFRunLoopStop(CFRunLoopGetCurrent())
         })
+        CFRunLoopRun()
     }
 }
 
@@ -45,5 +73,6 @@ struct GeneratePlaneDataCommand: PlaneUtilsCommand {
         try planeData.getData({ () in
             CFRunLoopStop(CFRunLoopGetCurrent())
         })
+        CFRunLoopRun()
     }
 }

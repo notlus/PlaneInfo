@@ -23,10 +23,11 @@ func processCommandLine(arguments: [String]) throws -> PlaneUtilsCommand {
     
     for argument in arguments {
         switch argument {
-        case "export":
+        case "exportdata":
             // Retrieve names of aircraft from Core Data
             print("Retrieve names")
             command = ExportPlaneDataCommand()
+            state = .Done
         case "updatedata":
             // Download data about aircraft
             print("Download aircraft data")
@@ -45,7 +46,8 @@ func processCommandLine(arguments: [String]) throws -> PlaneUtilsCommand {
             case .Start:
                 state = .Running
                 continue
-            default: break
+            default:
+                break
             }
             
             print("Unknown option: \(argument)")
@@ -64,5 +66,4 @@ do {
     exit(EXIT_FAILURE)
 }
 
-CFRunLoopRun()
 print("All done")
