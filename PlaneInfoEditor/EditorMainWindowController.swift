@@ -70,6 +70,8 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         }
         
         window?.title = "Plane Editor"
+        
+        window?.backgroundColor = NSColor.whiteColor()
     }
     
     // MARK: Actions
