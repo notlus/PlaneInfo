@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CuI-5h-WiQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CuI-5h-WiQ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfH-Mg-G3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4480" y="691"/>
+            <point key="canvasLocation" x="-4284" y="1147"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CiC-PB-Wtm">
@@ -185,7 +185,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2367" y="3200"/>
+            <point key="canvasLocation" x="-3296" y="3716"/>
         </scene>
         <!--Aircraft Details-->
         <scene sceneID="EoQ-d7-h6Q">
@@ -335,7 +335,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Utf-LK-XWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2367" y="2656"/>
+            <point key="canvasLocation" x="-3296" y="3172"/>
         </scene>
         <!--Aircraft Container View Controller-->
         <scene sceneID="Kef-DW-AgZ">
@@ -410,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uK6-mI-pw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3355" y="2654"/>
+            <point key="canvasLocation" x="-4284" y="3170"/>
         </scene>
         <!--Aircraft-->
         <scene sceneID="tne-QT-ifu">
@@ -523,7 +523,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4480" y="1474"/>
+            <point key="canvasLocation" x="-4284" y="1930"/>
         </scene>
         <!--Favorites Table View Controller-->
         <scene sceneID="lOB-MW-ERN">
@@ -712,7 +712,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RF4-zS-86R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2367" y="2084"/>
+            <point key="canvasLocation" x="-3296" y="2600"/>
         </scene>
         <!--Categories Navigation Controller-->
         <scene sceneID="YjN-h1-sVY">
@@ -731,7 +731,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXa-CT-9of" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5174" y="691"/>
+            <point key="canvasLocation" x="-4978" y="1147"/>
         </scene>
         <!--Favorites Navigation Controller-->
         <scene sceneID="NpH-q2-QW2">
@@ -769,7 +769,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvL-yn-LjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5174" y="1474"/>
+            <point key="canvasLocation" x="-4978" y="1930"/>
         </scene>
         <!--FlickrViewController-->
         <scene sceneID="Drg-36-LaB">
@@ -931,7 +931,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCd-mf-xuw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1647" y="2084"/>
+            <point key="canvasLocation" x="-2576" y="2600"/>
         </scene>
         <!--Aircraft Photo View Controller-->
         <scene sceneID="Hwn-Aw-tOW">
@@ -983,7 +983,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8P5-VL-k3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1647" y="2818"/>
+            <point key="canvasLocation" x="-2576" y="3334"/>
         </scene>
     </scenes>
     <resources>
@@ -994,8 +994,8 @@
         <image name="Star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y1K-Zs-KaH"/>
         <segue reference="4bw-Hf-2AF"/>
+        <segue reference="Nfz-Az-sfQ"/>
         <segue reference="mYe-TV-49I"/>
     </inferredMetricsTieBreakers>
 </document>
