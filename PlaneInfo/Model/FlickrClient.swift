@@ -9,7 +9,8 @@ import Foundation
 import SystemConfiguration
 #if os(iOS)
     import UIKit
-    typealias XAppDelegate = NSApplicationDelegate
+    typealias XApplication = UIApplication
+    typealias XAppDelegate = AppDelegate
     typealias XImage = UIImage
 #else
     import AppKit
@@ -54,7 +55,7 @@ public class FlickrClient {
         static let MAX_PAGE = "210"
     }
 
-    private let appDelegate = XApplication.sharedApplication().delegate
+    private let appDelegate = XApplication.sharedApplication().delegate as! AppDelegate
     private let session = NSURLSession.sharedSession()
     
     private let FLICKR_CLIENT_DOMAIN = "com.notlus.flickr"
