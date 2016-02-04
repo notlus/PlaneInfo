@@ -1,5 +1,5 @@
 //
-//  AllAircraftViewController.swift
+//  AircraftTableViewController.swift
 //  PlaneInfo
 //
 //  Created by Jeffrey Sulton on 10/1/15.
@@ -12,8 +12,11 @@ import CoreData
 class AircraftTableViewController: UIViewController, NSFetchedResultsControllerDelegate, AllAircraftTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    let searchController = UISearchController(searchResultsController: nil)
+
     var category: Category?
+    
+    private var searchResults = [Aircraft]()
     
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
@@ -38,6 +41,19 @@ class AircraftTableViewController: UIViewController, NSFetchedResultsControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up the search bar
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        tableView.tableHeaderView = searchController.searchBar
+
+        // Adjust the content offset of the table view so that the search bar is not shown by
+        // default.
+        let offset = CGPointMake(0, searchController.searchBar.frame.size.height)
+        tableView.contentOffset = offset
+
         if let category = category {
             navigationItem.title = "\(category.name) Aircraft"
         }
@@ -68,6 +84,15 @@ class AircraftTableViewController: UIViewController, NSFetchedResultsControllerD
         }
     }
     
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        let fetchResults = fetchedResultsController.fetchedObjects as! [Aircraft]
+        searchResults = fetchResults.filter { aircraft in
+            return aircraft.name.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        
+        tableView.reloadData()
+    }
+    
     // MARK: AllAircraftTableViewCellDelegate
     
     func updateFavorite(favorite: Bool, indexPath: NSIndexPath) {
@@ -84,7 +109,6 @@ class AircraftTableViewController: UIViewController, NSFetchedResultsControllerD
     // MARK: NSFetchedResultsControllerDelegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject,
@@ -101,7 +125,14 @@ class AircraftTableViewController: UIViewController, NSFetchedResultsControllerD
 extension AircraftTableViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("Selected row \(indexPath.row)")
-        let aircraft = fetchedResultsController.objectAtIndexPath(indexPath) as! Aircraft
+        
+        let aircraft: Aircraft
+        if searchController.active && searchController.searchBar.text != "" {
+            aircraft = searchResults[indexPath.row]
+        } else {
+            aircraft = fetchedResultsController.objectAtIndexPath(indexPath) as! Aircraft
+        }
+        
         performSegueWithIdentifier("ShowContainerSegue", sender: aircraft)
     }
     
@@ -114,6 +145,10 @@ extension AircraftTableViewController: UITableViewDelegate {
 
 extension AircraftTableViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active && searchController.searchBar.text != "" {
+            return searchResults.count
+        }
+        
         let section = fetchedResultsController.sections?[section]
         let rows = section?.numberOfObjects ?? 0
         print("rows=\(rows)")
@@ -122,25 +157,36 @@ extension AircraftTableViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AircraftCell") as! AllAircraftTableViewCell
+        let aircraft: Aircraft
+        if searchController.active && searchController.searchBar.text != "" {
+            aircraft = searchResults[indexPath.row]
+        } else {
+            aircraft = fetchedResultsController.objectAtIndexPath(indexPath) as! Aircraft
+        }
+        
         cell.delegate = self
         cell.indexPath = indexPath
-        if let aircraft = fetchedResultsController.objectAtIndexPath(indexPath) as? Aircraft {
-            cell.nameLabel.text = aircraft.name
-            if aircraft.favorite {
-                cell.favoriteButton.hidden = true
-                cell.unfavoriteButton.hidden = false
-            } else {
-                cell.favoriteButton.hidden = false
-                cell.unfavoriteButton.hidden = true
-            }
-            
-            if let image = UIImage(data: aircraft.thumbnail) {
-                cell.thumbnailImageView.image = image
-            } else {
-                cell.thumbnailImageView.image = UIImage(named: "NoPhotoImage")
-            }
+        cell.nameLabel.text = aircraft.name
+        if aircraft.favorite {
+            cell.favoriteButton.hidden = true
+            cell.unfavoriteButton.hidden = false
+        } else {
+            cell.favoriteButton.hidden = false
+            cell.unfavoriteButton.hidden = true
+        }
+        
+        if let image = UIImage(data: aircraft.thumbnail) {
+            cell.thumbnailImageView.image = image
+        } else {
+            cell.thumbnailImageView.image = UIImage(named: "NoPhotoImage")
         }
         
         return cell
+    }
+}
+
+extension AircraftTableViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        return filterContentForSearchText(searchController.searchBar.text!)
     }
 }
