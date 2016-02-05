@@ -26,6 +26,7 @@ struct ExportPlaneDataCommand: PlaneUtilsCommand {
     func execute() throws {
         print("Executing 'exportdata' to file: \(filename!)")
         let fetchRequest = NSFetchRequest(entityName: "Aircraft")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)] 
         guard let fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft] else {
             print("No data found for export")
             return
