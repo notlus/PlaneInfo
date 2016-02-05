@@ -22,12 +22,11 @@
     <entity name="Photo" representedClassName="Photo" syncable="YES">
         <attribute name="localPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remotePath" attributeType="String" syncable="YES"/>
-        <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="aircraft" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Aircraft" inverseName="photos" inverseEntity="Aircraft" syncable="YES"/>
     </entity>
     <elements>
         <element name="Aircraft" positionX="-63" positionY="-18" width="128" height="240"/>
         <element name="Category" positionX="-54" positionY="36" width="128" height="75"/>
-        <element name="Photo" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="Photo" positionX="-54" positionY="18" width="128" height="90"/>
     </elements>
 </model>
