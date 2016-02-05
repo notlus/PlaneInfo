@@ -103,6 +103,18 @@ class DownloadDataOp: Operation {
                 return
             }
             
+            guard let response = response as? NSHTTPURLResponse else {
+                print("Could not read HTTP response")
+                return
+            }
+            
+            print("Got HTTP status: \(response.statusCode)")
+            
+            if response.statusCode != 200 {
+                print("DownloadDataOp failed for aircraft '\(self.aircraft.uri)' with HTTP status: \(response.statusCode)")
+                return
+            }
+            
             guard let data = data else {
                 print("Unable to get data")
                 return
