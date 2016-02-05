@@ -48,7 +48,7 @@ class PlaneData {
     }
     
     /// Creates new Core Data entities 
-    private func getDataForSearchTerms(searchTerms: [String], completion: () -> ()) {
+    func getDataForSearchTerms(searchTerms: [String], completion: () -> ()) {
         print("Starting download")
         
         let operationQueue = NSOperationQueue()

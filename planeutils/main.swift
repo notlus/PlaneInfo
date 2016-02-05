@@ -35,7 +35,6 @@ func processCommandLine(arguments: [String]) throws -> PlaneUtilsCommand {
             state = .Done
         case "generatedata":
             command = GeneratePlaneDataCommand()
-            state = .Done
         case "--file":
             state = .File
         default:

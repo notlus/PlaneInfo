@@ -24,7 +24,7 @@ struct ExportPlaneDataCommand: PlaneUtilsCommand {
     }
     
     func execute() throws {
-        print("Executing 'exportdata' to file: \(filename)")
+        print("Executing 'exportdata' to file: \(filename!)")
         let fetchRequest = NSFetchRequest(entityName: "Aircraft")
         guard let fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft] else {
             print("No data found for export")
@@ -69,10 +69,15 @@ struct GeneratePlaneDataCommand: PlaneUtilsCommand {
     
     func execute() throws {
         print("Executing 'generatedata'")
+
+        let searchData = try String(contentsOfFile: filename!)
+        let searchTerms = searchData.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        
         let planeData = PlaneData()
-        try planeData.getData({ () in
+        planeData.getDataForSearchTerms(searchTerms, completion: {
             CFRunLoopStop(CFRunLoopGetCurrent())
         })
+        
         CFRunLoopRun()
     }
 }
