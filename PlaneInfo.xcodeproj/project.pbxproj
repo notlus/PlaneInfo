@@ -30,6 +30,7 @@
 		371175561C4F69BA004C8CD1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE61BEC9A14003D1A14 /* Category.swift */; };
 		371AA6FB1BF7DFD2007734EC /* AircraftPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371AA6FA1BF7DFD2007734EC /* AircraftPhotoViewController.swift */; };
 		371AA6FD1BF7FB5A007734EC /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371AA6FC1BF7FB5A007734EC /* ImageScrollView.swift */; };
+		371C8DEC1C65DA250020CEAE /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C8DEB1C65DA250020CEAE /* ColorPalette.swift */; };
 		3722D18B1C5556620083297F /* AircraftImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3722D18A1C5556620083297F /* AircraftImageView.swift */; };
 		37396DF11C49ECCD00AD19FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37396DF01C49ECCD00AD19FB /* AppDelegate.swift */; };
 		37396DF61C49ECCD00AD19FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37396DF51C49ECCD00AD19FB /* Assets.xcassets */; };
@@ -109,6 +110,7 @@
 		3706B0F61C5EB26600229A0C /* AircraftOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AircraftOperations.swift; path = planeutils/AircraftOperations.swift; sourceTree = SOURCE_ROOT; };
 		371AA6FA1BF7DFD2007734EC /* AircraftPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftPhotoViewController.swift; sourceTree = "<group>"; };
 		371AA6FC1BF7FB5A007734EC /* ImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
+		371C8DEB1C65DA250020CEAE /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = PlaneInfo/ColorPalette.swift; sourceTree = SOURCE_ROOT; };
 		3722D18A1C5556620083297F /* AircraftImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftImageView.swift; sourceTree = "<group>"; };
 		3727C7CF1BE7D4E6006E451B /* LookupAircraftOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupAircraftOp.swift; sourceTree = "<group>"; };
 		3727C7D11BE7D505006E451B /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operation.swift; path = PlaneDownloader/Operation.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				37CBEB0C1BEC9C9E003D1A14 /* Main.storyboard */,
 				37CBEB0F1BEC9CA7003D1A14 /* LaunchScreen.storyboard */,
 				37CBEAFF1BEC9B4B003D1A14 /* Assets.xcassets */,
+				371C8DEB1C65DA250020CEAE /* ColorPalette.swift */,
 			);
 			name = PlaneInfo;
 			path = LotsOPlanes;
@@ -602,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37CBEAF41BEC9A85003D1A14 /* Photo.swift in Sources */,
+				371C8DEC1C65DA250020CEAE /* ColorPalette.swift in Sources */,
 				37CBEAD91BEC992D003D1A14 /* AircraftQuizViewController.swift in Sources */,
 				37CBEAEC1BEC9A14003D1A14 /* Category.swift in Sources */,
 				37CBEAF21BEC9A6B003D1A14 /* AllAircraftTableViewCell.swift in Sources */,
