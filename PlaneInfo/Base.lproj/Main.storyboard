@@ -368,7 +368,7 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y50-l1-tXf">
-                                <rect key="frame" x="32" y="64" width="537" height="29"/>
+                                <rect key="frame" x="32" y="71" width="537" height="29"/>
                                 <segments>
                                     <segment title="Overview"/>
                                     <segment title="Details"/>
@@ -382,22 +382,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="T1A-1x-wZs" secondAttribute="trailing" constant="-20" id="06P-Zd-Ctk"/>
-                            <constraint firstItem="LhU-qq-SWn" firstAttribute="top" secondItem="UfS-q9-Ilm" secondAttribute="bottom" constant="-44" id="3TU-ow-4cR"/>
+                            <constraint firstItem="LhU-qq-SWn" firstAttribute="top" secondItem="UfS-q9-Ilm" secondAttribute="bottom" constant="-49" id="3TU-ow-4cR"/>
                             <constraint firstItem="T1A-1x-wZs" firstAttribute="centerX" secondItem="YhT-I2-IRe" secondAttribute="centerX" id="3ku-Mv-ZO6"/>
                             <constraint firstItem="a5y-US-gF2" firstAttribute="leading" secondItem="YhT-I2-IRe" secondAttribute="leadingMargin" constant="-20" id="5hp-Ep-Zc8"/>
-                            <constraint firstItem="LhU-qq-SWn" firstAttribute="top" secondItem="a5y-US-gF2" secondAttribute="bottom" constant="-44" id="6Bp-vY-VvE"/>
+                            <constraint firstItem="LhU-qq-SWn" firstAttribute="top" secondItem="a5y-US-gF2" secondAttribute="bottom" constant="-49" id="6Bp-vY-VvE"/>
                             <constraint firstItem="UfS-q9-Ilm" firstAttribute="centerX" secondItem="YhT-I2-IRe" secondAttribute="centerX" id="8dn-Kz-z4J"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UfS-q9-Ilm" secondAttribute="trailing" constant="-20" id="GBA-zw-icf"/>
                             <constraint firstItem="T1A-1x-wZs" firstAttribute="leading" secondItem="YhT-I2-IRe" secondAttribute="leadingMargin" constant="-20" id="JoG-7w-GMi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="a5y-US-gF2" secondAttribute="trailing" constant="-20" id="Lo0-g9-rRC"/>
                             <constraint firstItem="Y50-l1-tXf" firstAttribute="leading" secondItem="a5y-US-gF2" secondAttribute="leading" constant="32" id="UHd-Tk-mnH"/>
-                            <constraint firstItem="a5y-US-gF2" firstAttribute="top" secondItem="Y50-l1-tXf" secondAttribute="bottom" constant="8" symbolic="YES" id="UoW-iL-WdO"/>
-                            <constraint firstItem="T1A-1x-wZs" firstAttribute="top" secondItem="Y50-l1-tXf" secondAttribute="bottom" constant="8" symbolic="YES" id="WBP-T2-4Za"/>
-                            <constraint firstItem="UfS-q9-Ilm" firstAttribute="top" secondItem="Y50-l1-tXf" secondAttribute="bottom" constant="8" symbolic="YES" id="fLL-Tl-ELH"/>
-                            <constraint firstItem="LhU-qq-SWn" firstAttribute="top" secondItem="T1A-1x-wZs" secondAttribute="bottom" constant="-44" id="kdi-mq-Y7o"/>
+                            <constraint firstItem="a5y-US-gF2" firstAttribute="top" secondItem="Y50-l1-tXf" secondAttribute="bottom" constant="1" id="UoW-iL-WdO"/>
+                            <constraint firstItem="T1A-1x-wZs" firstAttribute="top" secondItem="Y50-l1-tXf" secondAttribute="bottom" constant="1" id="WBP-T2-4Za"/>
+                            <constraint firstItem="UfS-q9-Ilm" firstAttribute="top" secondItem="Y50-l1-tXf" secondAttribute="bottom" constant="1" id="fLL-Tl-ELH"/>
+                            <constraint firstItem="LhU-qq-SWn" firstAttribute="top" secondItem="T1A-1x-wZs" secondAttribute="bottom" constant="-49" id="kdi-mq-Y7o"/>
                             <constraint firstItem="UfS-q9-Ilm" firstAttribute="leading" secondItem="YhT-I2-IRe" secondAttribute="leadingMargin" constant="-20" id="njJ-jr-bCL"/>
                             <constraint firstItem="a5y-US-gF2" firstAttribute="centerX" secondItem="YhT-I2-IRe" secondAttribute="centerX" id="oJV-JA-hcA"/>
-                            <constraint firstItem="Y50-l1-tXf" firstAttribute="top" secondItem="W9y-HH-Hla" secondAttribute="bottom" id="vKY-Vn-6Ro"/>
+                            <constraint firstItem="Y50-l1-tXf" firstAttribute="top" secondItem="W9y-HH-Hla" secondAttribute="bottom" constant="7" id="vKY-Vn-6Ro"/>
                             <constraint firstItem="Y50-l1-tXf" firstAttribute="trailing" secondItem="UfS-q9-Ilm" secondAttribute="trailing" constant="-31" id="zKc-BI-mWM"/>
                         </constraints>
                     </view>
@@ -470,9 +470,7 @@
                                                         <constraint firstAttribute="width" constant="15" id="Pfo-VG-EEd"/>
                                                         <constraint firstAttribute="height" constant="15" id="dzu-mN-jjI"/>
                                                     </constraints>
-                                                    <state key="normal" image="Star">
-                                                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
+                                                    <state key="normal" image="Star"/>
                                                     <connections>
                                                         <action selector="markUnfavorite" destination="Pbm-tT-Zkk" eventType="touchUpInside" id="5Rh-Z1-CjP"/>
                                                     </connections>
@@ -994,7 +992,7 @@
         <image name="Star" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4bw-Hf-2AF"/>
+        <segue reference="vvK-Ia-dcl"/>
         <segue reference="Nfz-Az-sfQ"/>
         <segue reference="mYe-TV-49I"/>
     </inferredMetricsTieBreakers>
