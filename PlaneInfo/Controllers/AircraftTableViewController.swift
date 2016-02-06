@@ -42,6 +42,10 @@ class AircraftTableViewController: UIViewController, NSFetchedResultsControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.barTintColor = ColorPalette.MainColor.color
+        navigationController?.navigationBar.tintColor = ColorPalette.SecondaryColor.color
+        tableView.backgroundColor = ColorPalette.LightColor.color
+        
         // Set up the search bar
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false

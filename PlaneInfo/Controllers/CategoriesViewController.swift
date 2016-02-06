@@ -32,6 +32,10 @@ class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.barTintColor = ColorPalette.MainColor.color
+        navigationController?.navigationBar.tintColor = ColorPalette.SecondaryColor.color
+        tableView.backgroundColor = ColorPalette.LightColor.color
+
         title = "Categories"
         
         let fetchRequest = NSFetchRequest(entityName: "Category")

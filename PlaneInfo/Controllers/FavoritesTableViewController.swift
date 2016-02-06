@@ -34,6 +34,8 @@ class FavoritesTableViewController: UITableViewController, NSFetchedResultsContr
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.barTintColor = ColorPalette.MainColor.color
+        
         title = "Favorites"
         
         do {
