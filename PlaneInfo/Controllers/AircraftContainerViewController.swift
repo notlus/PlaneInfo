@@ -1,12 +1,11 @@
 //
-//  AircraftInfoViewController.swift
+//  AircraftContainerViewController.swift
 //  PlaneInfo
 //
 //  Created by Jeffrey Sulton on 10/9/15.
 //  Copyright © 2015 notluS. All rights reserved.
 //
 
-import CoreData
 import UIKit
 
 class AircraftContainerViewController: UIViewController {
@@ -26,13 +25,15 @@ class AircraftContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        defaultTintColor = navigationItem.rightBarButtonItem?.tintColor
+        navigationController?.navigationBar.barTintColor = ColorPalette.MainColor.color
+        navigationController?.navigationBar.tintColor = ColorPalette.SecondaryColor.color
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Star"), style: .Plain, target: self, action: "toggleFavorite")
         
         if aircraft!.favorite == true {
-            navigationItem.rightBarButtonItem?.tintColor = defaultTintColor
+            navigationItem.rightBarButtonItem?.tintColor = ColorPalette.SecondaryColor.color
         } else {
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.lightGrayColor()
+            navigationItem.rightBarButtonItem?.tintColor = ColorPalette.LightColor.color
         }
         
         // Start with the info view
@@ -55,9 +56,9 @@ class AircraftContainerViewController: UIViewController {
         
         aircraft!.favorite = !aircraft!.favorite
         if aircraft!.favorite == true {
-            navigationItem.rightBarButtonItem?.tintColor = defaultTintColor
+            navigationItem.rightBarButtonItem?.tintColor = ColorPalette.SecondaryColor.color
         } else {
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.lightGrayColor()
+            navigationItem.rightBarButtonItem?.tintColor = ColorPalette.LightColor.color
         }
     }
 
@@ -68,11 +69,13 @@ class AircraftContainerViewController: UIViewController {
             infoContainerView.hidden = false
             detailsContainerView.hidden = true
             galleryContainerView.hidden = true
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Star"), style: .Plain, target: self, action: "toggleFavorite")
         } else if sender.selectedSegmentIndex == 1 {
             // Show details
             infoContainerView.hidden = true
             detailsContainerView.hidden = false
             galleryContainerView.hidden = true
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Star"), style: .Plain, target: self, action: "toggleFavorite")
         } else if sender.selectedSegmentIndex == 2 {
             // Show gallery
             infoContainerView.hidden = true
