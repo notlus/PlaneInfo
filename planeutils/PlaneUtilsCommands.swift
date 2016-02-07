@@ -15,6 +15,60 @@ protocol PlaneUtilsCommand {
     func execute() throws
 }
 
+/// Struct that defines the `importcategories` command
+struct ImportPlaneCategoriesCommand: PlaneUtilsCommand {
+    var filename: String?
+    
+    private var sharedContext: NSManagedObjectContext {
+        return CoreDataManager.sharedInstance.managedObjectContext
+    }
+
+    func execute() throws {
+        print("Importing categories from file: \(filename!)")
+        
+        guard let filename = filename else {
+            throw NSError(domain: "com.notlus.planeutils", code: 998, userInfo: nil)
+        }
+        
+        guard let categories = NSDictionary(contentsOfFile: filename) as? [String: String] else {
+            throw NSError(domain: "com.notlus.planeutils", code: 997, userInfo: nil)
+        }
+        
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        
+        var newCategories = [String]()
+        if let fetchResults = try sharedContext.executeFetchRequest(fetchRequest) as? [Category] {
+            // For each category
+            for (_, value) in categories {
+                if fetchResults.count == 0 {
+                    newCategories.append(value)
+                    continue
+                }
+                
+                // Check whether it already exists in the fetch results
+                var exists = false
+                for fetchResult in fetchResults {
+                    if value == fetchResult.name {
+                        print("Category '\(value)' already exists")
+                        exists = true
+                        break
+                    }
+                }
+                
+                if !exists {
+                    newCategories.append(value)
+                }
+            }
+        }
+
+        for (value) in newCategories {
+            let _  = Category(name: value, context: sharedContext)
+        }
+
+        try sharedContext.save()
+    }
+}
+
 /// Struct that defines the `exportdata` command
 struct ExportPlaneDataCommand: PlaneUtilsCommand {
     var filename: String?
