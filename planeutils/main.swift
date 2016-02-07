@@ -16,22 +16,32 @@ private enum CommandLineState {
     case Start, Running, Command, GatherData, File, Done
 }
 
+func showUsage() {
+    print("Usage:\nplaneutils <command> [--file <filename>]")
+    print("exportdata [--file <filename>]: Export existing data")
+    print("generatedata [--file <filename>]: Generate/update aircraft data")
+    print("importcategories [--file <filename>]: Import aircraft categories")
+}
+
 /// Process command line arguments and return a PlaneUtilsOperationCommands come in the form "<command> --file <filename>
-func processCommandLine(arguments: [String]) throws -> PlaneUtilsCommand {
+func processCommandLine(arguments: [String]) throws -> PlaneUtilsCommand? {
+    if arguments.count < 2 {
+        showUsage()
+        return nil
+    }
+    
     var state = CommandLineState.Start
     var command: PlaneUtilsCommand?;
     
     for argument in arguments {
         switch argument {
+        case "--help":
+            showUsage()
+            state = .Done
         case "exportdata":
             // Retrieve names of aircraft from Core Data
             print("Retrieve names")
             command = ExportPlaneDataCommand()
-            state = .Done
-        case "updatedata":
-            // Download data about aircraft
-            print("Download aircraft data")
-            command = UpdatePlaneDataCommand()
             state = .Done
         case "generatedata":
             command = GeneratePlaneDataCommand()
@@ -56,15 +66,14 @@ func processCommandLine(arguments: [String]) throws -> PlaneUtilsCommand {
         }
     }
     
-    return command!
+    return command
 }
 
 do {
-    let command = try processCommandLine(Process.arguments)
-    try command.execute()
+    if let command = try processCommandLine(Process.arguments) {
+        try command.execute()
+    }
 } catch let error {
     print("Caught error: \(error)")
     exit(EXIT_FAILURE)
 }
-
-print("All done")
