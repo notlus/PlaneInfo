@@ -21,32 +21,6 @@ class PlaneData {
                                                                inDomains: .UserDomainMask).first!
     }()
     
-    func getData(completion: ()->()) throws {
-        let fetchRequest = NSFetchRequest(entityName: "Category")
-        
-        let fetchResults = try sharedContext.executeFetchRequest(fetchRequest)
-        if fetchResults.count == 0 {
-            // Load categories
-            let categoriesPath = documentsDirectory.URLByAppendingPathComponent("Categories.plist")
-            guard let categories = NSDictionary(contentsOfURL: categoriesPath) as? [String: String] else {
-                print("Failed to create dictionary from plist")
-                throw NSError(domain: acErrorDomain, code: 901, userInfo: nil)
-            }
-            
-            for (_, value) in categories {
-                let _ = Category(name: value, context: sharedContext)
-            }
-            
-            try sharedContext.save()
-        }
-        
-        let manufacturers = ["Airbus", "Boeing", "Lockheed", "Northrop_Grumman", "McDonnell_Douglas",
-                        "General_Dynamics", "Curtiss_Wright", "Fokker", "Messerschmitt", "Focke-Wulf",
-                        "North_American", "Supermarine", "Sukhoi", "Rockwell", "Mikoyan", "Dassault"]
-
-        getDataForSearchTerms(manufacturers, completion: completion)
-    }
-    
     /// Creates new Core Data entities 
     func getDataForSearchTerms(searchTerms: [String], completion: () -> ()) {
         print("Starting download")

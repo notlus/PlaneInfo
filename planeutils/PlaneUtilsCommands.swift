@@ -105,20 +105,6 @@ struct ExportPlaneDataCommand: PlaneUtilsCommand {
     }
 }
 
-/// Struct that defines the `updatedata` command
-struct UpdatePlaneDataCommand: PlaneUtilsCommand {
-    var filename: String?
-    
-    func execute() throws {
-        print("Executing 'updatedata'")
-        let planeData = PlaneData()
-        try planeData.getData({ () in
-            CFRunLoopStop(CFRunLoopGetCurrent())
-        })
-        CFRunLoopRun()
-    }
-}
-
 struct GeneratePlaneDataCommand: PlaneUtilsCommand {
     var filename: String?
     
