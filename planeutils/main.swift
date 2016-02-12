@@ -18,9 +18,9 @@ private enum CommandLineState {
 
 func showUsage() {
     print("Usage:\nplaneutils <command> [--file <filename>]")
-    print("exportdata [--file <filename>]: Export existing data")
-    print("generatedata [--file <filename>]: Generate/update aircraft data")
-    print("importcategories [--file <filename>]: Import aircraft categories")
+    print("exportdata [--file <filename>]: Export existing data to a file")
+    print("generatedata [--file <filename>]: Generate/update aircraft data using search terms")
+    print("importcategories [--file <filename>]: Import aircraft categories from <filename>")
 }
 
 /// Process command line arguments and return a PlaneUtilsOperationCommands come in the form "<command> --file <filename>
