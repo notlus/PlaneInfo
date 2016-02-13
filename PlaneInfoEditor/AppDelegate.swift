@@ -11,11 +11,11 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var mainWindow: EditorMainWindowController!
+    var mainWindow: BrowserWindowController!
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        mainWindow = EditorMainWindowController.Create()
+        mainWindow = BrowserWindowController.Create()
         mainWindow.showWindow(self)
     }
 
