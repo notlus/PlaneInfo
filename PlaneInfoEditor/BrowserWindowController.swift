@@ -16,11 +16,29 @@ class BrowserWindowController: NSWindowController, AircraftChange {
 
     @IBOutlet weak var tableView: NSTableView!
     
+    @IBAction func endEditingText(sender: NSTextField) {
+        print("endEditingText, dirty=\(dirty)")
+        let row = tableView.rowForView(sender)
+        let column = tableView.columnForView(sender)
+        if dirty {
+            print("Saving change")
+            if column == 0 {
+                aircraft[row].name = sender.stringValue
+            } else if column == 1 {
+                aircraft[row].manufacturer = sender.stringValue
+            }
+            try! sharedContext.save()
+        }
+    }
+    
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
     }
     
+    /// Array of `Aircraft` to use as the data source
     private var aircraft = [Aircraft]()
+    
+    private var dirty = false
     
     /// Factory method
     class func Create() -> BrowserWindowController {
@@ -47,7 +65,16 @@ class BrowserWindowController: NSWindowController, AircraftChange {
             fatalError("Caught error: \(error)")
         }
         
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: "textDidChange:",
+                                                         name: NSControlTextDidChangeNotification,
+                                                         object: nil)
         tableView.reloadData()
+    }
+    
+    func textDidChange(notification: NSNotification) {
+        print("textDidChange")
+        dirty = true
     }
     
     func handleDoubleClick(sender:AnyObject) {
@@ -61,6 +88,13 @@ class BrowserWindowController: NSWindowController, AircraftChange {
     }
 }
 
+extension BrowserWindowController: NSWindowDelegate {
+    func windowWillClose(notification: NSNotification) {
+        print("windowWillClose")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+}
+
 extension BrowserWindowController: NSTableViewDataSource {
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return aircraft.count
@@ -70,8 +104,11 @@ extension BrowserWindowController: NSTableViewDataSource {
         let cellView = tableView.makeViewWithIdentifier("NameColumn", owner: self) as! NSTableCellView
         if tableColumn?.identifier == "NameColumn" {
             cellView.textField?.stringValue = aircraft[row].name
+            cellView.imageView?.image = NSImage(data: aircraft[row].thumbnail)
+            cellView.textField?.editable = true
         } else if tableColumn?.identifier == "ManufacturerColumn" {
             cellView.textField?.stringValue = aircraft[row].manufacturer
+            cellView.textField?.editable = true
         }
         
         return cellView
