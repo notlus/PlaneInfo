@@ -14,6 +14,31 @@ protocol UpdateImage {
 
 class EditorMainWindowController: NSWindowController, NSTextViewDelegate, UpdateImage {
 
+    /// Factory method to create an instance of `EditorMainWindowController`
+    static func CreateWithAircraft(aircraft: Aircraft, delegate: AircraftChange) ->EditorMainWindowController {
+        let editorWindow = EditorMainWindowController(aircraft)
+        editorWindow.delegate = delegate
+        return editorWindow
+    }
+
+    // MARK: Initializers
+    
+    convenience init(_ aircraft: Aircraft) {
+        self.init(windowNibName: "EditorMainWindowController")
+        
+        currentAircraft = aircraft
+    }
+    
+    override init(window: NSWindow?) {
+        super.init(window: window)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    var delegate: AircraftChange?
+    
     // MARK: Outlets
     
     @IBOutlet weak var aircraftName: NSTextField!
@@ -32,72 +57,27 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         }
     }
     @IBOutlet weak var nameLabel: NSTextField!
-
-    /// Factory method to create an instance of `EditorMainWindowController`
-    class func Create() -> EditorMainWindowController {
-        let editorWindow = EditorMainWindowController(windowNibName: "EditorMainWindowController")
-        return editorWindow
-    }
     
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
     }
     
-    // The model, an array of `Aircraft`
-    private var aircraft = [Aircraft]()
-    
-    // The currently selected `Aircraft`
-    private var currentIndex = 0
-    
     // Track whether any data has be modified
     private var dirty = false
     
-    private var currentAircraft: Aircraft {
-        return aircraft[currentIndex]
-    }
+    private var currentAircraft: Aircraft?
     
     override func windowDidLoad() {
         super.windowDidLoad()
         
-//        showOpenPanel("Choose the data store") { (selectedFile) -> Void in
-//            print("Chose file \(selectedFile)")
-            self.aircraft = try! self.fetchAircraft() ?? [Aircraft]()
-            self.currentIndex = 0
-//        }
-        
-        if aircraft.count > 0 {
-            self.populateUI()
-        }
-        
         window?.title = "Plane Editor"
         
         window?.backgroundColor = NSColor.whiteColor()
+        
+        populateUI()
     }
     
     // MARK: Actions
-    
-    @IBAction func nextAircraft(sender: AnyObject) {
-        if dirty {
-            print("Saving context")
-            try! sharedContext.save()
-            dirty = false
-        }
-        
-        currentIndex += 1
-        populateUI()
-    }
-    
-    @IBAction func previousAircraft(sender: AnyObject) {
-        if dirty {
-            print("Saving context")
-            currentAircraft.modified = dirty
-            try! sharedContext.save()
-            dirty = false
-        }
-        
-        currentIndex -= 1
-        populateUI()
-    }
     
     override func controlTextDidChange(notification: NSNotification) {
         print("controlTextDidChange")
@@ -113,36 +93,36 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         print("Text view changed")
         dirty = true
         let textView = notification.object as! NSTextView
-        currentAircraft.abstract = textView.string!
+        currentAircraft!.abstract = textView.string!
     }
     
     func updateImage(newImage: NSImage?) {
         print("updateImage")
         if let image = newImage {
-            currentAircraft.thumbnail = image.TIFFRepresentation!
+            currentAircraft!.thumbnail = image.TIFFRepresentation!
             try! sharedContext.save()
         }
     }
 
     private func updateAircraft(textField: NSTextField) {
         print("Updating aircraft")
-        currentAircraft.modified = true
+        currentAircraft?.modified = true
         updateNameLabel()
         switch textField {
         case aircraftName:
-            currentAircraft.name = textField.stringValue
+            currentAircraft?.name = textField.stringValue
         case numberBuilt:
-            currentAircraft.numberBuilt = textField.stringValue
+            currentAircraft?.numberBuilt = textField.stringValue
         case aircraftCountry:
-            currentAircraft.country = textField.stringValue
+            currentAircraft?.country = textField.stringValue
         case aircraftCrew:
-            currentAircraft.crew = textField.stringValue
+            currentAircraft?.crew = textField.stringValue
         case aircraftManufacturer:
-            currentAircraft.manufacturer = textField.stringValue
+            currentAircraft?.manufacturer = textField.stringValue
         case aircraftIntroduced:
-            currentAircraft.yearIntroduced = textField.stringValue
+            currentAircraft?.yearIntroduced = textField.stringValue
         default:
-            currentAircraft.modified = false
+            currentAircraft?.modified = false
             fatalError("Unknown text field")
         }
     }
@@ -170,47 +150,32 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         }
     }
 
-    private func fetchAircraft() throws -> [Aircraft]? {
-        let fetchRequest = NSFetchRequest(entityName: "Aircraft")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        return try sharedContext.executeFetchRequest(fetchRequest) as? [Aircraft]
-    }
-    
     private func populateUI() {
-        let currentAircraft = aircraft[currentIndex]
-        aircraftName.stringValue = currentAircraft.name
-        aircraftAbstract.string = currentAircraft.abstract
-        numberBuilt.stringValue = currentAircraft.numberBuilt
-        aircraftCountry.stringValue = currentAircraft.country
-        aircraftCrew.stringValue = currentAircraft.crew
-        aircraftManufacturer.stringValue = currentAircraft.manufacturer
-        aircraftIntroduced.stringValue = currentAircraft.yearIntroduced
-        let image = NSImage(data: currentAircraft.thumbnail)
+        aircraftName.stringValue = currentAircraft!.name
+        aircraftAbstract.string = currentAircraft!.abstract
+        numberBuilt.stringValue = currentAircraft!.numberBuilt
+        aircraftCountry.stringValue = currentAircraft!.country
+        aircraftCrew.stringValue = currentAircraft!.crew
+        aircraftManufacturer.stringValue = currentAircraft!.manufacturer
+        aircraftIntroduced.stringValue = currentAircraft!.yearIntroduced
+        let image = NSImage(data: currentAircraft!.thumbnail)
         thumnailImageView.image = image ?? NSImage(named: "NoPhotoImage")
         
         updateNameLabel()
-        
-        if currentIndex == 0 {
-            previousButton.enabled = false
-        } else {
-            previousButton.enabled = true
-        }
-        
-        if currentIndex == aircraft.count {
-            nextButton.enabled = false
-        } else {
-            nextButton.enabled = true
-        }
-        
-        aircraftNumber.stringValue = "\(currentIndex + 1) of \(aircraft.count)"
     }
     
     private func updateNameLabel() {
-        if currentAircraft.modified {
+        if currentAircraft!.modified {
             nameLabel.stringValue = "Name (modified)"
         } else {
             nameLabel.stringValue = "Name"
         }
+    }
+}
+
+extension EditorMainWindowController: NSWindowDelegate {
+    func windowWillClose(notification: NSNotification) {
+        print("windowWillClose")
+        delegate?.save()
     }
 }
