@@ -40,6 +40,7 @@
 		37396E021C49EFE200AD19FB /* EditorMainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37396E001C49EFE200AD19FB /* EditorMainWindowController.xib */; };
 		37396E041C4B3F2400AD19FB /* PlaneInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEAE81BEC9A14003D1A14 /* PlaneInfo.xcdatamodeld */; };
 		37449E2F1BEC9ED800ABC6D0 /* PlaneInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CBEB061BEC9B7F003D1A14 /* PlaneInfoUITests.swift */; };
+		3748995C1C719F62002E3F0F /* CheckboxTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3748995B1C719F62002E3F0F /* CheckboxTableCellView.swift */; };
 		375B665D1C6DB495007C2AFD /* BrowserWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375B665B1C6DB495007C2AFD /* BrowserWindowController.swift */; };
 		375B665E1C6DB495007C2AFD /* BrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 375B665C1C6DB495007C2AFD /* BrowserWindowController.xib */; };
 		3783306D1BF2E81200AF650D /* FlickrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783306C1BF2E81200AF650D /* FlickrViewController.swift */; };
@@ -124,6 +125,7 @@
 		37396DFF1C49EFE200AD19FB /* EditorMainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorMainWindowController.swift; sourceTree = "<group>"; };
 		37396E001C49EFE200AD19FB /* EditorMainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditorMainWindowController.xib; sourceTree = "<group>"; };
 		37449E311BEC9F7D00ABC6D0 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
+		3748995B1C719F62002E3F0F /* CheckboxTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableCellView.swift; sourceTree = "<group>"; };
 		375B665B1C6DB495007C2AFD /* BrowserWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserWindowController.swift; sourceTree = "<group>"; };
 		375B665C1C6DB495007C2AFD /* BrowserWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowserWindowController.xib; sourceTree = "<group>"; };
 		3783306C1BF2E81200AF650D /* FlickrViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrViewController.swift; sourceTree = "<group>"; };
@@ -238,15 +240,12 @@
 		37396DEF1C49ECCD00AD19FB /* PlaneInfoEditor */ = {
 			isa = PBXGroup;
 			children = (
+				374899591C719BC7002E3F0F /* Window Controllers */,
 				37396DF01C49ECCD00AD19FB /* AppDelegate.swift */,
 				37396DF51C49ECCD00AD19FB /* Assets.xcassets */,
 				37396DF71C49ECCD00AD19FB /* MainMenu.xib */,
 				37396DFA1C49ECCD00AD19FB /* Info.plist */,
-				37396DFF1C49EFE200AD19FB /* EditorMainWindowController.swift */,
-				37396E001C49EFE200AD19FB /* EditorMainWindowController.xib */,
-				3722D18A1C5556620083297F /* AircraftImageView.swift */,
-				375B665B1C6DB495007C2AFD /* BrowserWindowController.swift */,
-				375B665C1C6DB495007C2AFD /* BrowserWindowController.xib */,
+				3748995A1C719C01002E3F0F /* Views */,
 			);
 			path = PlaneInfoEditor;
 			sourceTree = "<group>";
@@ -259,6 +258,26 @@
 				37CBEAE31BEC9A14003D1A14 /* Model */,
 			);
 			name = Shared;
+			sourceTree = "<group>";
+		};
+		374899591C719BC7002E3F0F /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				37396DFF1C49EFE200AD19FB /* EditorMainWindowController.swift */,
+				37396E001C49EFE200AD19FB /* EditorMainWindowController.xib */,
+				375B665B1C6DB495007C2AFD /* BrowserWindowController.swift */,
+				375B665C1C6DB495007C2AFD /* BrowserWindowController.xib */,
+			);
+			name = "Window Controllers";
+			sourceTree = "<group>";
+		};
+		3748995A1C719C01002E3F0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3722D18A1C5556620083297F /* AircraftImageView.swift */,
+				3748995B1C719F62002E3F0F /* CheckboxTableCellView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		379B295B1BBE528000508701 = {
@@ -600,6 +619,7 @@
 				37396DFE1C49EE9000AD19FB /* CoreDataManager.swift in Sources */,
 				37396DF11C49ECCD00AD19FB /* AppDelegate.swift in Sources */,
 				37396E011C49EFE200AD19FB /* EditorMainWindowController.swift in Sources */,
+				3748995C1C719F62002E3F0F /* CheckboxTableCellView.swift in Sources */,
 				3722D18B1C5556620083297F /* AircraftImageView.swift in Sources */,
 				37396E041C4B3F2400AD19FB /* PlaneInfo.xcdatamodeld in Sources */,
 				371175541C4F6990004C8CD1 /* Aircraft.swift in Sources */,
