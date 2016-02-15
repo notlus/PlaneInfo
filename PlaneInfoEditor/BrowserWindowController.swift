@@ -104,10 +104,11 @@ extension BrowserWindowController: NSTableViewDataSource {
         let cellView = tableView.makeViewWithIdentifier("NameColumn", owner: self) as! NSTableCellView
         if tableColumn?.identifier == "NameColumn" {
             cellView.textField?.stringValue = aircraft[row].name
-            cellView.imageView?.image = NSImage(data: aircraft[row].thumbnail)
+            cellView.imageView?.image = NSImage(data: aircraft[row].thumbnail) ?? NSImage(named: "NoPhotoImage")
             cellView.textField?.editable = true
         } else if tableColumn?.identifier == "ManufacturerColumn" {
             cellView.textField?.stringValue = aircraft[row].manufacturer
+            cellView.imageView?.image = nil
             cellView.textField?.editable = true
         }
         
