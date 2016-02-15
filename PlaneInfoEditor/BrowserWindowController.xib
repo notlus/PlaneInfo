@@ -49,14 +49,18 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="w5x-Qu-jRw">
-                                                    <rect key="frame" x="1" y="1" width="223.5" height="61"/>
+                                                    <rect key="frame" x="1" y="1" width="224" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5DB-Gu-omz">
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5DB-Gu-omz">
                                                             <rect key="frame" x="3" y="3" width="58" height="58"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="58" id="KBj-YH-8Nz"/>
+                                                                <constraint firstAttribute="height" constant="58" id="dvY-7I-y9A"/>
+                                                            </constraints>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NoPhotoImage" id="hTD-ys-Yab"/>
                                                         </imageView>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TAp-Sz-RaT">
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TAp-Sz-RaT">
                                                             <rect key="frame" x="63" y="22" width="158" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="dXN-hZ-IEm">
                                                                 <font key="font" metaFont="system"/>
@@ -68,6 +72,13 @@
                                                             </connections>
                                                         </textField>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="TAp-Sz-RaT" secondAttribute="trailing" constant="5" id="C3D-6I-Jsa"/>
+                                                        <constraint firstItem="TAp-Sz-RaT" firstAttribute="leading" secondItem="5DB-Gu-omz" secondAttribute="trailing" constant="4" id="T3s-23-jk9"/>
+                                                        <constraint firstItem="TAp-Sz-RaT" firstAttribute="centerY" secondItem="w5x-Qu-jRw" secondAttribute="centerY" id="UKf-cc-mb2"/>
+                                                        <constraint firstAttribute="bottom" secondItem="5DB-Gu-omz" secondAttribute="bottom" constant="3" id="bxb-xR-PW9"/>
+                                                        <constraint firstItem="5DB-Gu-omz" firstAttribute="leading" secondItem="w5x-Qu-jRw" secondAttribute="leading" constant="3" id="shH-W8-djj"/>
+                                                    </constraints>
                                                     <connections>
                                                         <outlet property="imageView" destination="5DB-Gu-omz" id="uO1-zk-m3y"/>
                                                         <outlet property="textField" destination="TAp-Sz-RaT" id="trT-Cc-Frg"/>
@@ -89,11 +100,11 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="VMz-Ls-fRa">
-                                                    <rect key="frame" x="227.5" y="1" width="294.5" height="61"/>
+                                                    <rect key="frame" x="227.5" y="1" width="295" height="61"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-eS-bZC">
-                                                            <rect key="frame" x="1" y="22" width="191" height="17"/>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-eS-bZC">
+                                                            <rect key="frame" x="0.0" y="22" width="292" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="x4B-Q9-Wur">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -101,6 +112,11 @@
                                                             </textFieldCell>
                                                         </textField>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="9eX-eS-bZC" firstAttribute="leading" secondItem="VMz-Ls-fRa" secondAttribute="leading" constant="2" id="Pl0-qE-KC9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="9eX-eS-bZC" secondAttribute="trailing" constant="5" id="wYT-Yf-Y6z"/>
+                                                        <constraint firstItem="9eX-eS-bZC" firstAttribute="centerY" secondItem="VMz-Ls-fRa" secondAttribute="centerY" id="yer-bE-ZtI"/>
+                                                    </constraints>
                                                     <connections>
                                                         <outlet property="textField" destination="9eX-eS-bZC" id="1Ju-HE-gV3"/>
                                                     </connections>
