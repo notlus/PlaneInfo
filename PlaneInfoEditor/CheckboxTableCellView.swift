@@ -9,11 +9,5 @@
 import Cocoa
 
 class CheckboxTableCellView: NSTableCellView {
-
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-
-        // Drawing code here.
-    }
-    
+    @IBOutlet weak var modifiedCheckbox: NSButton!
 }

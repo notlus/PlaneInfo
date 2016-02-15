@@ -176,6 +176,9 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
 extension EditorMainWindowController: NSWindowDelegate {
     func windowWillClose(notification: NSNotification) {
         print("windowWillClose")
-        delegate?.save()
+        if dirty {
+            print("Something changed, saving")
+            delegate?.save()
+        }
     }
 }

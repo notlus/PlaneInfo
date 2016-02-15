@@ -27,7 +27,9 @@ class BrowserWindowController: NSWindowController, AircraftChange {
             } else if column == 1 {
                 aircraft[row].manufacturer = sender.stringValue
             }
+            aircraft[row].modified = true
             try! sharedContext.save()
+            tableView.reloadData()
         }
     }
     
@@ -82,9 +84,11 @@ class BrowserWindowController: NSWindowController, AircraftChange {
         wc.showWindow(self)
     }
     
+    /// `AircraftChange` delegate
     func save() {
         print("Saving data")
         try! sharedContext.save()
+        tableView.reloadData()
     }
 }
 
@@ -110,6 +114,10 @@ extension BrowserWindowController: NSTableViewDataSource {
             cellView.textField?.stringValue = aircraft[row].manufacturer
             cellView.imageView?.image = nil
             cellView.textField?.editable = true
+        } else if tableColumn?.identifier == "ModifiedColumn" {
+           let cellView = tableView.makeViewWithIdentifier("CheckboxCell", owner: self) as! CheckboxTableCellView
+            cellView.modifiedCheckbox.state = aircraft[row].modified == true ? 1 : 0
+            return cellView
         }
         
         return cellView
