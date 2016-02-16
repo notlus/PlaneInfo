@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4ACE57116DD0A0D92963446545CF83F5B4D495C9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4ACE57116DD0A0D92963446545CF83F5B4D495C9" : 0,
+    "3F00198FD7638102954E2D442697C31855C6A5BC" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B8F9EB3D-065F-4EB1-A657-D2E5649E0158",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4ACE57116DD0A0D92963446545CF83F5B4D495C9" : "PlaneInfo\/",
+    "3F00198FD7638102954E2D442697C31855C6A5BC" : "PlaneInfo\/PlanePicture\/Kanna\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PlaneInfo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PlaneInfo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tid-kijyun\/Kanna.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3F00198FD7638102954E2D442697C31855C6A5BC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/notlus\/PlaneInfo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4ACE57116DD0A0D92963446545CF83F5B4D495C9"
+    }
+  ]
+}
