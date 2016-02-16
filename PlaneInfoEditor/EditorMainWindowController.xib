@@ -14,6 +14,7 @@
                 <outlet property="aircraftIntroduced" destination="mzp-Is-3Ov" id="T9v-Qb-wnP"/>
                 <outlet property="aircraftManufacturer" destination="boD-T8-Sj0" id="8Ko-BK-ymP"/>
                 <outlet property="aircraftName" destination="4GJ-Wc-XeC" id="S87-39-QhT"/>
+                <outlet property="closeButton" destination="NTk-05-qph" id="a23-jK-QJc"/>
                 <outlet property="nameLabel" destination="FRt-5t-7Dk" id="g8e-2v-qmQ"/>
                 <outlet property="numberBuilt" destination="aAK-h3-eJY" id="5nX-Yf-c9m"/>
                 <outlet property="thumnailImageView" destination="rS9-TW-SHH" id="fSl-k9-UUu"/>
@@ -220,6 +221,16 @@
                         </constraints>
                         <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="photo" image="NoPhotoImage" id="Ri2-Xj-FA8"/>
                     </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NTk-05-qph">
+                        <rect key="frame" x="570" y="19" width="89" height="19"/>
+                        <buttonCell key="cell" type="roundRect" title="Close" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fkt-XJ-yQ6">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="closeWindow:" target="-2" id="Utg-uF-GDk"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="61m-o1-Ati" secondAttribute="bottom" constant="281" id="0CA-1k-ZZw"/>
@@ -248,6 +259,7 @@
                     <constraint firstItem="FRt-5t-7Dk" firstAttribute="trailing" secondItem="meg-v4-cV4" secondAttribute="trailing" id="MwF-Uu-i3T"/>
                     <constraint firstAttribute="trailing" secondItem="aAK-h3-eJY" secondAttribute="trailing" constant="32" id="SG7-TH-tJW"/>
                     <constraint firstItem="lIl-MG-FzU" firstAttribute="firstBaseline" secondItem="FRt-5t-7Dk" secondAttribute="firstBaseline" id="SOA-rO-QPL"/>
+                    <constraint firstItem="NTk-05-qph" firstAttribute="bottom" secondItem="rS9-TW-SHH" secondAttribute="bottom" id="Stz-9x-l25"/>
                     <constraint firstItem="xq4-gd-s1c" firstAttribute="top" secondItem="boD-T8-Sj0" secondAttribute="bottom" constant="8" symbolic="YES" id="V1J-JH-fTg"/>
                     <constraint firstAttribute="trailing" secondItem="mzp-Is-3Ov" secondAttribute="trailing" constant="32" id="Wbd-ay-LYF"/>
                     <constraint firstItem="xq4-gd-s1c" firstAttribute="trailing" secondItem="zoY-sn-ZYZ" secondAttribute="trailing" id="XFj-4j-h82"/>
@@ -267,8 +279,10 @@
                     <constraint firstItem="rS9-TW-SHH" firstAttribute="top" secondItem="61m-o1-Ati" secondAttribute="bottom" constant="22" id="o9l-5N-SRg"/>
                     <constraint firstItem="hsI-cx-pdX" firstAttribute="top" secondItem="meg-v4-cV4" secondAttribute="bottom" constant="6" id="ptR-kB-yQl"/>
                     <constraint firstItem="lIl-MG-FzU" firstAttribute="trailing" secondItem="bCl-tb-WaX" secondAttribute="trailing" id="rXv-l9-qcx"/>
+                    <constraint firstItem="NTk-05-qph" firstAttribute="leading" secondItem="rS9-TW-SHH" secondAttribute="trailing" constant="55" id="ven-SF-cUM"/>
                     <constraint firstItem="dzy-fU-aRR" firstAttribute="top" secondItem="zoY-sn-ZYZ" secondAttribute="bottom" constant="1" id="wX7-iM-Nrm"/>
                     <constraint firstItem="4GJ-Wc-XeC" firstAttribute="top" secondItem="FRt-5t-7Dk" secondAttribute="bottom" constant="5" id="wdD-si-uLP"/>
+                    <constraint firstAttribute="trailing" secondItem="NTk-05-qph" secondAttribute="trailing" constant="20" symbolic="YES" id="x4y-8C-eqQ"/>
                     <constraint firstAttribute="bottom" secondItem="rS9-TW-SHH" secondAttribute="bottom" constant="20" symbolic="YES" id="xGU-Mk-uVf"/>
                     <constraint firstItem="xq4-gd-s1c" firstAttribute="leading" secondItem="boD-T8-Sj0" secondAttribute="leading" id="xmg-fs-qs5"/>
                     <constraint firstItem="bCl-tb-WaX" firstAttribute="leading" secondItem="aAK-h3-eJY" secondAttribute="leading" id="zK1-XX-TZn"/>

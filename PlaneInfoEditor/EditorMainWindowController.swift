@@ -57,13 +57,30 @@ class EditorMainWindowController: NSWindowController, NSTextViewDelegate, Update
         }
     }
     @IBOutlet weak var nameLabel: NSTextField!
+    @IBOutlet weak var closeButton: NSButton!
+    
+    @IBAction func closeWindow(sender: AnyObject) {
+        if dirty {
+            try! sharedContext.save()
+        }
+        
+        window?.close()
+    }
     
     private var sharedContext: NSManagedObjectContext {
         return CoreDataManager.sharedInstance.managedObjectContext
     }
     
     // Track whether any data has be modified
-    private var dirty = false
+    private var dirty: Bool = false {
+        didSet {
+            if dirty {
+                closeButton.title = "Save"
+            } else {
+                closeButton.title = "Close"
+            }
+        }
+    }
     
     private var currentAircraft: Aircraft?
     
