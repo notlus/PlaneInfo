@@ -55,11 +55,7 @@ class AircraftContainerViewController: UIViewController {
         print("toggleFavorite")
         
         aircraft!.favorite = !aircraft!.favorite
-        if aircraft!.favorite == true {
-            navigationItem.rightBarButtonItem?.tintColor = ColorPalette.SecondaryColor.color
-        } else {
-            navigationItem.rightBarButtonItem?.tintColor = ColorPalette.LightColor.color
-        }
+        setFavoriteTintColor()
     }
 
     @IBAction func segmentChanged(sender: UISegmentedControl) {
@@ -70,12 +66,14 @@ class AircraftContainerViewController: UIViewController {
             detailsContainerView.hidden = true
             galleryContainerView.hidden = true
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Star"), style: .Plain, target: self, action: "toggleFavorite")
+            setFavoriteTintColor()
         } else if sender.selectedSegmentIndex == 1 {
             // Show details
             infoContainerView.hidden = true
             detailsContainerView.hidden = false
             galleryContainerView.hidden = true
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Star"), style: .Plain, target: self, action: "toggleFavorite")
+            setFavoriteTintColor()
         } else if sender.selectedSegmentIndex == 2 {
             // Show gallery
             infoContainerView.hidden = true
@@ -99,6 +97,14 @@ class AircraftContainerViewController: UIViewController {
             let destination = segue.destinationViewController as! AircraftInfoViewController
             destination.aircraft = aircraft
             
+        }
+    }
+    
+    private func setFavoriteTintColor() {
+        if aircraft!.favorite == true {
+            navigationItem.rightBarButtonItem?.tintColor = ColorPalette.SecondaryColor.color
+        } else {
+            navigationItem.rightBarButtonItem?.tintColor = ColorPalette.LightColor.color
         }
     }
 }
